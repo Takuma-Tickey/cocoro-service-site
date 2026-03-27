@@ -16,6 +16,65 @@
 - 親テーマ: `wp-content/themes/jinr`
 - 子テーマ: `wp-content/themes/jinr-child`
 
+## ローカル開発（Docker）
+
+`localhost` で安全に確認するための構成です。  
+本番用 `wp-config.php` は使わず、Docker用 `docker/wp-config.local.php` を使います。
+
+### 1. 初回準備
+
+```bash
+cd "/Users/tickeykinugawa/Desktop/cocoroサービスサイト/cocoro-service-site"
+cp .env.docker.example .env
+```
+
+### 2. 起動
+
+```bash
+docker compose up -d
+```
+
+アクセス先:
+
+- WordPress: `http://localhost:8080`
+- phpMyAdmin: `http://localhost:8081`
+
+### 3. 停止 / 再起動
+
+停止:
+
+```bash
+docker compose down
+```
+
+再起動:
+
+```bash
+docker compose up -d
+```
+
+### 4. DBを既存環境に近づけたい場合（任意）
+
+SQLファイル（例: `backup.sql`）を手元に置いて実行します。
+
+```bash
+cat backup.sql | docker compose exec -T db mysql -u"${WORDPRESS_DB_USER}" -p"${WORDPRESS_DB_PASSWORD}" "${WORDPRESS_DB_NAME}"
+```
+
+インポート後、ローカルURLへ置換（`wp_` プレフィックス想定）:
+
+```bash
+docker compose exec db mysql -u"${WORDPRESS_DB_USER}" -p"${WORDPRESS_DB_PASSWORD}" "${WORDPRESS_DB_NAME}" -e "UPDATE wp_options SET option_value='http://localhost:8080' WHERE option_name IN ('home','siteurl');"
+```
+
+### 5. よく使う確認
+
+```bash
+docker compose ps
+docker compose logs -f wordpress
+docker compose logs -f db
+```
+
 ## 運用方針（決定版）
 
 今後の標準フローは以下です。
