@@ -1,0 +1,209 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+//サイドバー共通
+#sideBarWidget,
+#sideBarTracking{
+	.jinr-widget-area:first-child{
+		padding-top: 0;
+	}
+	& > .jinr-widget-area:first-child{
+		.jinr-heading,
+		.b--jinr-block{
+			margin-top: 0;
+		}
+	}
+	//横長カード基本設定
+	.d--postlist-rectangle {
+		&.d--postlist-column1 {
+		}
+	}
+}
+#sideBarTracking{
+	position: sticky;
+	top: 0;
+}
+
+#sideBarWidget{
+	margin-bottom: 30px;
+}
+
+.d--flat-design{
+	#sideBarWidget,
+	#sideBarTracking{
+		.d--postlist-square{
+			&.d--postlist-column2{
+				.o--postlist-item{
+					@include s.mini_tablet_view {
+						width: calc((100% - (12px)) / 2);
+						margin-bottom: 21px;
+					}
+				}
+				.o--postlist-item:not(:nth-of-type(2n)){
+					@include s.mini_tablet_view {
+						margin-right: 12px;
+					}
+				}
+				.c--post-meta{
+					@include s.mini_tablet_view {
+						transform: scale(0.9);
+						transform-origin: left;
+						width: 108%;
+						bottom: 0;
+					}
+				}
+				.c--post-contents{
+					@include s.mini_tablet_view {
+						padding-top: 9px;
+						padding-bottom: 24px;
+					}
+				}
+				.a--post-title{
+					@include s.mini_tablet_view {
+						font-size: 1.1rem;
+						line-height: 1.35;
+					}
+				}
+			}
+		}
+		//横長カード基本設定
+		.d--postlist-rectangle {
+			&.d--postlist-column1 {
+				.o--postlist-item{
+					@include s.mini_tablet_view {
+						margin-bottom: 18px;
+					}
+				}
+				.c--post-image {
+					@include s.mini_tablet_view {
+						max-width: 110px;
+					}
+					@media (min-width: 1240px) {
+						max-width: 125px;
+					}
+				}
+				.c--post-contents {
+					@include s.mini_tablet_view {
+						padding: 0px 0 0px clamp(9px, 1.2vw, 12px);
+					}
+					@media (min-width: 1240px) {
+						padding: 2px 0 2px clamp(9px, 1.2vw, 12px);
+					}
+					.a--post-title{
+						@include s.mini_tablet_view {
+							font-size: 1.15rem;
+							line-height: 1.35;
+							-webkit-line-clamp: 3;
+							max-height: 4.8em;
+						}
+					}
+				}
+				.c--post-meta{
+					@include s.mini_tablet_view {
+						bottom: -2px;
+						font-size: 0.9rem;
+						transform: scale(0.9);
+						transform-origin: left;
+						width: 105%;
+					}
+					@media (min-width: 1240px) {
+						bottom: 0;
+						width: 102%;
+					}
+				}
+			}
+		}
+	}
+}
+.d--material-design{
+	#sideBarWidget,
+	#sideBarTracking{
+		.d--postlist-square{
+			&.d--postlist-column2{
+				.o--postlist-item{
+					@include s.mini_tablet_view {
+						width: calc((100% - (15px)) / 2);
+						margin-bottom: 14px;
+					}
+				}
+				.o--postlist-item:not(:nth-of-type(2n)){
+					@include s.mini_tablet_view {
+						margin-right: 15px;
+					}
+				}
+				.c--post-meta{
+					@include s.mini_tablet_view {
+						transform: scale(0.85);
+						transform-origin: left;
+						width: 107%;
+						bottom: 5px;
+					}
+				}
+				.c--post-contents{
+					@include s.mini_tablet_view {
+						padding: 9px 9px 27px 9px;
+					}
+				}
+				.a--post-title{
+					@include s.mini_tablet_view {
+						font-size: 1rem;
+						line-height: 1.35;
+						-webkit-line-clamp: 3;
+						max-height: 4.8em;
+					}
+					@media (min-width: 1240px) {
+						font-size: 1.1rem;
+					}
+				}
+			}
+		}
+		//横長カード基本設定
+		.d--postlist-rectangle {
+			&.d--postlist-column1 {
+				.c--post-image {
+					@include s.mini_tablet_view {
+						max-width: 120px;
+					}
+					@media (min-width: 1240px) {
+						max-width: 140px;
+					}
+				}
+				.c--post-contents {
+					@include s.mini_tablet_view {
+						padding: 3px 6px 3px 9px;
+					}
+					@media (min-width: 1240px) {
+						padding: 8px 8px 8px 12px;
+					}
+					.a--post-title{
+						@include s.mini_tablet_view {
+							font-size: 1.15rem;
+							line-height: 1.35;
+							-webkit-line-clamp: 3;
+							max-height: 4.8em;
+						}
+						@media (max-width: 1239px) {
+							transform: scale(0.85);
+							transform-origin: left;
+							width: 115%;
+						}
+					}
+				}
+				.c--post-meta{
+					@include s.mini_tablet_view {
+						bottom: 3px;
+						font-size: 0.9rem;
+						transform: scale(0.85);
+						transform-origin: left;
+						width: 110%;
+					}
+					@media (min-width: 1240px) {
+						width: 107%;
+						bottom: 4px;
+					}
+				}
+			}
+		}
+	}
+}

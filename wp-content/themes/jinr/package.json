@@ -1,0 +1,26 @@
+{
+  "name": "jinr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://jin-devteam@bitbucket.org/jin-devteam/jinr.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://bitbucket.org/jin-devteam/jinr/issues"
+  },
+  "homepage": "https://bitbucket.org/jin-devteam/jinr#readme",
+  "devDependencies": {
+    "sass": "^1.50.0"
+  }
+}

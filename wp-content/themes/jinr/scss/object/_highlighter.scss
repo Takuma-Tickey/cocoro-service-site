@@ -1,0 +1,58 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+/**
+* ハイライター
+*/
+
+.b--jinr-highlighter {
+    &.d--highlighter-height-manual{
+        pre{
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
+    }
+    pre{
+        padding-top: 21px!important;
+        padding-bottom: 21px!important;
+        @include s.sp{
+            padding-top: 15px!important;
+            padding-bottom: 15px!important;
+        }
+        &:not(.line-numbers){
+            min-height: 30px;
+            padding: 21px!important;
+            @include s.sp{
+                padding: 15px!important;
+            }
+        }
+    }
+}
+.t--round-s{
+    .b--jinr-highlighter {
+        &.t--round{
+            pre{
+                border-radius: s.$r_s;
+            }
+        }
+    }
+}
+.t--round-m{
+    .b--jinr-highlighter {
+        &.t--round{
+            pre{
+                border-radius: s.$r_m;
+            }
+        }
+    }
+}
+.t--round-l{
+    .b--jinr-highlighter {
+        &.t--round{
+            pre{
+                border-radius: s.$r_l;
+            }
+        }
+    }
+}

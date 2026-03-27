@@ -1,0 +1,186 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+#postContent {
+	.o--notfound-section {
+		p {
+			margin: 0;
+			&.a--notfound-headtitle {
+				font-size: 1.6rem;
+				margin-bottom: 8px;
+				@include s.mini_tablet_view {
+					font-size: 1.8rem;
+				}
+			}
+		}
+	}
+	#postCategoryBox {
+		padding: 0;
+		margin-top: 0;
+		margin-bottom: 0;
+		.cat-item {
+			position: relative;
+			padding-left: 1.8rem;
+			margin: 6px 0;
+			@include s.mini_tablet_view {
+				padding-left: 2.3rem;
+			}
+			&::after {
+				position: absolute;
+				content: '';
+				background-color: transparent;
+				border: 1px solid;
+				top: 9px;
+				left: 0;
+				border-radius: 50%;
+				width: 7px;
+				height: 7px;
+			}
+			a {
+				display: flex;
+				justify-content: space-between;
+				font-size: 1.4rem;
+				color: #565656;
+				transition: opacity 0.3s;
+				&:hover {
+					opacity: 0.5;
+				}
+			}
+			.children {
+				padding: 0;
+				margin: 0;
+				.cat-item {
+					margin: 6px 0;
+					&::after {
+						border: none;
+						width: 10px;
+						height: 1px;
+						border-radius: 0;
+						top: 12px;
+						@include s.mini_tablet_view {
+							top: 14px;
+						}
+					}
+					.children {
+						margin-bottom: 8px;
+						.cat-item {
+							@include s.sp {
+								margin: 0 0 6px;
+								margin-bottom: 16px;
+							}
+						}
+					}
+				}
+			}
+		}
+		.count {
+            padding-left: 0;
+            position: absolute;
+            right: 9px;
+            font-size: 1.15rem;
+            line-height: 0;
+            top: 12px;
+            opacity: 0.6;
+            letter-spacing: 0;
+			@include s.mini_tablet_view{
+				top: 14px;
+			}
+        }
+	}
+	.a--searchform-input {
+		width: 100%;
+		padding: 16px 12px;
+		font-size: 16px;
+		border: 1px solid #f6f6f6;
+		background-color: #fff;
+		-webkit-appearance: none;
+		@include s.sp {
+			padding: 12px 12px;
+			font-size: 14px;
+		}
+		&:focus {
+			outline: none;
+		}
+	}
+	.c--notfound-box{
+		position: relative;
+	}
+	.a--notfound-icon {
+		display: inline-block;
+		position: absolute;
+		vertical-align: middle;
+		height: 42px;
+		width: 56px;
+		right: -3px;
+		@include s.mini_tablet_view {
+			height: 53px;
+			right: 0px;
+		}
+		i {
+			position: absolute;
+			top: 55%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 1.2em;
+			@include s.mini_tablet_view {
+				top: 50%;
+			}
+		}
+		input#JinrSearchSubmit {
+			height: 52px;
+			width: 56px;
+			padding: 4px 8px;
+			border: none;
+			-webkit-appearance: none;
+			background: transparent;
+			cursor: pointer;
+			@include s.sp {
+				height: 42px;
+			}
+		}
+	}
+}
+.o--notfound-section {
+	padding: 12px 18px 18px;
+	margin-bottom: 24px;
+	@include s.mini_tablet_view {
+		padding:15px 24px 24px;
+	}
+}
+
+.c--notfound-tagitem {
+	display: inline-block;
+}
+.a--notfound-taglink {
+	display: inline-block;
+	line-height: 1.4;
+	font-size: 1.4rem;
+	transition: opacity 0.3s;
+	&:hover {
+		opacity: 0.5;
+	}
+}
+.error404{
+	.t--round-s{
+		.a--searchform-input,
+		.a--notfound-taglink,
+		#postCategoryBox .count{
+			border-radius: s.$r_s;
+		}
+	}
+	.t--round-m{
+		.a--searchform-input,
+		.a--notfound-taglink,
+		#postCategoryBox .count{
+			border-radius: s.$r_m;
+		}
+	}
+	.t--round-l{
+		.a--searchform-input,
+		.a--notfound-taglink,
+		#postCategoryBox .count{
+			border-radius: s.$r_m;
+		}
+	}
+}

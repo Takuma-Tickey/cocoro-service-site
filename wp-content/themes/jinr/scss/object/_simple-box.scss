@@ -1,0 +1,851 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+@use "sass:math";
+
+.b--jinr-box {
+    display: block;
+    margin: s.$base_margin auto;
+    padding: 0 2.2rem;//アイコンボックスと同じ
+    width: 100%;
+    box-sizing: border-box;
+	@include s.mini_tablet_view{
+        margin: 4.2rem auto;
+        padding: 0 2.7rem;
+		width: calc(100% - #{s.$double_margin} * 1.5);
+	}
+    .a--simple-box-title {
+        min-width: 50px;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 0;
+        line-height: 1.4;
+        font-size: 1.35rem;
+        @include s.mini_tablet_view{
+            font-size: 1.4rem;
+        }
+    }
+}
+
+.d--simple-box1 {
+    border-style: solid;
+}
+
+
+.d--simple-box2 {
+    position: relative;
+    border-style: solid;
+    z-index: 0;
+    &::before {
+        content: "";
+        width: calc(100% - 10px);
+        height: calc(100% - 10px);
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        z-index: -1;
+    }
+}
+
+.d--simple-box3 {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    padding: 1px s.$base_margin;
+    @include s.mini_tablet_view {
+        padding: 1px math.div(s.$double_margin , 1.5);
+    }
+}
+
+.d--simple-box4 {
+    position: relative;
+    padding: 1px s.$base_margin;
+    @include s.mini_tablet_view {
+        padding: 1px math.div(s.$double_margin , 1.5);
+    }
+    &::before {
+        content: "";
+        background-position: left top, left bottom, left top, right top;
+        background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        pointer-events: none;
+    }
+}
+.d--simple-box5 {
+    position: relative;
+    z-index: 0;
+    padding-top:1px;
+    padding-bottom: 1px;
+}
+.d--simple-box6 {
+    border-style: solid;
+    position: relative;
+    z-index: 0;
+    padding-top:1px;
+    padding-bottom: 1px;
+}
+.d--simple-box7 {
+    border-style: solid;
+    position: relative;
+    z-index: 0;
+    padding-top:1px;
+    padding-bottom: 1px;
+}
+.d--simple-box8 {
+    position: relative;
+    z-index: 0;
+    padding: 12px s.$double_margin;
+    @include s.mini_tablet_view {
+        padding: 18px (s.$double_margin * 1.2);
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        width: calc(100% - 30px);
+        height: calc(100% - 30px);
+        border: 2px solid #fff;
+        top: 13px;
+        left: 13px;
+        z-index: -1;
+    }
+}
+.d--simple-box9 {
+    position: relative;
+    z-index: 0;
+    padding: 15px math.div(s.$double_margin , 1.2);
+    @include s.mini_tablet {
+        padding: 15px math.div(s.$double_margin , 1.2);
+    }
+    @include s.tablet {
+        padding: 18px s.$double_margin;
+    }
+    &::after {
+        content: "";
+        background-position: left top, left bottom, left top, right top;
+        background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+        position: absolute;
+        top: 16px;
+        bottom: 16px;
+        left: 0;
+        right: 0;
+        pointer-events: none;
+    }
+}
+.d--simple-box10 {
+    position: relative;
+    z-index: 0;
+    padding-top:1px;
+    padding-bottom: 1px;
+    &::after {
+        content: "";
+        background-size: 12px 24px;
+        height: 12px;
+        background-repeat: repeat-x;
+        position: absolute;
+        top: -12px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        pointer-events: none;
+    }
+}
+.d--simple-box11 {
+    position: relative;
+    border-style:solid;
+    &::before,
+    &::after {
+        position: absolute;
+        content: "";
+        height: calc(100% + 12px);
+        top: -6px;
+    }
+    &::before {
+        border-left-style: solid;
+        left: 6px;
+    }
+    &::after {
+        border-right-style: solid;
+        right: 6px;
+    }
+}
+.d--simple-box12 {
+    position: relative;
+    overflow: hidden;
+    padding-top: 2.1rem;
+    padding-bottom: 2.1rem;
+    @include s.mini_tablet_view{
+        padding: 1.2rem clamp(3.9rem,4.2vw,4.5rem);
+    }
+    &::before,
+    &::after {
+        position: absolute;
+        font-family: "jin-icons";
+        content: "\e924";
+        font-size: 2.4rem;
+        @include s.mini_tablet_view{
+            font-size: clamp(4.8rem,5vw,5.1rem);
+        }
+    }
+    &::before {
+        top:3px;
+        left: 21px;
+        @include s.mini_tablet_view{
+            left: 21px;
+            top:-6px;
+        }
+    }
+    &::after {
+        bottom: 3px;
+        right: 21px;
+        transform: rotate(180deg);
+        @include s.mini_tablet_view{
+            right: 21px;
+            bottom: -6px;
+        }
+    }
+    .a--simple-box-quotetitle{
+        font-size: 11px;
+        margin-bottom: 6px;
+        @include s.mini_tablet_view{
+            margin-top: 24px;
+            margin-bottom: 18px;
+        }
+        &::before{
+            content: "引用元：";
+            padding-right: 6px;
+        }
+    }
+}
+
+.d--heading-box1 {
+    position: relative;
+    border-style: solid ;
+    margin-top: (s.$double_margin * 1.5) ;
+    padding: s.$base_margin math.div(s.$double_margin , 1.5) 0 math.div(s.$double_margin , 1.5);
+    @include s.mini_tablet {
+        margin-top: 5.4rem ;
+        padding: s.$base_margin math.div(s.$double_margin , 1.2) 0 math.div(s.$double_margin , 1.2);
+    }
+    @include s.tablet {
+        margin-top: 5.4rem ;
+        padding: s.$base_margin s.$double_margin 0 s.$double_margin;
+    }
+    .a--simple-box-title {
+        position: absolute;
+        color: #fff;
+        left: 16px;
+        max-width: 90%;
+        padding: 7px 12px;
+        top: -16px;
+        @include s.mini_tablet_view {
+            padding: 9px 12px;
+            top: -19px;
+        }
+        &::before {
+            position: absolute;
+            content: "";
+            width: 0;
+            height: 0;
+            top: calc(100% - 4px);
+            left: 16px;
+            border: 8px solid transparent;
+            border-top: 13px solid ;
+        }
+    }
+}
+.d--heading-box2 {
+    position: relative;
+    border-style: solid ;
+    padding: math.div(s.$double_margin , 1.2) math.div(s.$double_margin , 1.5) 0 math.div(s.$double_margin , 1.5);
+    @include s.mini_tablet {
+        padding: s.$double_margin math.div(s.$double_margin , 1.2) 0 math.div(s.$double_margin , 1.2);
+    }
+    @include s.tablet {
+        padding: s.$double_margin s.$double_margin 0 s.$double_margin;
+    }
+    .a--simple-box-title {
+        position: absolute;
+        color: #fff;
+        padding: 6px 12px;
+        top: -1px;
+        left: -1px;
+    }
+}
+.d--heading-box3 {
+    position: relative;
+    border-style: solid ;
+    margin-top: (s.$double_margin * 1.8) ;
+    padding: 0 math.div(s.$double_margin , 1.5);
+    @include s.mini_tablet {
+        margin-top: (s.$double_margin * 2) ;
+        padding: 0 math.div(s.$double_margin , 1.2);
+    }
+    @include s.tablet {
+        margin-top: (s.$double_margin * 2) ;
+        padding: 0 s.$double_margin;
+    }
+    .a--simple-box-title {
+        position: absolute;
+        color: #fff;
+        padding: 6px 12px;
+        top: -31px;
+        @include s.mini_tablet_view {
+            top: -32px;
+        }
+    }
+}
+
+.d--heading-box4 {
+    border-style: solid;
+    padding-left: 0;
+    padding-right: 0;
+    overflow: hidden;
+    .c--simple-box-inner{
+        padding: 0 math.div(s.$double_margin , 1.5);
+        @include s.mini_tablet {
+            padding: 0 math.div(s.$double_margin , 1.2);
+        }
+        @include s.tablet {
+            padding: 0 s.$double_margin;
+        }
+    }
+    .a--simple-box-title {
+        width: 100%;
+        color: #fff;
+        padding:12px 12px 11px 12px;
+        text-align: center;
+    }
+}
+
+.d--heading-box5 {
+    position: relative;
+    background: linear-gradient(45deg, #b99d69, #9f8452);
+    color: #fff;
+    z-index: 100;
+    padding: (s.$double_margin * 1.2) s.$double_margin 9px;
+    @include s.mini_tablet_view {
+        padding: 3.9rem (s.$double_margin * 1.2) 12px;
+    }
+    &::before {
+        position: absolute;
+        content: "";
+        background: linear-gradient(45deg, #5e8946, #4d6c3c);
+        width: calc(100% - 16px);
+        height: calc(100% - 16px);
+        z-index: -1;
+        top: 0;
+        left: 0;
+        transform: translate(8px, 8px);
+        @include s.tablet {
+            width: calc(100% - 24px);
+            height: calc(100% - 24px);
+            transform: translate(12px, 12px);
+        }
+    }
+    .a--simple-box-title {
+        font-size: 1.05em;
+        text-align: center;
+    }
+    .c--simple-box-inner {
+        p,ol,ul,section{
+            color: #fff;
+        }
+        ul.jinr-list li{
+            &::after{
+                background-color: #fff!important;
+            }
+        }
+        ol.jinr-list li{
+            &::after{
+                color: #fff!important;
+                margin-left: 1px;
+                @include s.sp{
+                    margin-top: 1px;
+                }
+            }
+            &::before{
+                top: 0px!important;
+                border:1px solid #fff;
+                background-color: transparent!important;
+                @include s.sp{
+                    margin-top: 1px;
+                }
+                @include s.mini_tablet_view {
+                    top: 2px!important;
+                }
+            }
+            ol li::before{
+                border:none;
+            }
+        }
+    }
+}
+
+.d--heading-box6 {
+    position: relative;
+    padding: 8px;
+    .a--simple-box-title {
+        padding: 8px 12px 16px 12px;
+    }
+    .c--simple-box-inner {
+        position: relative;
+        background-color: #fff;
+        padding: 1px math.div(s.$double_margin , 1.5);
+        @include s.mini_tablet_view {
+            padding: 1px s.$double_margin;
+        }
+    }
+}
+.d--heading-box7 {
+    border-style: solid;
+    padding: 0;
+    .a--simple-box-title {
+        position: relative;
+        border-bottom-style: solid;
+        padding: 16px 14px;
+        text-align: center;
+        z-index: 0;
+        &::before {
+            position: absolute;
+            content: "";
+            width: calc(100% - 8px);
+            height: calc(100% - 8px);
+            opacity: 0.15;
+            top: 4px;
+            left: 4px;
+            z-index: -1;
+            @include s.tablet {
+                width: calc(100% - 12px);
+                height: calc(100% - 12px);
+                top: 6px;
+                left: 6px;
+            }
+        }
+    }
+    .c--simple-box-inner {
+        padding: 1px math.div(s.$double_margin , 1.5);
+        @include s.mini_tablet_view {
+            padding: 1px s.$double_margin;
+        }
+    }
+}
+
+
+.d--heading-box8 {
+    display: flex;
+    border-bottom-style: solid;
+    border-radius: 0;
+    padding: 0;
+    padding-bottom: 6px;
+    .a--simple-box-title {
+        font-size: 0.75em;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border-top-style: solid ;
+        border-left-style: solid;
+        border-right-style: solid;
+        padding: 16px 12px 12px 12px;
+        width: 39%;
+        @include s.mini_tablet_view {
+            width: 28%;
+        }
+        &::before {
+            position: absolute;
+            content: "";
+            opacity: 0.1;
+            width: calc(100% - 12px);
+            height: calc(100% - 6px);
+            top: 6px;
+            left: 6px;
+            z-index: -1;
+        }
+    }
+    .c--simple-box-inner {
+        width: calc(75% - 16px);
+        margin-left: s.$base_margin;
+        @include s.mini_tablet_view {
+            margin-left: 2.4rem;
+        }
+        p,ul,ol {
+            margin-top: 1.35rem!important;
+            margin-bottom: 1.35rem!important;
+            &:first-child{
+                margin-top: 0rem!important;
+                margin-bottom: 0rem!important;
+            }
+        }
+    }
+}
+
+.d--heading-box9 {
+    display: flex;
+    border-style: solid;
+    padding: 0;
+    .a--simple-box-title {
+        font-size: 0.75em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        width: 40%;
+        padding: 12px 4px;
+        @include s.mini_tablet_view {
+            width: 28%;
+            padding: 12px 8px;
+        }
+    }
+    .c--simple-box-inner {
+        width: 75%;
+        padding: 0 s.$base_margin;
+        @include s.mini_tablet_view {
+            padding: 0 math.div(s.$double_margin , 1.2);
+        }
+        p,ul,ol {
+            margin-top: s.$base_margin!important;
+            margin-bottom: s.$base_margin!important;
+            @include s.mini_tablet_view {
+                margin-top: s.$base_margin!important;
+                margin-bottom: s.$base_margin!important;
+            }
+        }
+    }
+}
+
+.d--simple-box1,
+.d--simple-box2,
+.d--simple-box3,
+.d--simple-box4,
+.d--simple-box5,
+.d--simple-box6,
+.d--simple-box7,
+.d--simple-box8,
+.d--simple-box9,
+.d--simple-box10,
+.d--simple-box11,
+.d--simple-box12{
+    .a--simple-box-title {
+        font-size: 1.05em;
+        margin: 1.8rem 0;
+        @include s.mini_tablet_view{
+            margin: 2.1rem 0 3.3rem;
+        }
+        & + .c--simple-box-inner{
+            @include s.sp{
+                margin-top: -(math.div(s.$base_margin , 2));
+            }
+            @include s.mini_tablet{
+                margin-top: -(math.div(s.$base_margin , 1.5));
+            }
+            @include s.tablet{
+                margin-top: -(s.$base_margin);
+            }
+        }
+    }
+}
+//アイコンボックスと同じスマホのpタグ調整
+.b--jinr-box {
+    p{
+        @include s.sp{
+            margin-top: 2.1rem!important;
+            margin-bottom: 2.1rem!important;
+        }
+    }
+}
+
+
+.d--blogcard-style1,
+.d--simple-box1,
+.d--simple-box2,
+.d--simple-box3,
+.d--heading-box1,
+.d--heading-box2,
+.d--heading-box3,
+.d--heading-box4,
+.d--heading-box7,
+.d--heading-box9 {
+    border-width: 1px;
+}
+.d--simple-box11{
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    &::before{
+        border-left-width: 1px;
+    }
+    &::after{
+        border-right-width: 1px;
+    }
+}
+.d--heading-box3{
+    .a--simple-box-title{
+        left: -1px;
+    }
+}
+.d--heading-box7{
+    .a--simple-box-title{
+        border-bottom-width: 1px;
+    }
+}
+.d--heading-box8{
+    border-bottom-width: 1px;
+    .a--simple-box-title {
+        border-top-width: 1px ;
+        border-left-width: 1px;
+        border-right-width: 1px;
+    }
+}
+.d--simple-box4::before,
+.d--simple-box9::after {
+    background-size: 8px 1px;
+}
+.d--simple-box6{
+    border-top-width: 3px;
+}
+.d--simple-box7{
+    border-left-width: 3px;
+}
+
+.t--round-s{
+    .d--simple-box1,
+    .d--simple-box2,
+    .d--heading-box1,
+    .d--heading-box5,
+    .d--simple-box12{
+        border-radius: s.$r_s;
+    }
+    .d--simple-box2::before,
+    .d--simple-box8::after{
+        border-radius: 2px;
+    }
+    .d--simple-box6{
+        &::before{
+            border-bottom-left-radius: s.$r_s;
+            border-bottom-right-radius: s.$r_s;
+        }
+    }
+    .d--simple-box7{
+        &::before{
+            border-top-right-radius: s.$r_s;
+            border-bottom-right-radius: s.$r_s;
+        }
+    }
+    .d--simple-box5,
+    .d--simple-box8,
+    .d--simple-box9{
+        &::before{
+            border-radius: s.$r_s;
+        }
+    }
+    .d--heading-box1{
+        .a--simple-box-title {
+            border-radius: 2px;
+        }
+    }
+    .d--heading-box2{
+        border-radius:s.$r_s;
+        .a--simple-box-title {
+            border-top-left-radius: s.$r_s;
+            border-bottom-right-radius: 2px;
+        }
+    }
+    .d--heading-box3{
+        border-radius:0 s.$r_s s.$r_s s.$r_s;
+        .a--simple-box-title {
+            border-radius:2px 2px 0 0;
+        }
+    }
+    .d--heading-box4{
+        border-radius:s.$r_s;
+    }
+    .d--heading-box6{
+        border-radius: s.$r_s;
+        .c--simple-box-inner{
+            border-radius: 2px;
+        }
+    }
+    .d--heading-box7{
+        border-radius:s.$r_s;
+        .a--simple-box-title::before{
+            border-radius:2px 2px 0 0;
+        }
+    }
+    .d--heading-box8{
+        .a--simple-box-title{
+            border-radius:s.$r_s s.$r_s 0 0;
+            &::before{
+                border-radius:2px 2px 0 0;
+            }
+        }
+    }
+    .d--heading-box9{
+        border-radius:s.$r_s;
+        .a--simple-box-title{
+            border-radius:2px 0 0 2px;
+        }
+    }
+}
+.t--round-m{
+    .d--simple-box1,
+    .d--simple-box2,
+    .d--heading-box1,
+    .d--heading-box5,
+    .d--simple-box12{
+        border-radius: s.$r_m;
+    }
+    .d--simple-box2::before,
+    .d--simple-box8::after{
+        border-radius: 4px;
+    }
+    .d--simple-box6{
+        &::before{
+            border-bottom-left-radius: s.$r_m;
+            border-bottom-right-radius: s.$r_m;
+        }
+    }
+    .d--simple-box7{
+        &::before{
+            border-top-right-radius: s.$r_m;
+            border-bottom-right-radius: s.$r_m;
+        }
+    }
+    .d--simple-box5,
+    .d--simple-box8,
+    .d--simple-box9{
+        &::before{
+            border-radius: s.$r_m;
+        }
+    }
+    .d--heading-box1{
+        .a--simple-box-title {
+            border-radius: 3px;
+        }
+    }
+    .d--heading-box2{
+        border-radius:s.$r_m;
+        .a--simple-box-title {
+            border-top-left-radius: s.$r_m;
+            border-bottom-right-radius: 3px;
+        }
+    }
+    .d--heading-box3{
+        border-radius:0 s.$r_m s.$r_m s.$r_m;
+        .a--simple-box-title {
+            border-radius:3px 3px 0 0;
+        }
+    }
+    .d--heading-box4{
+        border-radius:s.$r_m;
+    }
+    .d--heading-box6{
+        border-radius: s.$r_m;
+        .c--simple-box-inner{
+            border-radius: 3px;
+        }
+    }
+    .d--heading-box7{
+        border-radius:s.$r_m;
+        .a--simple-box-title::before{
+            border-radius:3px 3px 0 0;
+        }
+    }
+    .d--heading-box8{
+        .a--simple-box-title{
+            border-radius:s.$r_m s.$r_m 0 0;
+            &::before{
+                border-radius:3px 3px 0 0;
+            }
+        }
+    }
+    .d--heading-box9{
+        border-radius:s.$r_m;
+        .a--simple-box-title{
+            border-radius:5px 0 0 5px;
+        }
+    }
+}
+.t--round-l{
+    .d--simple-box1,
+    .d--simple-box2,
+    .d--heading-box1,
+    .d--heading-box5,
+    .d--simple-box12{
+        border-radius: s.$r_l;
+    }
+    .d--simple-box2::before,
+    .d--simple-box8::after{
+        border-radius: (s.$r_l - 6px);
+    }
+    .d--simple-box6{
+        &::before{
+            border-bottom-left-radius: (s.$r_l - 4px);
+            border-bottom-right-radius: (s.$r_l - 4px);
+        }
+    }
+    .d--simple-box7{
+        &::before{
+            border-top-right-radius: (s.$r_l - 4px);
+            border-bottom-right-radius: (s.$r_l - 4px);
+        }
+    }
+    .d--simple-box5,
+    .d--simple-box8,
+    .d--simple-box9{
+        &::before{
+            border-radius: s.$r_l;
+        }
+    }
+    .d--heading-box1{
+        .a--simple-box-title {
+            border-radius: (s.$r_l - 8px);
+        }
+    }
+    .d--heading-box2{
+        border-radius:s.$r_l;
+        .a--simple-box-title {
+            border-top-left-radius: s.$r_l;
+            border-bottom-right-radius: (s.$r_l - 8px);
+        }
+    }
+    .d--heading-box3{
+        border-radius:0 s.$r_l s.$r_l s.$r_l;
+        .a--simple-box-title {
+            border-radius:(s.$r_l - 8px) (s.$r_l - 8px) 0 0;
+        }
+    }
+    .d--heading-box4{
+        border-radius:s.$r_l;
+    }
+    .d--heading-box6{
+        border-radius: s.$r_l;
+        .c--simple-box-inner{
+            border-radius: (s.$r_l - 4px);
+        }
+    }
+    .d--heading-box7{
+        border-radius:s.$r_l;
+        .a--simple-box-title::before{
+            border-radius:(s.$r_l - 4px) (s.$r_l - 4px) 0 0;
+        }
+    }
+    .d--heading-box8{
+        .a--simple-box-title{
+            border-radius:s.$r_l s.$r_l 0 0;
+            &::before{
+                border-radius:(s.$r_l - 4px) (s.$r_l - 4px) 0 0;
+            }
+        }
+    }
+    .d--heading-box9{
+        border-radius:s.$r_l;
+        .a--simple-box-title{
+            border-radius:(s.$r_l - 4px) 0 0 (s.$r_l - 4px);
+        }
+    }
+}

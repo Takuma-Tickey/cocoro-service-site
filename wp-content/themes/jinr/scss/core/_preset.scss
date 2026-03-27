@@ -1,0 +1,161 @@
+/* CSS Document */
+@charset "utf-8";
+@use "setting" as s;
+
+.d--transparent{
+    background: transparent;
+}
+.d--display-none{
+    display: none!important;
+}
+.d--display-none-pc{
+    @include s.mini_tablet_view{
+        display: none!important;
+    }
+}
+.d--display-none-sp{
+    @include s.sp{
+        display: none!important;
+    }
+}
+
+.t--main-width {
+    max-width: s.$pc_view_content;
+}
+.t--padding {
+    @include s.contents-padding();
+}
+
+//round type with round style
+.t--round-s {
+    .t--round {
+        @include s.radius-s;
+    }
+}
+.t--round-m {
+    .t--round {
+        @include s.radius-m;
+    }
+}
+.t--round-l {
+    .t--round {
+        @include s.radius-l;
+    }
+}
+
+//WordPress標準ブロックのclass
+.has-black-background-color{
+    background-color: #000000;
+}
+.has-cyan-bluish-gray-background-color{
+    background-color: #abb8c3;
+}
+.has-white-background-color{
+    background-color: #ffffff;
+}
+.has-pale-pink-background-color{
+    background-color: #F78DA7;
+}
+.has-vivid-red-background-color{
+    background-color: #cf2e2e;
+}
+.has-luminous-vivid-orange-background-color{
+    background-color: #FF6900;
+}
+.has-luminous-vivid-amber-background-color{
+    background-color: #FCB900;
+}
+.has-light-green-cyan-background-color{
+    background-color: #7BDCB5;
+}
+.has-vivid-green-cyan-background-color{
+    background-color: #00D084;
+}
+.has-pale-cyan-blue-background-color{
+    background-color: #8ED1FC;
+}
+.has-vivid-cyan-blue-background-color{
+    background-color: #0693E3;
+}
+.has-vivid-purple-background-color{
+    background-color: #9B51E0;
+}
+
+.has-black-color{
+    color: #000000;
+}
+.has-cyan-bluish-gray-color{
+    color: #abb8c3;
+}
+.has-white-color{
+    color: #ffffff;
+}
+.has-pale-pink-color{
+    color: #F78DA7;
+}
+.has-vivid-red-color{
+    color: #cf2e2e;
+}
+.has-luminous-vivid-orange-color{
+    color: #FF6900;
+}
+.has-luminous-vivid-amber-color{
+    color: #FCB900;
+}
+.has-light-green-cyan-color{
+    color: #7BDCB5;
+}
+.has-vivid-green-cyan-color{
+    color: #00D084;
+}
+.has-pale-cyan-blue-color{
+    color: #8ED1FC;
+}
+.has-vivid-cyan-blue-color{
+    color: #0693E3;
+}
+.has-vivid-purple-color{
+    color: #9B51E0;
+}
+
+.wp-block-quote{
+    border-left: 0.25em solid;
+    margin: s.$base_margin 0;
+    padding-left: 1.8em;
+    box-sizing: border-box!important;
+    @include s.mini_tablet_view{
+        margin: s.$double_margin 0;
+        padding-left: 2.4em;
+    }
+    &.is-style-plain{
+        border:none;
+        padding-bottom: 1.8em!important;
+        padding-right: 1.8em;
+        @include s.mini_tablet_view{
+            padding-right: 2.4em;
+        }
+    }
+    &.has-background{
+        padding-top: 1.8em!important;
+        padding-bottom: 1.8em!important;
+        padding-right: 1.8em;
+        @include s.mini_tablet_view{
+            padding-right: 2.4em;
+        }
+    }
+    & > p:first-child{
+        margin-top: 0!important;
+    }
+    cite{
+        font-size: 0.84em;
+    }
+}
+
+a.yyi-rinker-link {
+    text-decoration: none!important;
+    font-size: 0.8em!important;
+    font-weight: normal!important;
+}
+.jin-ifont-evaluation{
+	color: #FCB900;
+}

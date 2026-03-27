@@ -1,0 +1,146 @@
+/* お問い合わせフォーム */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+@mixin inputFormat{
+    box-sizing: border-box;
+    width: 100%;
+    border:1px solid #ececec;
+    background-color: #ffffff;
+    padding: 9px;
+    border-radius: 3px;
+    font-size: 1em;
+    font-weight: 300;
+    letter-spacing: 0.15rem;
+    @include s.transition;
+}
+.wpcf7{
+    input,
+    textarea{
+        font-family: inherit;
+    }
+}
+.wpcf7 p{
+    font-size: 0.9em;
+    font-weight: 500;
+    margin-top: 2.4rem!important;
+    margin-bottom: 2.4rem!important;
+    &:last-child{
+        margin-bottom: 0rem!important;
+    }
+}
+
+//テキスト
+.wpcf7-text{
+    @include inputFormat();
+    &:focus {
+        border-color: #6495ed;
+        background-color: #fff;
+    }
+    &:focus-visible {
+        outline: none !important;
+    }
+}
+
+/*送信ボタン*/
+.wpcf7-form{
+    input[type="submit"]{
+        background: #f3f3f3;
+        border: 1px solid #f0f0f0;
+        color: #666;
+        font-weight: normal;
+        font-size: 13px;
+        text-align: center;
+        padding: 12px 60px;
+        transition: color 0.3s ease, background 0.3s ease, transform 0.3s ease, opacity 0.3s ease, border 0.3s ease, padding 0.3s ease, left 0.3s ease, bottom 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 3px;
+        display: block;
+        margin: 0 auto;
+        cursor: pointer;
+        box-sizing: border-box;
+        @include s.shadow-s;
+    }
+    *:focus{
+        outline: none!important;
+    }
+}
+
+/*メッセージ*/
+.wpcf7-response-output{
+    border: none;
+    background: #f7f7f7;
+    text-align: center;
+    font-size: 0.9em;
+    padding: 9px;
+}
+
+.wpcf7-not-valid-tip {
+    font-size: 0.8em;
+    margin-top: 3px;
+    display: block;
+    &::before{
+        content: "※";
+    }
+}
+
+.wpcf7-form-control-wrap{
+    display: block;
+    font-weight: 300;
+    margin-top:3px;
+    position: relative;//セレクトボックス用
+    /*&::before{//セレクトボックス用
+        content: "\e9ea";
+        font-family: "jin-icons";
+        display: inline-block;
+        position: absolute;
+        font-size: 12px;
+        height: 12px;
+        width: 14px;
+        right: 11px;
+        top: 9px;
+        z-index: 1;
+    }
+    */
+    input[type="date"]{
+        @include inputFormat();
+        width: auto;
+    }
+    input[type="radio"]{
+        height: 15px;
+        line-height: 1;
+        position: relative;
+        top: 1px;
+    }
+    select{
+        -webkit-appearance: none;
+        appearance: none;
+        @include inputFormat();
+        width: auto;
+        padding-right: 18px;
+        position: relative;
+    }
+    textarea {
+        @include inputFormat();
+        &:focus {
+            border-color: #6495ed;
+            background-color: #fff;
+        }
+        &:focus-visible {
+            outline: none !important;
+        }
+    }
+}
+//radio
+.wpcf7-radio,
+.wpcf7-checkbox{
+    display: block;
+    margin-top: 6px;
+    .wpcf7-list-item{
+        display: block;
+        font-size: 0.95em;
+        & > label{
+            display: block;
+            height: 24px;
+        }
+    }
+}

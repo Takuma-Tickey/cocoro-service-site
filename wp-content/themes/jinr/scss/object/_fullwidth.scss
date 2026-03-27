@@ -1,0 +1,313 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+// フルワイドブロック出力マークアップへのCSS
+
+/**
+* 基本のマークアップ
+*/
+.d--flat-design{
+	.b--jinr-fullwidth{
+		.a--post-title,
+		.a--post-date{
+			color: inherit;
+		}
+	}
+}
+.b--jinr-fullwidth{
+	position: relative;
+	overflow:hidden;
+	min-height: 93px;
+	.d--fullwidth-max{
+		position: relative;
+		z-index: 100;
+		margin: 0 auto;
+		width: 100%;
+		@media (min-width: 1060px) {
+			box-sizing: content-box;
+		}
+	}
+	.d--fullwidth-article{
+		position: relative;
+		z-index: 100;
+		margin: 0 auto;
+		@media (min-width: 1060px) {
+			box-sizing: content-box;
+		}
+	}
+	p,
+	ul,
+	ol{
+		color: inherit;
+	}
+	.a--jinr-fullwidth-overlay{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 100;
+		top: 0;
+		left: 0;
+		will-change: opacity;
+	}
+	.a--jinr-fullwidth-image{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 100;
+		left: 0;
+		top:0;
+		.a--jinr-fullwidth-image-clip{
+			position: relative;
+			width: inherit;
+			height: inherit;
+			img{
+				position: absolute;
+				width: inherit;
+				height: inherit;
+				left: 0;
+				top: 0;
+				object-fit: cover;
+			}
+		}
+	}
+	&.d--fullwidth-parallax-on{
+		.a--jinr-fullwidth-image{
+			.a--jinr-fullwidth-image-clip{
+				clip-path: inset(0 0 0 0);
+				overflow: hidden;
+				img{
+					position: fixed;
+					height: 100vh;
+					pointer-events: none;
+				}
+			}
+		}
+	}
+	.d--fullwidth-100{
+		max-width: 100%!important;
+		width: 100%;
+		position: relative;
+		z-index: 200;
+		.wp-block-image{
+			margin-top: 0!important;
+			margin-bottom: 0!important;
+			img{
+				width: 100%;
+				border-radius: 0!important;
+			}
+		}
+		.wp-block[data-type^=core],
+		.wp-block[data-type^=jinr-blocks]{
+			max-width: 100%!important;
+		}
+	}
+}
+
+.page-template-default,
+.post-template-default{
+	.d--fullwidth-max{
+		@include s.contents-padding($pcview_pad:s.$pad_num3,$contents_pad:0,$pc_pad:0);
+	}
+	.d--article-width-680,
+	.d--article-width-740{
+		.d--fullwidth-article{
+			@include s.contents-padding($pcview_pad:0);
+		}
+	}
+	.d--article-width-740{
+		.d--fullwidth-article{
+			max-width: s.$article_width;
+		}
+	}
+	.d--article-width-680{
+		.d--fullwidth-article{
+			max-width: s.$article_width_pure;
+		}
+	}
+	//透明・枠なし
+	.d--main-style-transparent,
+	.d--main-style-noframe{
+		&.d--one-column{
+			.b--jinr-fullwidth{
+				margin: 0 calc(50% - 50vw);
+			}
+			.d--fullwidth-article{
+				box-sizing: content-box;
+				@include s.contents-padding($tab_pad:s.$pad_num4,$pcview_pad:s.$pad_num4);
+			}
+		}
+		&.d--two-column{
+			.b--jinr-fullwidth{
+				margin: 0 calc(50% - 50vw);
+				@media (min-width: 870) and (max-width: 1059px) {
+					margin: 0 calc(50% - 50vw );
+				}
+				@media (min-width: 1060px) {
+					margin: 0;
+				}
+			}
+			.d--fullwidth-article{
+				box-sizing: content-box;
+				@media (min-width: 1060px) {
+					padding-left: 30px;
+					padding-right: 30px;
+				}
+			}
+		}
+	}
+	//枠あり
+	.d--main-style-outline{
+		&.d--one-column{
+			.b--jinr-fullwidth{
+				margin: 0 calc(50% - 50vw + 10px);
+				@include s.mini_tablet_view{
+					margin: 0 calc(50% - 50vw + #{s.$pad_num2});
+				}
+				@include s.tablet{
+					margin: 0 calc(50% - 50vw + #{s.$pad_num3});
+				}
+				@media (min-width: (s.$pc_view_content)) {
+					margin: 0 calc(50% - 50vw + #{s.$pad_num3});
+				}
+				@media (min-width: 1180px){
+					margin: 0 calc(50% - 560px);
+				}
+			}
+			.d--fullwidth-article{
+				box-sizing: border-box;
+				@media (min-width: 861px) and (max-width: s.$pc_view) {
+					padding-left: 0;
+					padding-right: 0;
+				}
+
+			}
+		}
+		&.d--two-column{
+			.b--jinr-fullwidth{
+				margin: 0 calc(50% - 50vw + 10px);
+				@include s.mini_tablet_view{
+					margin: 0 calc(50% - 50vw + #{s.$pad_num2});
+				}
+				@include s.tablet{
+					margin: 0 calc(50% - 50vw + #{s.$pad_num3});
+				}
+				@media (min-width: 870) and (max-width: 1059px) {
+					margin: 0 calc(50% - 50vw );
+				}
+				@media (min-width: 1060px) {
+					margin: 0;
+				}
+			}
+			.d--fullwidth-article{
+				box-sizing: border-box;
+				@media (min-width: 1060px) {
+					padding-left: 30px;
+					padding-right: 30px;
+				}
+			}
+		}
+	}
+}
+.page-template-template-full-width,
+.post-template-template-full-width,
+.template-full-width{
+	.d--article-width-680,
+	.d--article-width-740{
+		.d--fullwidth-article{
+			@include s.contents-padding($pcview_pad:0);
+		}
+	}
+	.d--article-width-740{
+		.d--fullwidth-article{
+			max-width: s.$article_width;
+		}
+	}
+	.d--article-width-680{
+		.d--fullwidth-article{
+			max-width: s.$article_width_pure;
+		}
+	}
+	//透明・枠なし
+	.d--main-style-transparent,
+	.d--main-style-noframe{
+		.b--jinr-fullwidth{
+			margin: 0 calc(50% - 50vw);
+		}
+		.d--fullwidth-max{
+			@include s.contents-padding;
+		}
+		.d--fullwidth-article{
+			@include s.contents-padding($tab_pad:s.$pad_num4,$pcview_pad:s.$pad_num4);
+		}
+	}
+	//枠あり
+	.d--main-style-outline{
+		.b--jinr-fullwidth{
+			margin: 0 calc(50% - 50vw + 10px);
+			@include s.mini_tablet_view{
+				margin: 0 calc(50% - 50vw + #{s.$pad_num2});
+			}
+			@include s.tablet{
+				margin: 0 calc(50% - 50vw + #{s.$pad_num3});
+			}
+			@media (min-width: (s.$pc_view_content)) {
+				margin: 0 calc(50% - 50vw + #{s.$pad_num3});
+			}
+		}
+		.d--fullwidth-max{
+			@include s.contents-padding;
+		}
+		.d--fullwidth-article{
+			@include s.contents-padding($tab_pad:s.$pad_num4,$pcview_pad:s.$pad_num4);
+			@media screen and (min-width: s.$tablet) and (max-width: 800px) {
+				padding-left: s.$pad_num3;
+				padding-right: s.$pad_num3;
+			}
+		}
+	}
+}
+@include s.mini_tablet_view{
+	.d--fullwidth-pad20{
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	.d--fullwidth-pad30{
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+	.d--fullwidth-pad40{
+		padding-top: 40px;
+		padding-bottom: 40px;
+	}
+	.d--fullwidth-pad50{
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+	.d--fullwidth-pad60{
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+}
+@include s.sp{
+	.d--fullwidth-pad20-sp{
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	.d--fullwidth-pad30-sp{
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+	.d--fullwidth-pad40-sp{
+		padding-top: 40px;
+		padding-bottom: 40px;
+	}
+	.d--fullwidth-pad50-sp{
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+	.d--fullwidth-pad60-sp{
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+}

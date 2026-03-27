@@ -1,0 +1,170 @@
+/* CSS Document */
+@charset "utf-8";
+@use "core/setting" as s;
+@font-face {
+    font-family: 'jin-icons';
+    src:
+    url('lib/font/jin-icons/jin-icons.woff?c16tcv') format('woff'),
+    url('lib/font/jin-icons/jin-icons.svg?c16tcv#jin-icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+//JINR設定のアイコン用
+.toplevel_page_jinr-setting{
+	.dashicons-admin-generic{
+		&::before{
+            font-family: 'jin-icons';
+			content: "\ea95"!important;
+		}
+	}
+}
+.wp-block[data-type="core/widget-area"]{
+    max-width: 1120px!important;
+    width: 84%!important;
+}
+.blocks-widgets-container .editor-styles-wrapper{
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    & > .block-editor-block-list__layout{
+        padding-bottom: 48px!important;
+    }
+}
+
+.blocks-widgets-container .editor-styles-wrapper[data-widget-area-id="sidebar"]{
+    max-width: 380px;
+    div.wp-block{
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    h2.jinr-heading{
+        padding-top: 0;
+    }
+    .wp-block[data-type^=core]{
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    @include s.sidebarProfileDesign;
+}
+.wp-block[data-type="core/widget-area"] .block-list-appender.wp-block{
+    margin-bottom: 12px;
+    width: calc( 100% - 32px );
+    margin-left:auto ;
+    margin-right: auto;
+}
+.widgets-php{
+    .block-editor-block-list__block .block-list-appender{
+        right: auto;
+        width: inherit;
+    }
+    .jinr-heading{
+        &::before,
+        &::after{
+            display: none;
+        }
+        border-radius: 0!important;
+        background-color: transparent!important;
+        border-top: none!important;
+        border-right: none!important;
+        border-left: none!important;
+    }
+    h2.jinr-heading{
+        border-bottom-style: solid;
+        border-bottom-width:1px;
+        padding-bottom: 6px!important;
+        padding-left: 3px!important;
+        font-size: 1.8rem;
+    }
+    h2.jinr-heading,
+    h3.jinr-heading,
+    h4.jinr-heading{
+        font-weight: 500;
+        margin-top: 45px!important;
+        margin-bottom: 18px!important;
+    }
+    h3.jinr-heading,
+    h4.jinr-heading{
+        border-bottom: none!important;
+    }
+}
+.components-base-control{
+    img{
+        max-width: 100%;
+    }
+}
+@include s.widget;
+@include s.widget_nav_menu;
+@include s.widget_by_design;
+@include s.widget_r;
+//ウィジェット画面のみ個別対応
+.d--flat-design,
+.d--material-design{
+    .wp-block-categories-dropdown{
+        select{
+            line-height: 1.35;
+        }
+    }
+    .wp-block-categories-list{
+        padding-left: 0;
+        li{
+            line-height: 1.5;
+            border-bottom-style:solid;
+            border-bottom-width: 1px;
+            border-color: #e6e6e7;
+            position: relative;
+            color: #bcbcbc;
+            &::after {
+                content: '\ea84';
+                font-family: 'jin-icons';
+                transform: translateY(-50%);
+                position: absolute;
+                right: 6px;
+                top: 25px;
+                font-size: 0.8rem;
+                background: none;
+                @include s.transition-slow;
+            }
+            a{
+                font-size: 1.35rem;
+                display: inline-block;
+                border: none;
+                padding-right: 0px;
+            }
+            a::after{
+                display: none;
+            }
+            .children{
+                list-style-type: none;
+                li{
+                    border: none;
+                }
+                a::before{
+                    top: 50%;
+                }
+            }
+        }
+    }
+}
+.wp-block-archives-list{
+    padding-left: 0!important;
+}
+.a--sns-item-link{
+    text-decoration: none!important;
+}
+.wp-block-latest-posts__list,
+.wp-block-latest-comments,
+.wp-block-archives-list,
+.wp-block-categories-list,
+.wp-block-page-list,
+.wp-block-rss,
+.widget_nav_menu,
+.jinr-widget-area.widget_meta,
+.wp-block-calendar{
+    font-size: 1.35rem;
+    line-height: 1.5;
+    letter-spacing: 0.12rem;
+}
+// 管理画面の商品IDを非表示にする
+.user-productID-wrap {
+    display: none;
+}

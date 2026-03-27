@@ -1,0 +1,700 @@
+/* CSS Document */
+@charset "utf-8";
+
+@use '../core/setting' as s;
+
+a {
+	text-decoration: none;
+	@include s.transition-slow;
+}
+.d--flat-design {
+	#postContent,
+	.o--widget-area {
+		a:not([class]) {
+			img {
+				@include s.transition-slow;
+			}
+			&:hover {
+				img {
+					transform: translateY(-4px);
+					filter: opacity(0.9);
+				}
+			}
+		}
+	}
+}
+.d--material-design {
+	#postContent,
+	.o--widget-area {
+		a:not([class]) {
+			img {
+				@include s.transition-slow;
+			}
+			&:hover {
+				img {
+					transform: translateY(-4px) scale(1.001);
+					box-shadow: 0 2px 10px 0px rgba(170, 170, 170, 0.6);
+				}
+			}
+		}
+	}
+}
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+#postContent,
+.o--widget-area {
+	letter-spacing: 0.12rem;
+	p {
+		padding: 0;
+		margin-top: s.$double_margin;
+		margin-bottom: s.$double_margin;
+	}
+	p,
+	li,
+	table {
+		a {
+			text-decoration: underline;
+			text-underline-offset: 0.36rem;
+		}
+	}
+	@include s.jinrList;
+	&.d--font-pc-s-size {
+		p {
+			letter-spacing: 0.07rem;
+		}
+		@include s.tablet {
+			font-size: 1.45rem;
+			line-height: 2.1;
+		}
+	}
+	&.d--font-pc-m-size {
+		@include s.tablet {
+			font-size: 1.6rem;
+			line-height: 1.95;
+		}
+	}
+	&.d--font-pc-l-size {
+		p {
+			letter-spacing: 0.07rem;
+		}
+		@include s.tablet {
+			font-size: 1.7rem;
+			line-height: 1.95;
+		}
+	}
+	&.d--font-sp-s-size {
+		@include s.mini_tablet {
+			font-size: 1.5rem;
+			line-height: 1.8;
+		}
+		@include s.sp {
+			font-size: 1.45rem;
+			line-height: 1.75;
+			.jinr-list {
+				li {
+					line-height: 1.4;
+				}
+			}
+		}
+	}
+	&.d--font-sp-m-size {
+		@include s.mini_tablet {
+			font-size: 1.6rem;
+			line-height: 1.8;
+		}
+		@include s.sp {
+			font-size: 1.55rem;
+			line-height: 1.75;
+		}
+	}
+	&.d--font-sp-l-size {
+		@include s.mini_tablet {
+			font-size: 1.7rem;
+			line-height: 1.8;
+		}
+		@include s.sp {
+			font-size: 1.65rem;
+			line-height: 1.65;
+		}
+	}
+	iframe {
+		max-width: 100%;
+	}
+	.video {
+		padding-top: 56.25%;
+		width: 100%;
+		position: relative;
+		iframe {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+	}
+	& > iframe {
+		margin-top: s.$base_margin;
+		margin-bottom: s.$base_margin;
+		@include s.mini_tablet_view {
+			margin-top: s.$double_margin;
+			margin-bottom: s.$double_margin;
+		}
+	}
+	//twitterなど埋め込み
+	.twitter-tweet {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.instagram-media {
+		margin-left: auto !important;
+		margin-right: auto !important;
+		box-sizing: border-box !important;
+		@include s.sp {
+			min-width: 100% !important;
+		}
+	}
+	//画像
+	.wp-block-image,
+	.wp-block-video {
+		padding-top: 0;
+		padding-bottom: 0;
+		margin-top: s.$base_margin;
+		margin-bottom: s.$base_margin;
+		@include s.mini_tablet_view {
+			margin-top: s.$double_margin;
+			margin-bottom: s.$double_margin;
+		}
+		.wp-element-caption {
+			text-align: center;
+			font-size: 1.35rem;
+			color: s.$subtext_color;
+		}
+	}
+	//ファイル
+	.wp-block-file {
+		display: flex;
+		align-items: center;
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+	/*ver1.2.0より不用の可能性があるためコメントアウト
+    .wp-element-button{
+        padding: 12px 15px;
+        font-size: 1.1rem;
+        margin-left: 18px;
+        flex-shrink: 0;
+        @include s.mini_tablet_view {
+            padding: 12px 18px;
+            margin-left: 24px;
+        }
+    }
+    */
+	//ボックス系・吹き出しのリスト調整
+	.b--jinr-iconbox .a--jinr-iconbox,
+	.b--jinr-box .c--simple-box-inner,
+	.b--jinr-fukidashi .o--fukidashi-inner,
+	.b--jinr-background .c--background-inner {
+		p {
+			font-size: 0.95em;
+			line-height: 1.75em;
+		}
+	}
+	.b--jinr-iconbox .a--jinr-iconbox,
+	.b--jinr-box .c--simple-box-inner,
+	.b--jinr-fukidashi .o--fukidashi-inner,
+	.b--jinr-background .c--background-inner,
+	.b--jinr-tab .c--tab-contents,
+	.wp-block-column {
+		.jinr-list {
+			padding: 0 0.4rem;
+			margin-top: 1.8rem;
+			margin-bottom: 1.8rem;
+			font-size: 0.95em;
+			@include s.tablet {
+				margin-top: 2.4rem;
+				margin-bottom: 2.4rem;
+			}
+			.jinr-list {
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+		}
+	}
+	.wp-block-tag-cloud {
+		margin-top: 24px;
+		margin-bottom: 0;
+		a {
+			display: inline-block;
+			padding: 6px 11px 6px 12px;
+			font-size: 1.2rem !important;
+			text-decoration: none;
+			margin-right: 1px;
+			margin-bottom: 7px;
+			&::before {
+				content: '#';
+			}
+		}
+	}
+	//アイコンボックス
+	.b--jinr-iconbox {
+		div[class*='d--simple-iconbox'] {
+			.a--jinr-iconbox {
+				p {
+					margin: 0;
+					line-height: 1.4em;
+					@include s.mini_tablet_view {
+						line-height: 1.5em;
+					}
+				}
+			}
+		}
+	}
+	//吹き出し＆カラム＆背景
+	.b--jinr-fukidashi .o--fukidashi-inner,
+	.b--jinr-background,
+	.wp-block-column,
+	div[class^='d--heading-iconbox'],
+	.b--jinr-box {
+		p {
+			@include s.boxInnerPmargin;
+		}
+	}
+	.wp-block-column {
+		p {
+			@include s.mini_tablet_view {
+				margin-top: 2.25rem;
+				margin-bottom: 2.25rem;
+				line-height: 1.7em;
+				font-size: 0.95em;
+			}
+		}
+	}
+	// アコーディオン
+	.b--jinr-accordion {
+		.c--accordion-contents {
+			& > p {
+				padding: 0;
+				&:first-of-type {
+					margin-top: 10px;
+					margin-bottom: 0;
+					@include s.mini_tablet_view {
+						margin-top: 20px;
+					}
+				}
+				&:last-of-type {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+	.alignright {
+		margin-right: 0;
+		margin-left: auto;
+		text-align: right;
+	}
+	.alignleft {
+		margin-right: auto;
+		margin-left: 0;
+		text-align: left;
+	}
+	.aligncenter {
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+	}
+}
+
+//画像の丸み反映
+.t--round-s.d--article-image-r-on {
+	.wp-block-image {
+		img {
+			@include s.radius-s;
+		}
+	}
+}
+.t--round-m.d--article-image-r-on {
+	.wp-block-image {
+		img {
+			@include s.radius-m;
+		}
+	}
+}
+.t--round-l.d--article-image-r-on {
+	.wp-block-image {
+		img {
+			@include s.radius-l;
+		}
+	}
+}
+
+//カラムブロック
+.wp-block-columns {
+	margin-top: s.$double_margin;
+	margin-bottom: s.$double_margin;
+	&[class^='wp-container'] {
+		@include s.sp {
+			gap: 0em;
+		}
+	}
+	&.is-not-stacked-on-mobile {
+		@include s.sp {
+			gap: 0.9em;
+		}
+	}
+	& + .wp-block-columns {
+		@include s.sp {
+			margin-top: -20px;
+		}
+	}
+}
+.wp-block-columns:not(.is-not-stacked-on-mobile) > .wp-block-column {
+	@include s.sp {
+		margin-bottom: 18px;
+	}
+	@include s.mini_tablet {
+		margin-bottom: 18px;
+	}
+}
+.wp-block-columns:not(.is-not-stacked-on-mobile) > .wp-block-column:not(:first-child) {
+	@include s.mini_tablet_view {
+		margin-left: 3px;
+	}
+}
+.page.page-template-default,
+.single.post-template-default {
+	.wp-block-columns:not(.is-not-stacked-on-mobile) > .wp-block-column:not(:first-child) {
+		@include s.mini_tablet_view {
+			margin-left: 0;
+		}
+	}
+}
+.wp-block-column {
+	& > p,
+	& > ul,
+	& > ol,
+	& > .wp-block-image,
+	& > .b--jinr-block,
+	& > section[class^='wp-block-jinr-blocks'],
+	& > div[class^='wp-block-jinr-blocks'] {
+		@include s.boxInnerPmarginNoLH;
+		&:first-child {
+			margin-top: 0 !important;
+		}
+		&:last-child {
+			margin-bottom: 0 !important;
+		}
+	}
+	& > section[class^='wp-block-jinr-blocks'],
+	& > div[class^='wp-block-jinr-blocks'] {
+		&:first-child {
+			& > .b--jinr-block {
+				margin-top: 0 !important;
+			}
+		}
+		&:last-child {
+			& > .b--jinr-block {
+				margin-bottom: 0 !important;
+			}
+		}
+	}
+	.b--jinr-block,
+	.o--jinr-fukidashi {
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		width: 100% !important;
+	}
+	.wp-block-image {
+		margin-bottom: 0 !important;
+	}
+	.b--jinr-h2rich {
+		&.d--h2rich-left,
+		&.d--h2rich-center {
+			.c--h2rich-contents {
+				.a--h2rich-maincopy {
+					font-size: 2.1rem;
+					letter-spacing: 0.24rem;
+				}
+			}
+			&.d--h2rich-style1 {
+				padding-bottom: 0px;
+				@include s.mini_tablet_view {
+					padding-top: 3px;
+				}
+			}
+			&.d--h2rich-style3 {
+				padding-bottom: 9px;
+				padding-top: 12px;
+				@include s.mini_tablet_view {
+					padding-top: 6px;
+					padding-bottom: 6px;
+				}
+			}
+			&.d--h2rich-none {
+				.c--h2rich-contents {
+					@include s.sp {
+						margin-top: -9px;
+					}
+				}
+			}
+			&.d--h2rich-image {
+				.c--h2rich-contents {
+					margin-top: -3px;
+				}
+			}
+			.a--h2rich-number {
+				font-size: 5.1rem;
+				@include s.mini_tablet_view {
+					font-size: 6rem;
+				}
+			}
+			.a--h2rich-icon .jin-icons::before {
+				@include s.mini_tablet_view {
+					font-size: 2.7em;
+				}
+			}
+			.a--h2rich-image {
+				@include s.mini_tablet_view {
+					width: 54px;
+					height: 54px;
+				}
+				img {
+					@include s.mini_tablet_view {
+						width: 54px;
+						height: 54px;
+					}
+				}
+			}
+		}
+		&.d--h2rich-left {
+			padding-top: 0;
+			&.d--h2rich-style2 {
+				padding-bottom: 6px;
+				padding-top: 0px;
+			}
+			&.d--h2rich-style3 {
+				@include s.sp {
+					padding-top: 6px;
+					padding-bottom: 6px;
+				}
+				.c--h2rich-contents {
+					margin-bottom: 0;
+				}
+			}
+			.c--h2rich-decoration + .c--h2rich-contents {
+				@include s.sp {
+					margin-left: 9px;
+				}
+			}
+		}
+		&.d--h2rich-center {
+			&.d--h2rich-style2 {
+				padding-bottom: 12px;
+				padding-top: 0px;
+			}
+			&.d--h2rich-style3 {
+				.c--h2rich-contents {
+					margin-top: 0 !important;
+				}
+			}
+		}
+	}
+}
+
+//クラシックの遺産で画像幅がコンテンツ幅を超えないようにする
+.wp-caption {
+	max-width: 100%;
+}
+p > img {
+	margin-top: 21px;
+	margin-bottom: 21px;
+	@include s.mini_tablet_view {
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+}
+
+//RTOCでのテキストデコレーションの除外
+#rtoc-mokuji-wrapper {
+	a {
+		text-decoration: none !important;
+	}
+}
+
+//景品表示法
+.c--labeling-act {
+	display: flex;
+	justify-content: center;
+	margin: 24px auto 30px;
+	width: 100%;
+	padding: 9px;
+	@include s.sp {
+		margin: 12px auto;
+	}
+	&.d--labeling-act-border {
+		border-width: 1px;
+		border-style: solid;
+	}
+	.a--labeling-act {
+		font-size: 10px;
+		letter-spacing: 0.1rem;
+		@include s.sp {
+			letter-spacing: 0.06rem;
+		}
+	}
+	&.d--labeling-act-strong {
+		padding: 12px;
+		.a--labeling-act {
+			font-size: 13.5px;
+			font-weight: 500;
+		}
+	}
+}
+.c--labeling-small-act {
+	padding: 4px 6px;
+	margin: 0 0 0 12px;
+	font-size: 1.05rem;
+	letter-spacing: 0.06rem;
+	&.d--labeling-act-border {
+		border-width: 1px;
+		border-style: solid;
+	}
+	@include s.sp {
+		padding: 4px 6px 2px;
+		margin: 0 0 0 10px;
+		font-size: 1rem;
+	}
+}
+
+//ページ区切り
+.c--nextpage {
+	display: flex;
+	justify-content: center;
+	margin: 4.2rem 0;
+	flex-wrap: wrap;
+	.a--nextpage-label {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		font-size: 1.15rem;
+		margin-bottom: 9px;
+		letter-spacing: 0.12rem;
+		&::before,
+		&::after {
+			content: '';
+			display: inline-block;
+			width: 12px;
+			height: 1px;
+			background: #aaa;
+		}
+		&::before {
+			margin-right: 9px;
+		}
+		&::after {
+			margin-left: 8px;
+		}
+	}
+	.post-page-numbers {
+		margin: 0 6px;
+		font-size: 1.35rem;
+		width: 33px;
+		height: 33px;
+		display: flex;
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+		font-weight: 300;
+		border-style: solid;
+		border-width: 1px;
+		@include s.mini_tablet_view {
+			width: 36px;
+			height: 36px;
+		}
+		&.current {
+			color: #fff;
+			border-color: transparent;
+		}
+		span {
+			display: block;
+			letter-spacing: 0;
+		}
+	}
+	a {
+		@include s.transition;
+		&:hover {
+			transform: translateY(-3px);
+			color: #fff;
+			border-color: transparent;
+		}
+	}
+}
+.d--material-design {
+	.c--nextpage {
+		.post-page-numbers {
+			@include s.shadow-s-strong;
+		}
+		a:hover {
+			box-shadow: 0 4px 7px -1px rgba(170, 170, 170, 0.36);
+		}
+	}
+	.c--pagenation-item {
+		a,
+		span[class='page-numbers'] {
+			@include s.shadow-s-strong;
+			&:hover {
+				box-shadow: 0 4px 7px -1px rgba(170, 170, 170, 0.36);
+			}
+		}
+	}
+}
+.t--round-s {
+	.c--nextpage {
+		.post-page-numbers {
+			@include s.radius-s;
+		}
+	}
+	.c--pagenation-item {
+		a,
+		span {
+			@include s.radius-s;
+		}
+	}
+	.wp-element-button {
+		@include s.radius-s;
+	}
+}
+.t--round-m {
+	.c--nextpage {
+		.post-page-numbers {
+			@include s.radius-m;
+		}
+	}
+	.c--pagenation-item {
+		a,
+		span {
+			@include s.radius-m;
+		}
+	}
+	.wp-element-button {
+		@include s.radius-m;
+	}
+}
+.t--round-l {
+	.c--nextpage {
+		.post-page-numbers {
+			border-radius: 50%;
+		}
+	}
+	.c--pagenation-item {
+		a,
+		span {
+			border-radius: 50%;
+		}
+	}
+	.wp-element-button {
+		@include s.radius-l;
+	}
+}

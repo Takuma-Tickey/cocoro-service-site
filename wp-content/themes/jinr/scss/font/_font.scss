@@ -1,0 +1,1372 @@
+@charset "utf-8";
+@use "../core/setting" as s;
+
+body {
+    &:not(.wp-admin) {
+        font-size: 1.6rem;
+    }
+}
+
+//英語及び日本語のフォント名指定はload-customize-value.phpに記述
+//日本語フォント設定
+#wrapper.d--jpf-default,
+.d--jpf-default .editor-styles-wrapper,
+.d--jpf-default .edit-post-visual-editor,
+.d--jpf-default+#JinrPaidPopUpRegisterWrapper,
+.d--jpf-default+#JinrPaidPopUpRegisterWrapper+#JinrPaidPopUpLoginWrapper,
+.d--jpf-default+#JinrPaidPopUpRegisterWrapper+#JinrPaidPopUpLoginWrapper+#JinrPaidPopUpLostpasswordWrapper {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "メイリオ", "Meiryo", sans-serif, "Noto Sans Emoji", "Noto Sans", "Noto Sans CJK JP";
+    font-weight: 400;
+
+    .d--bold,
+    strong {
+        font-weight: 600;
+    }
+
+    .d--bold-sp {
+        @include s.sp {
+            font-weight: 600;
+        }
+    }
+
+    .d--bold-pc {
+        @include s.mini_tablet_view {
+            font-weight: 600;
+        }
+    }
+}
+
+#wrapper.d--notosans-thin,
+.d--notosans-thin .editor-styles-wrapper,
+.d--notosans-thin .edit-post-visual-editor,
+.d--notosans-thin+#JinrPaidPopUpRegisterWrapper,
+.d--notosans-thin+#JinrPaidPopUpRegisterWrapper+#JinrPaidPopUpLoginWrapper,
+.d--notosans-thin+#JinrPaidPopUpRegisterWrapper+#JinrPaidPopUpLoginWrapper+#JinrPaidPopUpLostpasswordWrapper {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+#wrapper.d--zenkakugothic,
+.d--zenkakugothic .editor-styles-wrapper,
+.d--zenkakugothic .edit-post-visual-editor,
+.d--zenkakugothic+#JinrPaidPopUpRegisterWrapper,
+.d--zenkakugothic+#JinrPaidPopUpRegisterWrapper+#JinrPaidPopUpLoginWrapper,
+.d--zenkakugothic+#JinrPaidPopUpRegisterWrapper+#JinrPaidPopUpLoginWrapper+#JinrPaidPopUpLostpasswordWrapper {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+
+#wrapper.d--kiwimaru,
+.d--kiwimaru .editor-styles-wrapper,
+.d--kiwimaru .edit-post-visual-editor,
+.d--kiwimaru+#JinrPaidPopUpRegisterWrapper,
+.d--kiwimaru+#JinrPaidPopUpRegisterWrapper+#JinrPaidPopUpLoginWrapper,
+.d--kiwimaru+#JinrPaidPopUpRegisterWrapper+#JinrPaidPopUpLoginWrapper+#JinrPaidPopUpLostpasswordWrapper {
+    font-family: 'Kiwi Maru', sans-serif;
+}
+
+#wrapper.d--mpr-thin,
+.d--mpr-thin .editor-styles-wrapper,
+.d--mpr-thin .edit-post-visual-editor,
+.d--mpr-thin+#JinrPaidPopUpRegisterWrapper,
+.d--mpr-thin+#JinrPaidPopUpRegisterWrapper+#JinrPaidPopUpLoginWrapper,
+.d--mpr-thin+#JinrPaidPopUpRegisterWrapper+#JinrPaidPopUpLoginWrapper+#JinrPaidPopUpLostpasswordWrapper {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+#wrapper.d--notoserif,
+.d--notoserif .editor-styles-wrapper,
+.d--notoserif .edit-post-visual-editor {
+    font-family: 'Noto Serif JP', serif;
+}
+
+#wrapper.d--shipporimincho,
+.d--shipporimincho .editor-styles-wrapper,
+.d--shipporimincho .edit-post-visual-editor,
+.d--shipporimincho+#JinrPaidPopUpRegisterWrapper,
+.d--shipporimincho+#JinrPaidPopUpRegisterWrapper+#JinrPaidPopUpLoginWrapper,
+.d--shipporimincho+#JinrPaidPopUpRegisterWrapper+#JinrPaidPopUpLoginWrapper+#JinrPaidPopUpLostpasswordWrapper {
+    font-family: 'Shippori Mincho', serif;
+}
+
+#wrapper {
+
+    &.d--zenkakugothic,
+    &.d--shipporimincho,
+    &.d--notoserif {
+        font-weight: 400;
+
+        strong {
+            font-weight: 700;
+        }
+
+        .d--bold {
+            font-weight: 700;
+        }
+
+        .d--bold-sp {
+            @include s.sp {
+                font-weight: 700;
+            }
+        }
+
+        .d--bold-pc {
+            @include s.mini_tablet_view {
+                font-weight: 700;
+            }
+        }
+
+        &+#JinrPaidPopUpRegisterWrapper,
+        &+#JinrPaidPopUpRegisterWrapper+#JinrPaidPopUpLoginWrapper,
+        &+#JinrPaidPopUpRegisterWrapper+#JinrPaidPopUpLoginWrapper+#JinrPaidPopUpLostpasswordWrapper {
+            font-weight: 400;
+
+            strong {
+                font-weight: 700;
+            }
+
+            .d--bold {
+                font-weight: 700;
+            }
+
+            .d--bold-sp {
+                @include s.sp {
+                    font-weight: 700;
+                }
+            }
+
+            .d--bold-pc {
+                @include s.mini_tablet_view {
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+
+    &.d--notosans-thin,
+    &.d--kiwimaru,
+    &.d--mpr-thin {
+        font-weight: 300;
+
+        strong {
+            font-weight: 500;
+        }
+
+        .d--bold {
+            font-weight: 500;
+        }
+
+        .d--bold-sp {
+            @include s.sp {
+                font-weight: 500;
+            }
+        }
+
+        .d--bold-pc {
+            @include s.mini_tablet_view {
+                font-weight: 500;
+            }
+        }
+
+        &+#JinrPaidPopUpRegisterWrapper,
+        &+#JinrPaidPopUpRegisterWrapper+#JinrPaidPopUpLoginWrapper,
+        &+#JinrPaidPopUpRegisterWrapper+#JinrPaidPopUpLoginWrapper+#JinrPaidPopUpLostpasswordWrapper {
+            font-weight: 300;
+
+            strong {
+                font-weight: 500;
+            }
+
+            .d--bold {
+                font-weight: 500;
+            }
+
+            .d--bold-sp {
+                @include s.sp {
+                    font-weight: 500;
+                }
+            }
+
+            .d--bold-pc {
+                @include s.mini_tablet_view {
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    &.d--notosans-thin,
+    &.d--kiwimaru,
+    &.d--zenkakugothic,
+    &.d--shipporimincho,
+    &.d--notoserif {
+
+        #postContent,
+        .o--widget-area {
+            ul.is-style-jinr-checkmark {
+                li {
+                    &::before {
+                        top: 3px;
+
+                        @include s.mini_tablet_view {
+                            top: 6px;
+                        }
+                    }
+                }
+            }
+
+            ul.is-style-jinr-checkmark-square {
+                li {
+                    &::after {
+                        top: 7px !important;
+
+                        @include s.mini_tablet_view {
+                            top: 8px !important;
+                        }
+                    }
+
+                    &::before {
+                        top: 3px;
+
+                        @include s.mini_tablet_view {
+                            top: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.d--zenkakugothic,
+.d--shipporimincho,
+.d--notoserif {
+
+    .editor-styles-wrapper,
+    .edit-post-visual-editor {
+        font-weight: 400;
+
+        strong {
+            font-weight: 700;
+        }
+
+        .d--bold {
+            font-weight: 700;
+        }
+
+        .d--bold-sp {
+            @include s.sp {
+                font-weight: 700;
+            }
+        }
+
+        .d--bold-pc {
+            @include s.mini_tablet_view {
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+.d--notosans-thin,
+.d--kiwimaru,
+.d--mpr-thin {
+
+    .editor-styles-wrapper,
+    .edit-post-visual-editor {
+        font-weight: 300;
+
+        strong {
+            font-weight: 500;
+        }
+
+        .d--bold {
+            font-weight: 500;
+        }
+
+        .d--bold-sp {
+            @include s.sp {
+                font-weight: 500;
+            }
+        }
+
+        .d--bold-pc {
+            @include s.mini_tablet_view {
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+.d--zenkakugothic,
+.d--notoserif {
+    .d--postlist-newstext .o--postlist-item {
+        &:nth-of-type(1),
+        &:nth-of-type(2),
+        &:nth-of-type(3) {
+            .c--post-ranking {
+                &:before {
+                    top: 2px;
+                    left: 6px;
+                }
+            }
+        }
+    }
+}
+
+.d--kiwimaru {
+    .d--postlist-newstext .o--postlist-item {
+
+        &:nth-of-type(1),
+        &:nth-of-type(2),
+        &:nth-of-type(3) {
+            .c--post-ranking {
+                &:before {
+                    top: 3px;
+                }
+            }
+        }
+    }
+}
+
+// ランキングラベルのフォント調整
+.d--notosans-thin {
+    // 縦長デザイン
+    .d--postlist-square {
+        .o--postlist-item {
+			&:nth-of-type(1),
+			&:nth-of-type(2),
+			&:nth-of-type(3) {
+				.c--post-ranking {
+                    &:before {
+                        top: 2px;
+                        left: 6px;
+                    }
+				}	
+			}
+        }
+        &.d--postlist-column4 {
+            .o--postlist-item {
+				&:nth-of-type(1),
+				&:nth-of-type(2),
+				&:nth-of-type(3) {
+					.c--post-ranking {
+                        &:before {
+                            top: 2px;
+                            left: 6px;
+                        }
+                    }
+				}
+            }
+        }
+    }
+
+    @include s.sp {
+        &.d--material-design {
+            .d--postlist-square-sp {
+                &.d--postlist-column2-sp {
+                    .o--postlist-item {
+						&:nth-of-type(1),
+						&:nth-of-type(2),
+						&:nth-of-type(3) {
+							.c--post-ranking {
+                                &:before {
+                                    top: 2px;
+                                    left: 5px;
+                                }
+							}
+						}
+                    }
+                }
+            }
+        }
+    }
+
+    // 横長デザイン
+    .d--postlist-rectangle {
+        .o--postlist-item {
+			&:nth-of-type(1),
+			&:nth-of-type(2),
+			&:nth-of-type(3) {
+				.c--post-ranking {
+                    &:before {
+                        top: 2px;
+                        left: 5px;
+                    }
+				}
+			}
+        }
+    }
+
+    @include s.sp {
+        &.d--material-design {
+            .d--postlist-rectangle-sp {
+                .o--postlist-item {
+					&:nth-of-type(1),
+					&:nth-of-type(2),
+					&:nth-of-type(3) {
+						.c--post-ranking {
+							width: 17px;
+							height: 17px;
+							&:before {
+								top: 2px;
+								left: 5px;
+							}
+						}
+					}
+                }
+            }
+        }
+    }
+
+    // スライドデザイン
+    .d--postlist-slider {
+        .o--postlist-item {
+			&:nth-of-type(1),
+			&:nth-of-type(2),
+			&:nth-of-type(3) {
+				.c--post-ranking {
+                    height: 19px;
+                    &:before {
+                        top: 2px;
+                        left: 6px;
+                    }
+                }
+			}
+        }
+    }
+
+    @include s.sp {
+        .d--postlist-slider-sp {
+            .o--postlist-item {
+				&:nth-of-type(1),
+				&:nth-of-type(2),
+				&:nth-of-type(3) {
+					.c--post-ranking {
+                        height: 17px;
+                    }
+				}
+            }
+        }
+    }
+
+    // ニュースデザイン
+    @include s.sp {
+        .d--postlist-newstext-sp {
+            .o--postlist-item {
+				&:nth-of-type(1),
+				&:nth-of-type(2),
+				&:nth-of-type(3) {
+					.c--post-ranking {
+                        &:before {
+                            top: 2px;
+                            left: 5px;
+                        }
+					}
+				}
+            }
+        }
+    }
+}
+
+.d--zenkakugothic {
+
+    // 縦長デザイン
+    .d--postlist-square {
+        .o--postlist-item {
+			&:nth-of-type(1),
+			&:nth-of-type(2),
+			&:nth-of-type(3) {
+				.c--post-ranking {
+                    &:before {
+                        top: 2px;
+                        left: 7px;
+                    }
+                }
+			}
+        }
+
+        &.d--postlist-column4 {
+            .o--postlist-item {
+				&:nth-of-type(1),
+				&:nth-of-type(2),
+				&:nth-of-type(3) {
+					.c--post-ranking {
+                        &:before {
+                            top: 2px;
+                            left: 6px;
+                        }
+                    }
+				}
+            }
+        }
+    }
+
+    @include s.sp {
+        &.d--material-design {
+            .d--postlist-square-sp {
+                &.d--postlist-column2-sp {
+                    .o--postlist-item {
+						&:nth-of-type(1),
+						&:nth-of-type(2),
+						&:nth-of-type(3) {
+							.c--post-ranking {
+                                &:before {
+                                    top: 2px;
+                                    left: 5px;
+                                }
+                            }
+						}
+                    }
+                }
+            }
+        }
+    }
+
+    // 横長デザイン
+    .d--postlist-rectangle {
+        .o--postlist-item {
+			&:nth-of-type(1),
+			&:nth-of-type(2),
+			&:nth-of-type(3) {
+				.c--post-ranking {
+                    &:before {
+                        font-size: .85em;
+                        top: 1px;
+                        left: 6px;
+                    }
+                }
+			}
+        }
+
+        &.d--postlist-column2 {
+            .o--postlist-item {
+				&:nth-of-type(1),
+				&:nth-of-type(2),
+				&:nth-of-type(3) {
+					.c--post-ranking {
+                        &:before {
+                            font-size: .75em;
+                            top: 1px;
+                            left: 5px;
+                        }
+                    }
+				}
+            }
+        }
+    }
+
+    @include s.sp {
+        &.d--material-design {
+            .d--postlist-rectangle-sp {
+                .o--postlist-item {
+					&:nth-of-type(1),
+					&:nth-of-type(2),
+					&:nth-of-type(3) {
+						.c--post-ranking {
+                            &:before {
+                                top: 2px;
+                                left: 5px;
+                            }
+                        }
+					}
+                }
+            }
+        }
+    }
+
+    // スライドデザイン
+    .d--postlist-slider {
+        .o--postlist-item {
+			&:nth-of-type(1),
+			&:nth-of-type(2),
+			&:nth-of-type(3) {
+				.c--post-ranking {
+                    &:before {
+                        font-size: .9em;
+                        top: 2px;
+                        left: 6px;
+                    }
+                }
+			}
+        }
+    }
+
+    @include s.sp {
+        .d--postlist-slider-sp {
+            .o--postlist-item {
+				&:nth-of-type(1),
+				&:nth-of-type(2),
+				&:nth-of-type(3) {
+					.c--post-ranking {
+                        &:before {
+                            top: 1px;
+                        }
+                    }
+				}
+            }
+        }
+    }
+
+    // ニュースデザイン
+    @include s.sp {
+        .d--postlist-newstext-sp {
+            .o--postlist-item {
+				&:nth-of-type(1),
+				&:nth-of-type(2),
+				&:nth-of-type(3) {
+					.c--post-ranking {
+                        &:before {
+                            font-size: .75em;
+                            top: 2px;
+                            left: 5px;
+                        }
+                    }
+				}
+            }
+        }
+    }
+}
+
+.d--mpr-thin {
+    // 縦長デザイン
+    .d--postlist-square {
+        .o--postlist-item {
+            &:nth-of-type(1),
+            &:nth-of-type(2),
+            &:nth-of-type(3) {
+                .c--post-ranking {
+                    &:before {
+                        font-size: .9em;
+                    }
+                }
+            }
+        }
+
+        &.d--postlist-column4 {
+            .o--postlist-item {
+                .c--post-ranking {
+                    &:nth-of-type(1),
+                    &:nth-of-type(2),
+                    &:nth-of-type(3) {
+                        &:before {
+                            font-size: .85em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include s.sp {
+        &.d--material-design {
+            .d--postlist-square-sp {
+                &.d--postlist-column1-sp {
+                    .o--postlist-item {
+                        &:nth-of-type(1),
+                        &:nth-of-type(2),
+                        &:nth-of-type(3){
+                            .c--post-ranking {
+                                &:before {
+                                    top: 3px;
+                                    left: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 横長デザイン
+    .d--postlist-rectangle {
+        .o--postlist-item {
+            &:nth-of-type(1),
+            &:nth-of-type(2),
+            &:nth-of-type(3){
+                .c--post-ranking {
+                    width: 19px;
+                    height: 19px;
+                    &:before {
+                        font-size: .85em;
+                        top: 3px;
+                    }
+                }
+            }
+        }
+
+        &.d--postlist-column2 {
+            .o--postlist-item {
+                &:nth-of-type(1),
+                &:nth-of-type(2),
+                &:nth-of-type(3) {
+                    .c--post-ranking {
+                        &:before {
+                            font-size: .75em;
+                            top: 2px;
+                            left: 4px;
+                        }   
+                    }
+                }
+            }
+        }
+    }
+
+    @include s.sp {
+        &.d--material-design {
+            .d--postlist-rectangle-sp {
+                .o--postlist-item {
+                    &:nth-of-type(1),
+                    &:nth-of-type(2),
+                    &:nth-of-type(3) {
+                        .c--post-ranking {
+                            &:before {
+                                top: 2px;
+                                left: 4px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // スライドデザイン
+    .d--postlist-slider {
+        .o--postlist-item {
+            &:nth-of-type(1),
+            &:nth-of-type(2),
+            &:nth-of-type(3) {
+                .c--post-ranking {
+                    &:before {
+                        font-size: .9em;
+                        top: 3px;
+                        left: 5px;
+                    }   
+                }
+            }
+        }
+    }
+
+    @include s.sp {
+        .d--postlist-slider-sp {
+            .o--postlist-item {
+                &:nth-of-type(1),
+                &:nth-of-type(2),
+                &:nth-of-type(3) {
+                    .c--post-ranking {
+                        &:before {
+                            top: 3px;
+							font-size: 0.8em;
+                        }
+                    }   
+                }
+            }
+        }
+    }
+
+    // ニュースデザイン
+    @include s.sp {
+        .d--postlist-newstext-sp {
+            .o--postlist-item {
+				&:nth-of-type(1),
+				&:nth-of-type(2),
+				&:nth-of-type(3) {
+					.c--post-ranking {
+						width: 17px;
+						height: 17px;
+                        &:before {
+                            font-size: .75em;
+                            top: 3px;
+                            left: 5px;
+                        }
+                    }
+				}
+            }
+        }
+    }
+}
+
+.d--shipporimincho {
+    // 縦長デザイン
+    .d--postlist-square {
+        .o--postlist-item {
+            &:nth-of-type(1),
+            &:nth-of-type(2),
+            &:nth-of-type(3) {
+                .c--post-ranking {
+                    &:before {
+                        font-size: .9em;
+						top: 2px;
+						left: 6px;
+                    }
+                }
+            }
+        }
+        &.d--postlist-column4 {
+            .o--postlist-item {
+                .c--post-ranking {
+                    &:nth-of-type(1),
+                    &:nth-of-type(2),
+                    &:nth-of-type(3) {
+                        &:before {
+							top: 1px;
+                            font-size: .85em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include s.sp {
+        &.d--material-design {
+            .d--postlist-square-sp {
+                &.d--postlist-column1-sp {
+                    .o--postlist-item {
+                        &:nth-of-type(1),
+                        &:nth-of-type(2),
+                        &:nth-of-type(3){
+                            .c--post-ranking {
+                                &:before {
+                                    top: 2px;
+                                    left: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+				&.d--postlist-column2-sp {
+                    .o--postlist-item {
+                        &:nth-of-type(1),
+                        &:nth-of-type(2),
+                        &:nth-of-type(3){
+                            .c--post-ranking {
+                                &:before {
+                                    top: 2px;
+                                    left: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 横長デザイン
+    .d--postlist-rectangle {
+        .o--postlist-item {
+            &:nth-of-type(1),
+            &:nth-of-type(2),
+            &:nth-of-type(3){
+                .c--post-ranking {
+                    width: 20px;
+                    height: 20px;
+                    &:before {
+                        font-size: .9em;
+                        top: 2px;
+						left: 6px;
+                    }
+                }
+            }
+        }
+
+        &.d--postlist-column2 {
+            .o--postlist-item {
+                &:nth-of-type(1),
+                &:nth-of-type(2),
+                &:nth-of-type(3) {
+                    .c--post-ranking {
+						width: 18px;
+						height: 18px;
+                        &:before {
+                            top: 1px;
+                            left: 5px;
+                        }   
+                    }
+                }
+            }
+        }
+    }
+
+    @include s.sp {
+		.d--postlist-rectangle-sp {
+			.o--postlist-item {
+				&:nth-of-type(1),
+				&:nth-of-type(2),
+				&:nth-of-type(3) {
+					.c--post-ranking {
+						width: 18px;
+						height: 18px;
+						&:before {
+							top: 2px;
+							left: 5px;
+							font-size: 0.85em;
+						}
+					}
+				}
+			}
+		}
+    }
+
+    // スライドデザイン
+    .d--postlist-slider {
+        .o--postlist-item {
+            &:nth-of-type(1),
+            &:nth-of-type(2),
+            &:nth-of-type(3) {
+                .c--post-ranking {
+                    &:before {
+                        font-size: .9em;
+                        top: 2px;
+                        left: 6px;
+                    }   
+                }
+            }
+        }
+    }
+
+    @include s.sp {
+        .d--postlist-slider-sp {
+            .o--postlist-item {
+                &:nth-of-type(1),
+                &:nth-of-type(2),
+                &:nth-of-type(3) {
+                    .c--post-ranking {
+                        &:before {
+                            top: 2px;
+							font-size: 0.8em;
+                        }
+                    }   
+                }
+            }
+        }
+    }
+
+    // ニュースデザイン
+	.d--postlist-newstext {
+		.o--postlist-item {
+			&:nth-of-type(1),
+			&:nth-of-type(2),
+			&:nth-of-type(3) {
+				.c--post-ranking {
+					&:before {
+						top: 2px;
+						left: 6px;
+					}
+				}
+			}
+		}
+	}
+    @include s.sp {
+        .d--postlist-newstext-sp {
+            .o--postlist-item {
+				&:nth-of-type(1),
+				&:nth-of-type(2),
+				&:nth-of-type(3) {
+					.c--post-ranking {
+						width: 17px;
+						height: 17px;
+                        &:before {
+                            font-size: .75em;
+                            top: 2px;
+                            left: 5px;
+                        }
+                    }
+				}
+            }
+        }
+    }
+}
+.d--notoserif {
+    // 縦長デザイン
+    .d--postlist-square {
+        .o--postlist-item {
+            &:nth-of-type(1),
+            &:nth-of-type(2),
+            &:nth-of-type(3) {
+                .c--post-ranking {
+                    &:before {
+                        font-size: .9em;
+						top: 2px;
+						left: 6px;
+                    }
+                }
+            }
+        }
+        &.d--postlist-column4 {
+            .o--postlist-item {
+                .c--post-ranking {
+                    &:nth-of-type(1),
+                    &:nth-of-type(2),
+                    &:nth-of-type(3) {
+                        &:before {
+							top: 1px;
+                            font-size: .85em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include s.sp {
+        &.d--material-design {
+            .d--postlist-square-sp {
+                &.d--postlist-column1-sp {
+                    .o--postlist-item {
+                        &:nth-of-type(1),
+                        &:nth-of-type(2),
+                        &:nth-of-type(3){
+                            .c--post-ranking {
+                                &:before {
+                                    top: 2px;
+                                    left: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+				&.d--postlist-column2-sp {
+                    .o--postlist-item {
+                        &:nth-of-type(1),
+                        &:nth-of-type(2),
+                        &:nth-of-type(3){
+                            .c--post-ranking {
+                                &:before {
+                                    top: 2px;
+                                    left: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 横長デザイン
+    .d--postlist-rectangle {
+        .o--postlist-item {
+            &:nth-of-type(1),
+            &:nth-of-type(2),
+            &:nth-of-type(3){
+                .c--post-ranking {
+                    width: 20px;
+                    height: 20px;
+                    &:before {
+                        font-size: .9em;
+                        top: 2px;
+						left: 6px;
+                    }
+                }
+            }
+        }
+
+        &.d--postlist-column2 {
+            .o--postlist-item {
+                &:nth-of-type(1),
+                &:nth-of-type(2),
+                &:nth-of-type(3) {
+                    .c--post-ranking {
+						width: 18px;
+						height: 18px;
+                        &:before {
+							font-size: .8em;
+                            top: 2px;
+                            left: 5px;
+                        }   
+                    }
+                }
+            }
+        }
+    }
+
+    @include s.sp {
+		.d--postlist-rectangle-sp {
+			.o--postlist-item {
+				&:nth-of-type(1),
+				&:nth-of-type(2),
+				&:nth-of-type(3) {
+					.c--post-ranking {
+						width: 18px;
+						height: 18px;
+						&:before {
+							top: 3px;
+							left: 5px;
+							font-size: 0.75em;
+						}
+					}
+				}
+			}
+		}
+    }
+
+    // スライドデザイン
+    .d--postlist-slider {
+        .o--postlist-item {
+            &:nth-of-type(1),
+            &:nth-of-type(2),
+            &:nth-of-type(3) {
+                .c--post-ranking {
+                    &:before {
+                        font-size: .9em;
+                        top: 2px;
+                        left: 6px;
+                    }   
+                }
+            }
+        }
+    }
+
+    @include s.sp {
+        .d--postlist-slider-sp {
+            .o--postlist-item {
+                &:nth-of-type(1),
+                &:nth-of-type(2),
+                &:nth-of-type(3) {
+                    .c--post-ranking {
+                        &:before {
+                            top: 2px;
+							font-size: 0.8em;
+                        }
+                    }   
+                }
+            }
+        }
+    }
+
+    // ニュースデザイン
+	.d--postlist-newstext {
+		.o--postlist-item {
+			&:nth-of-type(1),
+			&:nth-of-type(2),
+			&:nth-of-type(3) {
+				.c--post-ranking {
+					&:before {
+						top: 2px;
+						left: 6px;
+					}
+				}
+			}
+		}
+	}
+    @include s.sp {
+        .d--postlist-newstext-sp {
+            .o--postlist-item {
+				&:nth-of-type(1),
+				&:nth-of-type(2),
+				&:nth-of-type(3) {
+					.c--post-ranking {
+						width: 17px;
+						height: 17px;
+                        &:before {
+                            font-size: .75em;
+                            top: 2px;
+                            left: 5px;
+                        }
+                    }
+				}
+            }
+        }
+    }
+}
+.d--kiwimaru {
+    // 縦長デザイン
+    .d--postlist-square {
+        .o--postlist-item {
+            &:nth-of-type(1),
+            &:nth-of-type(2),
+            &:nth-of-type(3) {
+                .c--post-ranking {
+                    &:before {
+                        font-size: .9em;
+						top: 2px;
+						left: 6px;
+                    }
+                }
+            }
+        }
+        &.d--postlist-column4 {
+            .o--postlist-item {
+                .c--post-ranking {
+                    &:nth-of-type(1),
+                    &:nth-of-type(2),
+                    &:nth-of-type(3) {
+                        &:before {
+							top: 1px;
+                            font-size: .85em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include s.sp {
+        &.d--material-design {
+            .d--postlist-square-sp {
+                &.d--postlist-column1-sp {
+                    .o--postlist-item {
+                        &:nth-of-type(1),
+                        &:nth-of-type(2),
+                        &:nth-of-type(3){
+                            .c--post-ranking {
+                                &:before {
+                                    top: 2px;
+                                    left: 6px;
+                                }
+                            }
+                        }
+                    }
+                }
+				&.d--postlist-column2-sp {
+                    .o--postlist-item {
+                        &:nth-of-type(1),
+                        &:nth-of-type(2),
+                        &:nth-of-type(3){
+                            .c--post-ranking {
+                                &:before {
+                                    top: 2px;
+                                    left: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 横長デザイン
+    .d--postlist-rectangle {
+        .o--postlist-item {
+            &:nth-of-type(1),
+            &:nth-of-type(2),
+            &:nth-of-type(3){
+                .c--post-ranking {
+                    width: 20px;
+                    height: 20px;
+                    &:before {
+                        font-size: .9em;
+                        top: 2px;
+						left: 6px;
+                    }
+                }
+            }
+        }
+
+        &.d--postlist-column2 {
+            .o--postlist-item {
+                &:nth-of-type(1),
+                &:nth-of-type(2),
+                &:nth-of-type(3) {
+                    .c--post-ranking {
+						width: 18px;
+						height: 18px;
+                        &:before {
+							font-size: .8em;
+                            top: 2px;
+                            left: 5px;
+                        }   
+                    }
+                }
+            }
+        }
+    }
+
+    @include s.sp {
+		.d--postlist-rectangle-sp {
+			.o--postlist-item {
+				&:nth-of-type(1),
+				&:nth-of-type(2),
+				&:nth-of-type(3) {
+					.c--post-ranking {
+						width: 18px;
+						height: 18px;
+						&:before {
+							top: 3px;
+							left: 5px;
+							font-size: 0.75em;
+						}
+					}
+				}
+			}
+		}
+    }
+
+    // スライドデザイン
+    .d--postlist-slider {
+        .o--postlist-item {
+            &:nth-of-type(1),
+            &:nth-of-type(2),
+            &:nth-of-type(3) {
+                .c--post-ranking {
+                    &:before {
+                        font-size: .9em;
+                        top: 2px;
+                        left: 6px;
+                    }   
+                }
+            }
+        }
+    }
+
+    @include s.sp {
+        .d--postlist-slider-sp {
+            .o--postlist-item {
+                &:nth-of-type(1),
+                &:nth-of-type(2),
+                &:nth-of-type(3) {
+                    .c--post-ranking {
+                        &:before {
+                            top: 2px;
+							left: 5px;
+							font-size: 0.8em;
+                        }
+                    }   
+                }
+            }
+        }
+    }
+
+    // ニュースデザイン
+	.d--postlist-newstext {
+		.o--postlist-item {
+			&:nth-of-type(1),
+			&:nth-of-type(2),
+			&:nth-of-type(3) {
+				.c--post-ranking {
+					&:before {
+						top: 2px;
+						left: 5px;
+					}
+				}
+			}
+		}
+	}
+    @include s.sp {
+        .d--postlist-newstext-sp {
+            .o--postlist-item {
+				&:nth-of-type(1),
+				&:nth-of-type(2),
+				&:nth-of-type(3) {
+					.c--post-ranking {
+						width: 17px;
+						height: 17px;
+                        &:before {
+                            font-size: .75em;
+                            top: 2px;
+                            left: 5px;
+                        }
+                    }
+				}
+            }
+        }
+    }
+}
+
+.ef {
+    font-feature-settings: "palt";
+    letter-spacing: 1px;
+}

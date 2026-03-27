@@ -1,0 +1,262 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+.b--jinr-background{
+	margin: s.$double_margin auto;
+	position: relative;
+	z-index: 0;
+	//タイムラインの調整
+	.b--jinr-timeline{
+		@include s.mini_tablet_view{
+			padding-left:45px;
+			padding-right: 45px;
+			padding-bottom: 12px;
+		}
+	}
+}
+
+.o--background-container{
+	display: block;
+	overflow: hidden;
+	position: relative;
+	z-index: 300;
+	height: 100%;
+	border-color: red;
+	&.d--border-inset{
+		padding: 6px;
+	}
+}
+.c--background-inner{
+	padding: 24px 21px;
+	height: 100%;
+	@include s.mini_tablet_view{
+		padding: 27px 30px 33px;
+	}
+	&.d--border-solid{
+		border-style: solid;
+	}
+	&.d--border-dotted{
+		border-style: dotted;
+	}
+	&.d--border-dashed{
+		border-style: dashed;
+	}
+	&.d--border-double{
+		border-style: double;
+	}
+	&.d--border-1px{
+		border-width: 1px;
+	}
+	&.d--border-2px{
+		border-width: 2px;
+	}
+	&.d--border-3px{
+		border-width: 3px;
+	}
+	&.d--border-4px{
+		border-width: 4px;
+	}
+	&.d--border-5px{
+		border-width: 5px;
+	}
+}
+.a--background-color{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
+.a--background-float-item-top{
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 90%;
+	height: 45px;
+	margin-top: 6px;
+	border-radius: 50%;
+	z-index: 0;
+	box-shadow:0 -12px 9px 1px rgba($color: #aaaaaa, $alpha: 0.06);
+}
+.a--background-float-item-bottom{
+	position: absolute;
+	top: auto;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 90%;
+	height: 33px;
+	margin-top: -34px;
+	border-radius: 50%;
+	z-index: 0;
+	box-shadow:0 6px 12px 1px rgba($color: #aaaaaa, $alpha: 0.30);
+}
+.d--background-design-shadow{
+	&.d--background-shadow-s{
+		@include s.shadow-s;
+	}
+	&.d--background-shadow-m{
+		@include s.shadow-m;
+	}
+	&.d--background-shadow-l{
+		@include s.shadow-l;
+	}
+	&.d--background-shadow-float{
+		box-shadow:0 1px 3px 0px rgba($color: #aaaaaa, $alpha: 0.18);
+	}
+}
+.d--background-repeat-off{
+	background-repeat: no-repeat;
+}
+
+
+//パーツ調整
+.b--jinr-background{
+	.c--background-inner{
+		& > *{
+			&:first-child{
+				margin-top: 0!important;
+			}
+			&:last-child{
+				margin-bottom: 0!important;
+			}
+		}
+	}
+	.d--postlist-newstext{
+		.o--postlist-item{
+			border: none;
+			padding: 7px 0;
+			&:first-child{
+				padding-top: 0;
+			}
+			&:last-child{
+				padding-bottom: 0;
+			}
+		}
+	}
+}
+.page.page-template-default,
+.single.post-template-default,
+.post-type-post{
+	#postContent,
+	.o--widget-area{
+		.wp-block-column{
+			.b--jinr-background{
+				.c--background-inner{
+					padding: 24px 21px;
+				}
+				.b--jinr-h2rich{
+					&.d--h2rich-left,
+					&.d--h2rich-center{
+						&.d--h2rich-style2{
+							padding-bottom: 6px;
+							padding-top: 0px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+//カラムブロック内でのパーツ調整
+#postContent,
+.o--widget-area{
+	.wp-block-column{
+		.b--jinr-background{
+			margin-top: 0;
+			margin-bottom: 0;
+			height: 100%;
+		}
+		.c--background-inner{
+			padding: 24px 21px;
+			@include s.mini_tablet_view{
+				padding:27px 30px;
+			}
+			& > *{
+				margin-top: 2.1rem;
+				margin-bottom: 2.1rem;
+				@include s.mini_tablet_view{
+					margin-top: 2.7rem;
+					margin-bottom: 2.7rem;
+				}
+			}
+		}
+	}
+}
+
+.a--background-image{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 200;
+}
+
+//ドット
+.d--background-pattern2{
+	background-size: 5px;
+	background-image: url(lib/img/dot.png);
+}
+//ボーダー
+.d--background-pattern3{
+	background-size: 5px;
+	background-image: url(lib/img/border.png);
+}
+//ストライプ
+.d--background-pattern4{
+	background-size: 24px;
+	background-image: url(lib/img/stripe.png);
+}
+//パズル
+.d--background-pattern5{
+	background-size: 66px;
+	background-image: url(lib/img/jigsaw.png);
+}
+//グリッド
+.d--background-pattern6{
+	background-size: 60px;
+	background-image: url(lib/img/grid.png);
+}
+
+.t--round-s{
+	.o--background-container,
+	.a--background-color{
+		border-radius: s.$r_s;
+	}
+	.b--jinr-background{
+		.c--background-inner{
+			.wp-block-image img{
+				border-radius: 2px;
+			}
+		}
+	}
+}
+.t--round-m{
+	.o--background-container,
+	.a--background-color{
+		border-radius: s.$r_m;
+	}
+	.b--jinr-background{
+		.c--background-inner{
+			.wp-block-image img{
+				border-radius: 3px;
+			}
+		}
+	}
+}
+.t--round-l{
+	.o--background-container,
+	.a--background-color{
+		border-radius: s.$r_l;
+	}
+	.b--jinr-background{
+		.c--background-inner{
+			.wp-block-image img{
+				border-radius: 3px;
+			}
+		}
+	}
+}

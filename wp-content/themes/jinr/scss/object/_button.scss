@@ -1,0 +1,152 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+// 吹き出しブロック出力マークアップへのCSS
+
+/**
+* 基本のマークアップ
+*/
+
+.b--jinr-button {
+    position: relative;
+    z-index: 300;
+    margin: s.$double_margin auto;
+    @include s.sp{
+        margin: s.$base_margin auto;
+	}
+    span{
+        display: inline-block;
+        @include s.transition-slow;
+    }
+    a{
+        display: inline-block;
+        @include s.transition-slow;
+        will-change: animation,transform,transition,background-color;
+        &::before,
+        &::after{
+            will-change: animation,transform,transition,background-color;
+        }
+    }
+}
+.d--button-arrow{
+    margin-top:0;
+	margin-bottom:4rem;
+	margin-left:6px!important;
+    a{
+        &::after{
+            content:"";
+			position:absolute;
+            right:4px;
+			bottom:-2px;
+            height:12px;
+			transform: rotate(135deg);
+            @include s.mini_tablet_view{
+                right:5px;
+                bottom:-3px;
+                height:15px;
+            }
+        }
+    }
+}
+.a--button-microcopy{
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 15px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include s.mini_tablet_view{
+        font-size: 1.15rem;
+    }
+    &.d--button-left{
+        justify-content: flex-start;
+    }
+    &.d--button-microcopy1{
+        .a--microcopy-parts1,
+        .a--microcopy-parts2{
+            width: 21px;
+            height: 1px;
+        }
+        .a--microcopy-parts1{
+            margin-right: 9px;
+            transform: rotate(60deg);
+        }
+        .a--microcopy-parts2{
+            margin-left: 9px;
+            transform: rotate(-60deg);
+        }
+    }
+    &.d--button-microcopy2{
+        .a--microcopy-parts1,
+        .a--microcopy-parts2{
+            width: 15px;
+            height: 1px;
+        }
+        .a--microcopy-parts1{
+            margin-right: 15px;
+        }
+        .a--microcopy-parts2{
+            margin-left: 15px;
+        }
+    }
+    &.d--button-microcopy3{
+        .a--microcopy-parts1,
+        .a--microcopy-parts2{
+            width: 21px;
+            height: 1px;
+            position: relative;
+        }
+        .a--microcopy-parts1{
+            margin-right: 12px;
+            transform: rotate(60deg);
+            &::before{
+                content: "";
+                position: absolute;
+                width: 9px;
+                height: 1px;
+                top: 7px;
+                right: 2px;
+                transform: rotate(158deg);
+            }
+        }
+        .a--microcopy-parts2{
+            margin-left: 12px;
+            transform: rotate(-60deg);
+            &::before{
+                content: "";
+                position: absolute;
+                width: 9px;
+                height: 1px;
+                top: 7px;
+                right: 10px;
+                transform: rotate(202deg);
+            }
+        }
+    }
+}
+.d--button-solid,
+.d--button-outline{
+    a::after{
+        font-family: "jin-icons";
+        position: absolute;
+        font-size: 0.87em;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        @include s.mini_tablet_view{
+            right: 21px;
+        }
+    }
+}
+.d--button-center{
+    text-align: center;
+}
+.d--button-left{
+    text-align: left;
+}
+.d--button-right{
+    text-align: right;
+}

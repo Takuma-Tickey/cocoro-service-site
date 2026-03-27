@@ -1,0 +1,19 @@
+@charset "utf-8";
+@use "../core/setting" as s;
+
+.jinr-icon-viaual {
+	button.components-button.components-panel__body-toggle {
+		padding: 16px 48px 16px 20px;
+		position: relative;
+	}
+	.components-panel__icon {
+		position: absolute;
+		right: 42px;
+		transition: color 0.3s;
+	}
+	&.jinr-panel-enabled {
+		.components-panel__icon {
+			color: s.$theme_color;
+		}
+	}
+}

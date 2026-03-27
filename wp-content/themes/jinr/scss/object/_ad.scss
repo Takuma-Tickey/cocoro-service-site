@@ -1,0 +1,64 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+.o--ads-area,
+.o--related-area{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+    @include s.mini_tablet_view{
+        margin-top: 45px;
+    }
+}
+.o--related-area{
+    margin-bottom: 45px;
+}
+.c--ads-area,
+.c--related-area{
+    min-width: 300px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    @include s.mini_tablet_view{
+        margin: 12px;
+    }
+}
+.c--ads-area{
+    &.d--minwidth-100{
+        min-width: 100%;
+        text-align: center;
+    }
+}
+.c--related-area{
+    &.d--minwidth-100{
+        min-width: 100%;
+        text-align: center;
+        @media (min-width: 1180px) {
+            min-width: 1060px;
+        }
+        @include s.pc{
+            min-width: 1120px;
+        }
+    }
+}
+.a--ads-sponser,
+.a--related-sponser{
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    letter-spacing: 0.09rem;
+    opacity: 0.6;
+    margin-bottom: 6px;
+}
+.d--sp-nonedisplay{
+    @include s.sp{
+        display: none;
+    }
+}
+.o--unit-area {
+    margin: 0 auto;
+    @include s.sp{
+        @include s.contents-padding();
+    }
+}

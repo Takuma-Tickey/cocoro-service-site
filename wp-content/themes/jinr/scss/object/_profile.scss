@@ -1,0 +1,611 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+.b--jinr-profile{
+	margin: s.$base_margin auto;
+    @include s.mini_tablet_view{
+        margin: s.$double_margin auto;
+    }
+	overflow: hidden;
+	.a--profile-introduction{
+		font-size: 1.25rem;
+		letter-spacing: 1px;
+		line-height: 1.6;
+		width: 100%;
+	}
+	&.d--brand-color{
+		.d--twitter{
+			.jin-icons{
+				color: #0F1419 !important;
+			}
+		}
+		.d--facebook{
+			.jin-icons{
+				color: #1877f2 !important;
+			}
+		}
+		.d--instagram{
+			.jin-icons{
+				color:transparent!important;
+				&::before{
+					background: linear-gradient(174deg, #204bff 0%,#b039db 18%,#f1224d 74%,rgba(255, 105, 34, 0.65) 94%);
+					-webkit-background-clip: text;
+					@include s.sp{
+						padding-top: 1px;
+					}
+				}
+			}
+		}
+		.d--youtube{
+			.jin-icons{
+				color: #f00 !important;
+			}
+		}
+		.d--line{
+			.jin-icons{
+				color: #06c755 !important;
+			}
+		}
+		.d--contact{
+			.jin-icons{
+				color: #666!important;
+				opacity: 0.6;
+			}
+		}
+	}
+}
+.o--profile-contents{
+	line-height: 1.6;
+	.a--profile-image{
+		flex-shrink: 0;
+		overflow: hidden;
+		width: 90px;
+		height: 90px;
+		margin-right: 27px;
+		border-radius: 100px;
+		img{
+			width: inherit;
+			height: inherit;
+			object-fit: cover;
+		}
+	}
+	.a--profile-name{
+		font-size: 1.5rem;
+		letter-spacing: 0.2rem;
+		line-height: 1.2;
+	}
+	.a--profile-job{
+		font-size: 1rem;
+		letter-spacing: 0.06rem;
+		line-height: 1.45;
+	}
+	.c--profile-sns-item{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		box-sizing: border-box;
+	}
+	.a--sns-item-link{
+		display: flex;
+		align-items: center;
+		font-size: 1.1rem;
+		border-radius: 50px;
+		@include s.transition;
+		&:last-child{
+			margin-right: 0;
+		}
+		.jin-icons{
+			font-size: 1.6rem;
+			margin-right: 5px;
+			@include s.sp{
+				margin-right: 0px;
+			}
+			@include s.mini_tablet{
+				margin-right: 0px;
+			}
+		}
+		&:hover{
+			background-color: rgba($color: #fff, $alpha: 0.15);
+		}
+	}
+}
+
+//ブロックでのデザイン
+.d--profile-style1,
+.d--profile-style2{
+	position: relative;
+	@include s.mini_tablet_view{
+		display: flex;
+	}
+	.o--profile-contents{
+		text-align: center;
+		width: 100%;
+		position: absolute;
+		box-sizing: border-box;
+		@include s.sp{
+			height: 90px;
+			padding: 21px clamp(24px,3.3vw,33px);
+			display: flex;
+			justify-content: flex-start;
+		}
+		@include s.mini_tablet_view{
+			position: static;
+			padding: 27px 33px;
+			flex-shrink: 0;
+			width: clamp(180px,25vw,210px);
+		}
+	}
+	&.d--sns-display-on{
+		.a--profile-button-link{
+			margin-top: -60px;
+			margin-bottom: 60px;
+		}
+	}
+	&.d--sns-display-off{
+		.a--profile-button-link{
+			margin-top: -9px;
+			margin-bottom: 24px;
+		}
+	}
+	.a--profile-image{
+		display: block;
+		margin: 0 auto;
+		@include s.sp{
+			margin: 0;
+			width: 69px;
+			height: 69px;
+		}
+	}
+	.a--profile-sns-label{
+		color: #fff;
+		position: relative;
+		margin-right: 30px;
+		&::after{
+			position: absolute;
+			content: "";
+			height: 18px;
+			width: 1px;
+			top: 3px;
+			right: -15px;
+			background-color: #fff;
+		}
+	}
+	.a--profile-introduction{
+		padding: 27px clamp(33px,2.7vw,45px) 18px;
+		@include s.sp{
+			padding: 27px clamp(24px,3.3vw,33px) 18px;
+			margin-top: 84px;
+		}
+	}
+	.a--profile-label{
+		display: none;
+		@include s.mini_tablet_view{
+			display: block;
+			font-size: 1.55rem;
+			margin-bottom: 12px;
+		}
+	}
+	.a--profile-link{
+		font-size: 1rem;
+		letter-spacing: 0.06rem;
+		display: flex;
+		align-items: center;
+		@include s.mini_tablet_view{
+			position: absolute;
+			right: 36px;
+		}
+		.jin-icons{
+			font-size: 0.9rem;
+			transform: scale(0.9);
+			margin-top: 3px;
+			margin-left: 3px;
+			@include s.mini_tablet_view{
+				margin-top: 1px;
+				transform: scale(0.85);
+			}
+		}
+	}
+	.o--profile-sns{
+		width: 100%;
+		margin-top: 24px;
+	}
+	&.d--sns-display-on{
+		.a--profile-link{
+			@include s.sp{
+				margin-top: 15px;
+			}
+			@include s.mini_tablet_view{
+				top: 30px;
+			}
+		}
+	}
+	&.d--sns-display-off{
+		.a--profile-link{
+			@include s.sp{
+				margin-top: 15px;
+			}
+			@include s.mini_tablet_view{
+				bottom: 27px;
+			}
+		}
+		.o--profile-sns{
+			@include s.sp{
+				margin-top: 9px;
+			}
+		}
+	}
+	.c--profile-sns-item{
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.a--sns-item-link{
+		display: flex;
+		align-items: center;
+		padding: 3px 0px 5px;
+		letter-spacing: 0.06rem;
+		width: 33.33%;
+		flex-shrink: 0;
+		@include s.mini_tablet_view{
+			width: auto;
+			margin-right: 18px;
+		}
+		span{
+			letter-spacing: 0.09rem;
+			font-size: 1.1rem;
+			flex-shrink: 0;
+			margin-left: 6px;
+			line-height: 0;
+		}
+	}
+	.c--profile-meta{
+		position: relative;
+		width: 100%;
+		@include s.sp{
+			margin: -9px 0px 0 15px;
+		}
+	}
+	.a--profile-name{
+		margin-top: 15px;
+		@include s.mini_tablet_view{
+			font-size: 1.35rem;
+		}
+	}
+	.a--profile-job{
+		margin-top: 6px;
+		transform: scale(0.95);
+		transform-origin: center top;
+		@include s.sp{
+			margin-top: 9px;
+			transform-origin: left top;
+		}
+	}
+	.a--profile-name,
+	.a--profile-job{
+		@include s.sp{
+			text-align: left;
+		}
+	}
+}
+.d--profile-style1{
+	border-width: 1px;
+	border-style: solid;
+	.a--profile-introduction{
+		position: relative;
+		&::before{
+			@include s.mini_tablet_view{
+				content: "";
+				position: absolute;
+				width: calc(100% - ( 36px * 2 ) - 69px - 15px );
+				height: calc(100% - 54px );
+				width: 1px;
+				left: 0;
+				top: calc(50% + 2px);
+				transform: translateY(-50%);
+			}
+		}
+	}
+	.a--profile-job{
+		opacity: 0.6;
+		@include s.sp{
+			border-bottom: 1px;
+			border-style: solid;
+			padding-bottom: 6px;
+			width: 104%;
+		}
+	}
+}
+.d--profile-style2{
+	.o--profile-contents{
+		@include s.sp{
+			padding: 15px clamp(24px,3.3vw,33px);
+			height: 72px;
+		}
+	}
+	.a--profile-introduction{
+		@include s.sp{
+			margin-top: 72px;
+		}
+	}
+	.a--profile-name,
+	.a--profile-job{
+		color: #fff;
+	}
+}
+//記事下・記事上のデザイン
+.d--profile-author{
+	content-visibility: auto;
+	contain-intrinsic-size:0 200px;
+	margin-bottom: 0;
+	@include s.mini_tablet_view{
+		padding: 0 24px;
+	}
+	.o--profile-contents{
+		display: flex;
+		padding: 0 6px;
+		margin-top: 33px;
+		flex-wrap: wrap;
+		align-items: center;
+		@include s.mini_tablet_view{
+			padding: 0;
+			margin-top: 27px;
+		}
+	}
+	.c--profile-meta{
+		position: relative;
+		@include s.sp{
+			max-width: calc(100% - 90px);
+		}
+	}
+	.o--profile-sns{
+		width: auto;
+		padding: 15px 0px 0px;
+		@include s.sp{
+			padding: 12px 0px 0px;
+		}
+	}
+	.c--profile-sns-item{
+		justify-content: flex-start;
+	}
+	.a--profile-image{
+		margin-right: 15px;
+		width: 75px;
+		height: 75px;
+		@include s.mini_tablet_view{
+			margin-right: 21px;
+		}
+	}
+	.a--profile-introduction{
+		margin-top: 18px;
+		width: calc(100% - 9px);
+		margin-left: auto;
+		@include s.sp{
+			margin-right: auto;
+		}
+		@include s.mini_tablet_view{
+			width: calc(100% - 96px);
+		}
+	}
+	.a--sns-item-link{
+		margin-right: 6px;
+		@include s.sp{
+			margin-right: 15px;
+		}
+		span{
+			display: none;
+		}
+		.jin-icons{
+			@include s.sp{
+				font-size: 1.8rem;
+			}
+		}
+	}
+	.a--profile-sns-label{
+		display: none;
+	}
+	.a--profile-job{
+		color: #aaa;
+		margin-top: 6px;
+	}
+	&.d--sns-display-off{
+		.a--profile-introduction{
+			@include s.mini_tablet_view{
+				margin-top: 0;
+			}
+		}
+	}
+}
+
+.jinr-profile-label{
+	position: relative;
+	margin-top: s.$double_margin;
+	@include s.mini_tablet_view{
+		margin-top: 6rem;
+	}
+	span{
+		position: absolute;
+		right: 9px;
+		font-size: 1rem;
+		color: #fff;
+		padding: 6px 8px;
+		letter-spacing: 0.03rem;
+		line-height: 1.4;
+		@include s.mini_tablet_view{
+			font-size: 1.2rem;
+			right: 24px;
+			padding: 9px 15px;
+		}
+	}
+	&::before{
+		content: "";
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 1px;
+	}
+	& + .b--jinr-profile{
+		margin-top: 21px;
+		@include s.mini_tablet_view{
+			margin-top: 57px;
+		}
+	}
+}
+
+//カラムブロック内でのパーツ調整
+.wp-block-column:not([style]){
+	@media (min-width: (s.$pc_view_content + 1px)) {
+		.d--profile-style1,
+		.d--profile-style2{
+			.o--profile-contents{
+				width: 180px;
+			}
+			.a--sns-item-link{
+				width: 33%!important;
+			}
+		}
+	}
+	@media (max-width: s.$pc_view_content) {
+		@include s.sidebarProfileDesign();
+		.a--sns-item-link{
+			width: 25%!important;
+		}
+	}
+	@media (max-width: 920px) {
+		.a--sns-item-link{
+			width: 33%!important;
+		}
+	}
+	@media (max-width: 660px) {
+		.a--sns-item-link{
+			width: 50%!important;
+		}
+	}
+	@media (max-width: 599px) {
+		.a--sns-item-link{
+			width: 33%!important;
+		}
+	}
+}
+.wp-block-column[style^="flex-basis:66"],
+.wp-block-column[style^="flex-basis: 66"]{
+	@media (max-width: 781px) {
+		@include s.sidebarProfileDesign();
+	}
+	@media (max-width: 660px) {
+		.a--sns-item-link{
+			width: 50%!important;
+		}
+	}
+	@media (max-width: 599px) {
+		.a--sns-item-link{
+			width: 33%!important;
+		}
+	}
+}
+.wp-block-column[style^="flex-basis:33"],
+.wp-block-column[style^="flex-basis: 33"],
+#sidePR{
+	@include s.sidebarProfileDesign();
+	@media screen and (min-width: 782px) and (max-width: 1000px) {
+		.a--sns-item-link{
+			width: 50%!important;
+		}
+	}
+	@media (max-width: 660px) {
+		.a--sns-item-link{
+			width: 50%!important;
+		}
+	}
+	@media (max-width: 599px) {
+		.a--sns-item-link{
+			width: 33%!important;
+		}
+	}
+}
+#sidePR{
+	.d--profile-style1,
+	.d--profile-style2{
+		.a--profile-introduction{
+			padding: 24px 24px 12px!important;
+		}
+		.a--sns-item-link{
+			width: 50%!important;
+			margin-right: 0!important;
+		}
+	}
+}
+.wp-block-column{
+	.a--profile-introduction{
+		padding: 27px clamp(24px,3.3vw,33px) 18px!important;
+	}
+	.o--profile-contents{
+		padding-left: clamp(24px,3.3vw,33px)!important;
+		padding-right: clamp(24px,3.3vw,33px)!important;
+	}
+}
+.post-template-default,
+.page-template-default,
+.post-type-post{
+	.wp-block-column{
+		@include s.sidebarProfileDesign();
+	}
+	.wp-block-column[style^="flex-basis:66"],
+	.wp-block-column[style^="flex-basis: 66"]{
+		@media (min-width: 1121px) {
+			.a--sns-item-link{
+				width: 25%!important;
+			}
+		}
+	}
+}
+
+//サイドバー内
+#mainSideBar{
+	@include s.sidebarProfileDesign();
+}
+
+.t--round-s{
+	.b--jinr-profile{
+		border-radius: s.$r_s;
+	}
+	.jinr-profile-label{
+		span{
+			border-bottom-left-radius: 2px;
+			border-bottom-right-radius: 2px;
+		}
+	}
+}
+.t--round-m{
+	.b--jinr-profile{
+		border-radius: s.$r_m;
+	}
+	.jinr-profile-label{
+		span{
+			border-bottom-left-radius: 3px;
+			border-bottom-right-radius: 3px;
+		}
+	}
+}
+.t--round-l{
+	.b--jinr-profile{
+		border-radius: s.$r_l;
+	}
+	.jinr-profile-label{
+		span{
+			border-bottom-left-radius: 4px;
+			border-bottom-right-radius: 4px;
+		}
+	}
+}
+
+//デザインコンセプトによる変化
+.d--material-design{
+	.d--profile-style1,
+	.d--profile-style2{
+		border: none;
+		@include s.shadow-s;
+	}
+	.d--profile-style1{
+		background: rgba(255, 255, 255, 0.6);
+	}
+}

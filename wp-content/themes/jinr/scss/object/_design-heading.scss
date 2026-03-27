@@ -1,0 +1,365 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+// 土台のCSS
+
+.b--jinr-h2rich{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    .c--h2rich-contents{
+        width: 100%;
+        .a--h2rich-subcopy {
+            display: inline-block;
+            font-size: 1.2rem;
+            letter-spacing: 0.09rem;
+            @include s.mini_tablet_view{
+                font-size: 1.3rem;
+                letter-spacing: 0.15rem;
+            }
+        }
+    }
+    .c--h2rich-decoration{
+        // シンボル装飾がある場合はこちらのCSSでflexの調整
+        & + .c--h2rich-contents{
+            margin-left: 9px;
+            @include s.mini_tablet_view{
+                margin-left: 12px;
+            }
+        }
+        .a--h2rich-number {
+            display: flex;
+            font-size: 5rem;
+            justify-content: center;
+            align-items: center;
+            line-height: 1;
+            @include s.mini_tablet_view{
+                font-size: 6rem;
+            }
+            @include s.pc{
+                font-size: 6.2rem;
+            }
+        }
+        .a--h2rich-image{
+            margin: 0 auto;
+            border: 5px solid transparent;
+            border-radius: 50%;
+            overflow: hidden;
+            box-sizing: content-box;
+            img{
+                object-fit: cover;
+            }
+        }
+        .a--h2rich-icon{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .jin-icons{
+                &::before{
+                    font-size: 2.5em;
+                    @include s.mini_tablet{
+                        font-size: 2.8em;
+                    }
+                    @include s.tablet{
+                        font-size: 3em;
+                    }
+                }
+            }
+        }
+    }
+    &.d--h2rich-left{
+        text-align: left;
+        margin-top: s.$base_margin;
+        margin-bottom: s.$base_margin;
+        @include s.mini_tablet_view{
+            margin-top: s.$double_margin;
+            margin-bottom: s.$double_margin;
+        }
+        .c--h2rich-contents{
+            .a--h2rich-maincopy {
+                font-size: 1.8rem;
+                line-height: 1.3;
+                letter-spacing: 0.36rem;
+                @include s.sp{
+                    line-height: 1.2;
+                }
+                @include s.mini_tablet{
+                    font-size: 2.1rem;
+                }
+                @include s.tablet{
+                    font-size: 2.4rem;
+                }
+            }
+            .a--h2rich-subcopy {
+                font-size: 1.1rem;
+                @include s.mini_tablet_view{
+                    font-size: 1.2rem;
+                }
+                & + .a--h2rich-maincopy{
+                    margin-bottom: 6px;
+                    margin-top: -1px;
+                    @include s.mini_tablet_view{
+                        margin-bottom: 5px;
+                        margin-top: -3px;
+                    }
+                }
+            }
+        }
+        .c--h2rich-decoration{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .a--h2rich-image{
+                width: 60px;
+                height: 60px;
+                @include s.sp{
+                    width: 50px;
+                    height: 50px;
+                }
+                img{
+                    width: 60px;
+                    height: 60px;
+                    @include s.sp{
+                        width: 50px;
+                        height: 50px;
+                    }
+                }
+            }
+            .a--h2rich-number{
+                width: 33px;
+                @include s.mini_tablet_view{
+                    width: 45px;
+                }
+            }
+        }
+        &.d--h2rich-style2{
+            padding-bottom: 6px;
+        }
+        &.d--h2rich-style3{
+            padding: 9px 6px;
+            &.d--h2rich-image{
+                padding: 6px;
+            }
+        }
+    }
+    &.d--h2rich-center{
+        text-align: center;
+        flex-direction: column;
+        margin: s.$double_margin 0 s.$double_margin * 1.2 0;
+        @include s.sp{
+            margin: s.$double_margin 0;
+        }
+        .c--h2rich-contents{
+            margin-top: 6px;
+            @include s.mini_tablet_view{
+                margin-top: 9px;
+            }
+            .a--h2rich-maincopy {
+                font-size: 2.1rem;
+                margin-top: 6px;
+                line-height: 1.2;
+                letter-spacing: 0.36rem;
+                @include s.mini_tablet_view{
+                    margin-bottom: 1px;
+                    font-size: 2.4rem;
+                    line-height: 1.3;
+                }
+                @include s.tablet{
+                    font-size: 2.7rem;
+                }
+            }
+        }
+        .c--h2rich-decoration{
+            width: 100%;
+            max-width: 100%;
+            .a--h2rich-icon{
+                margin-top: 9px;
+                margin-bottom: 3px;
+            }
+            .a--h2rich-image{
+                width: 75px;
+                height: 75px;
+                margin-bottom: -6px;
+                @include s.sp{
+                    width: 60px;
+                    height: 60px;
+                }
+                img{
+                    width: 75px;
+                    height: 75px;
+                    @include s.sp{
+                        width: 60px;
+                        height: 60px;
+                    }
+                }
+            }
+            .a--h2rich-number {
+                margin-bottom: -6px;
+            }
+            & + .c--h2rich-contents{
+                width: 100%;
+                margin-left: auto;
+                @include s.pc_view{
+                    width: 100%;
+                    margin-left: auto;
+                }
+                .a--h2rich-maincopy {
+                    margin-top: 6px;
+                    letter-spacing: 0.36rem;
+                    margin-bottom: 3px;
+                }
+            }
+        }
+        &.d--h2rich-style2{
+            margin: s.$double_margin 0;
+            padding-bottom: 18px;
+            @include s.sp{
+                margin: s.$double_margin 0 s.$base_margin 0;
+                padding-bottom: 12px;
+            }
+        }
+        &.d--h2rich-style3{
+            margin: s.$double_margin 0;
+            padding: 12px;
+            @include s.sp{
+                margin: s.$double_margin 0 s.$base_margin 0;
+                padding: 9px 0 12px 0;
+            }
+        }
+    }
+}
+
+
+.d--h2rich-style2 {
+    &.d--titledesign-weight-thin{
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+    }
+    &.d--titledesign-weight-normal{
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+    }
+    &.d--titledesign-weight-bold{
+        border-bottom-style: solid;
+        border-bottom-width: 4px;
+    }
+}
+.d--h2rich-style3 {
+    &.d--h2rich-left{
+        &.d--titledesign-weight-thin{   
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-top-style: solid;
+            border-top-width: 1px;
+        }
+        &.d--titledesign-weight-normal{
+            border-bottom-style: solid;
+            border-bottom-width: 2px;
+            border-top-style: solid;
+            border-top-width: 2px;
+        }
+        &.d--titledesign-weight-bold{
+            border-bottom-style: solid;
+            border-bottom-width: 4px;
+            border-top-style: solid;
+            border-top-width: 4px;
+        }
+    }
+    &.d--h2rich-center{
+        position: relative;
+        &:not(.d--h2rich-none) {
+            .a--h2rich-decoration-before{
+                position: absolute;
+                content: "";
+                width: calc( ( 100% - 110px ) / 2 );
+                left: 0;
+                @include s.sp{
+                    width: calc( ( 100% - 81px ) / 2 );
+                }
+            }
+            .a--h2rich-decoration-after{
+                position: absolute;
+                content: "";
+                width: calc( ( 100% - 110px ) / 2 );
+                right: 0;
+                @include s.sp{
+                    width: calc( ( 100% - 81px ) / 2 );
+                }
+            }
+            &.d--h2rich-icon{
+                .a--h2rich-decoration-before,
+                .a--h2rich-decoration-after{
+                    top: 51px;
+                    @include s.sp{
+                        top: 42px;
+                    }
+                }
+            }
+            &.d--h2rich-image{
+                .a--h2rich-decoration-before,
+                .a--h2rich-decoration-after{
+                    top: 63px;
+                    @include s.sp{
+                        top: 51px;
+                    }
+                }
+            }
+            &.d--h2rich-number{
+                .a--h2rich-decoration-before,
+                .a--h2rich-decoration-after{
+                    top: 51px;
+                    @include s.sp{
+                        top: 36px;
+                    }
+                }
+            }
+            &.d--titledesign-weight-thin{
+                border-bottom-style: solid;
+                border-bottom-width: 1px;
+                .a--h2rich-decoration-before,
+                .a--h2rich-decoration-after{
+                    height: 1px;
+                }
+            }
+            &.d--titledesign-weight-normal{
+                border-bottom-style: solid;
+                border-bottom-width: 2px;
+                .a--h2rich-decoration-before,
+                .a--h2rich-decoration-after{
+                    height: 2px;
+                }
+            }
+            &.d--titledesign-weight-bold{
+                border-bottom-style: solid;
+                border-bottom-width: 4px;
+                .a--h2rich-decoration-before,
+                .a--h2rich-decoration-after{
+                    height: 4px;
+                }
+            }
+        }
+        &.d--h2rich-none{
+            &.d--titledesign-weight-thin{
+                border-bottom-style: solid;
+                border-bottom-width: 1px;
+                border-top-style: solid;
+                border-top-width: 1px;
+            }
+            &.d--titledesign-weight-normal{
+                border-bottom-style: solid;
+                border-bottom-width: 2px;
+                border-top-style: solid;
+                border-top-width: 2px;
+            }
+            &.d--titledesign-weight-bold{
+                border-bottom-style: solid;
+                border-bottom-width: 4px;
+                border-top-style: solid;
+                border-top-width: 4px;
+            }
+        }
+    }
+}

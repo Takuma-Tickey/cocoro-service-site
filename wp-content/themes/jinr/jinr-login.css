@@ -1,0 +1,122 @@
+/* CSS Document */
+body.login.login-action-rp,
+body.login.login-action-resetpass {
+  background-color: rgba(35, 35, 35, 0.1);
+}
+
+.login-action-rp h1,
+.login-action-resetpass h1 {
+  padding-top: 48px;
+}
+
+.login-action-rp #login,
+.login-action-resetpass #login {
+  width: 420px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: auto;
+  padding: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+  background-color: #fff;
+  border-radius: 8px;
+  will-change: opacity;
+}
+
+.login-action-rp form#resetpassform,
+.login-action-resetpass form#resetpassform {
+  border: none;
+  margin: 0;
+  padding: 12px 48px 32px;
+  box-shadow: none;
+  border-radius: 0 0 8px 8px;
+}
+
+.login-action-rp input#pass1,
+.login-action-resetpass input#pass1 {
+  width: 100%;
+  border: none;
+  box-sizing: border-box;
+  padding: 12px;
+  letter-spacing: 0.1em;
+  background: #F1F1F1;
+  border-radius: 5px;
+  background-color: #F1F1F1;
+  margin-bottom: 12px;
+}
+
+.login-action-rp label,
+.login-action-resetpass label {
+  display: inline-block;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.login-action-rp .description.indicator-hint,
+.login-action-resetpass .description.indicator-hint {
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 20px;
+}
+
+.login-action-rp div#login_error,
+.login-action-resetpass div#login_error {
+  border: none;
+  box-shadow: none;
+  color: #d63638;
+  padding: 0 40px;
+  margin: 12px 0;
+  font-size: 0.9rem;
+}
+
+.login-action-rp div#pass-strength-result,
+.login-action-rp button.button.button-secondary,
+.login-action-rp .wp-generate-pw.hide-if-no-js.skip-aria-expanded,
+.login-action-resetpass div#pass-strength-result,
+.login-action-resetpass button.button.button-secondary,
+.login-action-resetpass .wp-generate-pw.hide-if-no-js.skip-aria-expanded {
+  display: none !important;
+}
+
+.login-action-rp #backtoblog,
+.login-action-rp .message.reset-pass,
+.login-action-rp #pass-strength-result,
+.login-action-rp p#nav,
+.login-action-rp #login_error,
+.login-action-resetpass #backtoblog,
+.login-action-resetpass #pass-strength-result,
+.login-action-resetpass p#nav {
+  display: none;
+}
+
+.login-action-rp #login h1 a,
+.login-action-resetpass #login h1 a {
+  background-size: contain;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.login-action-resetpass .reset-pass {
+  text-align: center;
+  border: none;
+  box-shadow: none;
+  padding: 10px 40px 40px;
+  font-size: 1rem;
+  margin: 0;
+}
+.login-action-resetpass .reset-pass a {
+  display: block;
+  text-align: center;
+  width: 100%;
+  background-color: #507EE5;
+  color: #fff;
+  margin: 20px 0 0 0;
+  padding: 16px 0;
+  border-radius: 5px;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+}

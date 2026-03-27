@@ -1,0 +1,156 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+@keyframes fadeInAnime {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fadeInAnime2 {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+#HeaderSearchFormWrapper{
+    position: absolute;
+    width: 96%;
+    @include s.mini_tablet_view{
+        width: 100%;
+    }
+}
+#HeaderSearchForm {
+    position: absolute;
+    overflow: hidden;
+    pointer-events: none;
+    top: 30px;
+    left: 0;
+    z-index: -1;
+    width: 96%;
+    @include s.shadow-m;
+    @include s.transition-slow;
+    @include s.mini_tablet_view{
+        width: 280px;
+        right: 0;
+        left: auto;
+    }
+    #JinrSearchBox{
+        display: flex;
+        align-items: center;
+    }
+    &.js--form-active {
+        pointer-events: all;
+        top: 21px;
+        opacity: 1;
+        z-index: 3;
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+    }
+    .a--searchform-input {
+		width: calc(100% - 39px);
+		padding: 12px 12px 11px;
+		font-size: 1.2rem;
+        border: none;
+        border-radius: 0!important;
+        margin: 0;
+		-webkit-appearance: none;
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        background: rgba($color: #fff, $alpha: 0.75);
+        color: s.$text_color;
+		&:focus {
+			outline: none;
+		}
+	}
+    input#JinrSearchSubmit {
+        position: absolute;
+        z-index: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 100%;
+        width: 39px;
+        padding: 4px 8px;
+        border: none;
+        border-radius: 0!important;
+        -webkit-appearance: none;
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        background: rgba($color: #fff, $alpha: 0.75);
+        cursor: pointer;
+    }
+    .jin-ifont-search{
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        color: s.$text_color;
+        pointer-events: none;
+    }
+}
+.d--header-layout1{
+    #headerSearch {
+        cursor: pointer;
+        animation-fill-mode: backwards;
+        animation-timing-function: ease;
+        animation-delay: 0.015s;
+        &.js--btn-active {
+            animation-name: fadeInAnime;
+            animation-duration: 0.9s;
+            animation-direction:normal;
+        }
+        &.js--btn-nonactive {
+            animation-name: fadeInAnime2;
+            animation-duration: 0.6s;
+            animation-direction:normal;
+        }
+    }
+}
+.d--header-layout2{
+    #headerSearch {
+        #headerSearchIcon{
+            cursor: pointer;
+            animation-fill-mode: backwards;
+            animation-timing-function: ease;
+            animation-delay: 0.015s;
+            margin-left: 1px;
+            font-size: 1.1em;
+            @include s.mini_tablet_view{
+                font-size: 1.2em;
+            }
+        }
+        &.js--btn-active {
+            #headerSearchIcon{
+                animation-name: fadeInAnime;
+                animation-duration: 0.6s;
+                animation-direction:normal;
+            }
+        }
+        &.js--btn-nonactive {
+            #headerSearchIcon{
+                animation-name: fadeInAnime2;
+                animation-duration: 0.6s;
+                animation-direction:normal;
+            }
+        }
+    }
+    #HeaderSearchFormWrapper{
+        top: 48px;
+    }
+    #HeaderSearchForm {
+        @include s.sp{
+            top: 12px;
+        }
+        &.js--form-active {
+            @include s.sp{
+                top: 3px;
+            }
+        }
+    }
+}

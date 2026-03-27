@@ -1,0 +1,139 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+@keyframes jinr-info-icon-animate { 
+    6% {
+        transform: translateX(0px);
+        @include s.sp {
+            top: 50%;
+            transform:translate(0px,-50%);
+        }
+        opacity: 1;
+    } 
+    100% {
+        transform: translateX(9px);
+        @include s.sp {
+            top: 50%;
+            transform:translate(9px,-50%);
+        }
+        opacity: 0;
+    } 
+}
+.o--informationbar{
+    position: relative;
+    z-index: 100;
+    &.d--information-type-textplusbutton{
+        padding:9px 9px 9px 15px;
+        @include s.mini_tablet_view {
+            padding:9px 42px;
+        }
+    }
+    &.d--information-type-textonlywithlink{
+        padding:9px 42px;
+        a:hover{
+            opacity: 0.6;
+        }
+        .c--informationbar{
+            position: relative;
+            flex-wrap: wrap;
+            text-align: center;
+            @include s.tablet{
+                flex-wrap: nowrap;
+            }
+            &::after{
+                content: "\e9ed";
+                font-family: "jin-icons";
+                font-size: 1.35rem;
+                position: absolute;
+                right: -24px;
+                animation-name:jinr-info-icon-animate;
+                animation-duration: 1.65s;
+                animation-delay:0.6s;
+                animation-fill-mode:forwards;
+                animation-timing-function: cubic-bezier(0.17,0.84,0.44,1);
+                animation-iteration-count: infinite;
+                opacity: 1;
+                @include s.mini_tablet_view {
+                    position: relative;
+                    font-size: 1.15rem;
+                }
+            }
+        }
+    }
+    .b--jinr-button{
+        margin: 0 3px 0 12px;
+        flex-shrink: 0;
+        .d--button-arrow{
+            margin-bottom: 0;
+            padding-top: 0;
+            line-height: 1;
+            a::after{
+                height: 9px;
+                bottom: -2px;
+                right: 3px;
+            }
+        }
+        .a--button-hover{
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+.c--informationbar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.06rem;
+    padding-bottom: 1px;
+}
+.d--information-text-small{
+    font-size: 1.1rem;
+    line-height: 1.3;
+    @include s.mini_tablet_view {
+        font-size: 1.2rem;
+    }
+}
+.d--information-text-large{
+    line-height: 1.3;
+}
+.d--information-text-large,
+.d--information-text-largewithunderline{
+    font-size: 1.35rem;
+    @include s.mini_tablet_view {
+        font-size: 1.5rem;
+    }
+}
+.d--information-text-largewithunderline{
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.42rem;
+}
+.d--informationbar-display-none-sp{
+    @include s.sp {
+        display: none;
+    }
+}
+.a--infomationbar-text2{
+    margin-left: 3px;
+    @include s.sp {
+        padding-top: 3px;
+    }
+}
+.d--transparent{//ヘッダーが透明の時の
+    & + .o--informationbar.d--information-position-bottom{
+        & + .o--jinr-mainvisual{
+            .o--slider-contents-wrapper{
+                @include s.sp {
+                    padding-top: 21px;
+                }
+            }
+            .o--slider-contents{
+                margin-top: 0px;
+                @include s.mini_tablet_view{
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+}

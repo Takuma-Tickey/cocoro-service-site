@@ -1,0 +1,59 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+#pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 15px;
+  margin-top: -15px;
+  @include s.tablet {
+    padding-bottom: 30px;
+  }
+}
+.pagination-item {
+  margin: 0 8px;
+  a {
+    position: relative;
+    display: block;
+    background: #f3f3f3;
+    font-size: 1.4rem;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    text-align: center;
+    @include s.transition-slow;
+    @include s.tablet {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
+.page-count-num {
+  @include s.transition-slow;
+  color: s.$text_color;
+  line-height: 3.8rem;
+}
+.pagination-item:not([class*="page-current"]) {
+  a:hover {
+    @include s.transition-slow;
+    transform: scale(1.2);
+    background: s.$accent_color;
+    .page-count-num {
+      color: #fff;
+    }
+  }
+}
+.page-current {
+  a {
+    transform: scale(1.2);
+    background: s.$theme_color;
+    cursor: default;
+    pointer-events: none;
+    .page-count-num {
+      color: #fff;
+    }
+  }
+}

@@ -1,0 +1,505 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+@use "sass:math";
+
+// 吹き出しブロック出力マークアップへのCSS
+
+/**
+* 基本のマークアップ
+*/
+
+.o--jinr-fukidashi {
+    display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	margin:math.div(s.$base_margin , 2) auto;
+	padding: math.div(s.$base_margin , 2) 0;
+	@include s.sp{
+		width: 100%;
+	}
+	@include s.mini_tablet{
+		width: calc(100% - #{s.$double_margin} * 2);
+	}
+	@include s.tablet{
+		width: calc(100% - #{s.$double_margin} * 2);
+	}
+    .c--fukidashi-img-box {
+		text-align: center;
+		position: relative;
+		.a--fukidashi-img{
+			border-radius: 50%;
+			overflow: hidden;
+			width: s.$default_img_size_sp;
+			height: s.$default_img_size_sp;
+			position: relative;
+			margin: 0 auto;
+			@include s.mini_tablet_view{
+				width: s.$default_img_size;
+				height: s.$default_img_size;
+			}
+			img{
+				position: absolute;
+				height: auto;
+				top: 50%;
+				left: 50%;
+				z-index: 200;
+				width: 100%;
+				border-radius: 50%;
+				width: s.$default_img_size_sp;
+				height: s.$default_img_size_sp;
+				object-fit: cover;
+				transform: translateY(-50%) translateX(-50%) scale(0.9);
+				@include s.mini_tablet_view{
+					width: s.$default_img_size;
+					height: s.$default_img_size;
+				}
+			}
+			&:not(.d--fukidashi-img-transparent){
+				z-index: 100;
+				background-color: #fff;
+			}
+			&.d--fukidashi-img-transparent{
+				border-radius: 0;
+				img{
+					border-radius: 0;
+				}
+			}
+		}
+		.a--fukidashi-img-circle{
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			border-radius: 50%;
+		}
+		.a--fukidashi-icon-name {
+			line-height: 1.1;
+			text-align: center;
+			display: block;
+			padding-top: 8px;
+			font-size: 1rem;
+			width: s.$default_img_size_sp;
+			margin: 0 auto;
+			@include s.mini_tablet_view{
+				width: s.$default_img_size;
+				line-height: 1.2;
+			}
+		}
+	}
+    .c--fukidashi-contents {
+		flex-grow: 1;
+		min-height: 60px;
+		position: relative;
+		padding: 0px 18px;
+		border-radius: 6px;
+		@include s.mini_tablet_view{
+			min-height: 78px;
+			padding: 2px 2.5rem;
+		}
+	}
+	// 枠線がある場合
+	&.d--fukidashi-border-thin{
+		.c--fukidashi-contents{
+			border: 1px solid;
+		}
+		.a--fukidashi-img-circle{
+			height: s.$default_img_size_sp + 2px;
+			width: s.$default_img_size_sp + 2px;
+			top: -1px;
+			@include s.mini_tablet_view{
+				height: s.$default_img_size + 2px;
+				width: s.$default_img_size + 2px;
+			}
+		}
+	}
+	&.d--fukidashi-border-normal{
+		.c--fukidashi-contents{
+			border: 2px solid;
+		}
+		.a--fukidashi-img-circle{
+			height: s.$default_img_size_sp + 4px;
+			width: s.$default_img_size_sp + 4px;
+			top: -2px;
+			@include s.mini_tablet_view{
+				height: s.$default_img_size + 4px;
+				width: s.$default_img_size + 4px;
+			}
+		}
+	}
+	&.d--fukidashi-border-bold{
+		.c--fukidashi-contents{
+			border: 3px solid;
+		}
+		.a--fukidashi-img-circle{
+			height: s.$default_img_size_sp + 6px;
+			width: s.$default_img_size_sp + 6px;
+			top: -3px;
+			@include s.mini_tablet_view{
+				height: s.$default_img_size + 6px;
+				width: s.$default_img_size + 6px;
+			}
+		}
+	}
+	&.d--border-transparent{
+		.c--fukidashi-contents{
+			border: 3px solid transparent!important;
+		}
+	}
+	&.d--fukidashi-img-transparent{
+		.a--fukidashi-img-circle{
+			height: s.$default_img_size_sp;
+			width: s.$default_img_size_sp;
+			top: 0;
+			@include s.mini_tablet_view{
+				height: s.$default_img_size;
+				width: s.$default_img_size;
+			}
+		}
+	}
+}
+// 吹き出し（三角タイプ）
+.d--fukidashi-chat{
+	.c--fukidashi-contents{
+		position: relative;
+	}
+	.a--fukidashi-parts-after{
+		z-index: 200;
+	}
+	.a--fukidashi-parts-after,
+	.a--fukidashi-parts-before{
+		position: absolute;
+		border-top: 8px solid transparent;
+		border-bottom: 8px solid transparent;
+		top: 29px;
+		@include s.sp{
+			top: 20px;
+		}
+	}
+	&.d--fukidashi-right{
+		.a--fukidashi-parts-after,
+		.a--fukidashi-parts-before{
+			border-left: 15px solid;
+		}
+		.a--fukidashi-parts-before{
+			right: -15px;
+		}
+		&.d--fukidashi-border-thin{
+			.a--fukidashi-parts-after{
+				right: -13px;
+			}
+		}
+		&.d--fukidashi-border-normal{
+			.a--fukidashi-parts-after{
+				right: -11px;
+			}
+		}
+		&.d--fukidashi-border-bold{
+			.a--fukidashi-parts-after{
+				right: -9px;
+			}
+		}
+		&.d--border-transparent{
+			.a--fukidashi-parts-before{
+				display: none;
+			}
+			.a--fukidashi-parts-after{
+				border-left: 16px solid;
+				right: -16px;
+			}
+		}
+	}
+	&.d--fukidashi-left{
+		.a--fukidashi-parts-after,
+		.a--fukidashi-parts-before{
+			border-right: 15px solid;
+		}
+		.a--fukidashi-parts-before{
+			left: -15px;
+		}
+		&.d--fukidashi-border-thin{
+			.a--fukidashi-parts-after{
+				left: -13px;
+			}
+		}
+		&.d--fukidashi-border-normal{
+			.a--fukidashi-parts-after{
+				left: -11px;
+			}
+		}
+		&.d--fukidashi-border-bold{
+			.a--fukidashi-parts-after{
+				left: -9px;
+			}
+		}
+		&.d--border-transparent{
+			.a--fukidashi-parts-before{
+				display: none;
+			}
+			.a--fukidashi-parts-after{
+				left: -16px;
+			}
+		}
+	}
+}
+
+// 吹き出し（心の声）
+.d--fukidashi-innervoice{
+	.a--fukidashi-parts-before,
+	.a--fukidashi-parts-after{
+		position: absolute;
+		border-radius: 50%;
+	}
+	&.d--fukidashi-border-thin{
+		.a--fukidashi-parts-before,
+		.a--fukidashi-parts-after{
+			border: 1px solid;
+		}
+	}
+	&.d--fukidashi-border-normal{
+		.a--fukidashi-parts-before,
+		.a--fukidashi-parts-after{
+			border: 2px solid;
+		}
+	}
+	&.d--fukidashi-border-bold{
+		.a--fukidashi-parts-before,
+		.a--fukidashi-parts-after{
+			border: 3px solid;
+		}
+	}
+	&.d--border-transparent{
+		.a--fukidashi-parts-before,
+		.a--fukidashi-parts-after{
+			border: 3px solid transparent!important;
+		}
+	}
+	.a--fukidashi-parts-before{
+		top: 31px;
+		width: 15px;
+		height: 15px;
+		@include s.mini_tablet_view{
+			top: 51px;
+			width: 15px;
+			height: 15px;
+		}
+	}
+	.a--fukidashi-parts-after{
+		top: 45px;
+		width: 8px;
+		height: 8px;
+		@include s.mini_tablet_view{
+			top: 63px;
+			width: 9px;
+			height: 9px;
+		}
+	}
+	&.d--fukidashi-right{
+		.a--fukidashi-parts-before{
+			right: -19px;
+			@include s.mini_tablet_view{
+				right: -20px;
+			}
+		}
+		.a--fukidashi-parts-after{
+			right: -25px;
+			@include s.mini_tablet_view{
+				right: -29px;
+			}
+		}
+	}
+	&.d--fukidashi-left{
+		.a--fukidashi-parts-before{
+			left: -19px;
+			@include s.mini_tablet_view{
+				left: -20px;
+			}
+		}
+		.a--fukidashi-parts-after{
+			left: -25px;
+			@include s.mini_tablet_view{
+				left: -29px;
+			}
+		}
+	}
+}
+
+// 吹き出し（対談形式）
+.d--fukidashi-interview{
+	position: relative;
+	margin: 51px auto 0 auto;
+	.c--fukidashi-img-box{
+		position: absolute;
+		width: auto;
+		display: flex;
+		align-items: center;
+		z-index: 100;
+		top: -36px;
+		max-width: none;
+		.a--fukidashi-icon-name{
+			font-size: 1.1rem;
+			width: 200px;
+			padding-top: 0px;
+			margin-bottom: 6px;
+			@include s.mini_tablet_view{
+				margin-bottom: 18px;
+			}
+		}
+		.a--fukidashi-img{
+			width: s.$interview_img_size_sp;
+			height: s.$interview_img_size_sp;
+			@include s.mini_tablet_view{
+				width: s.$interview_img_size;
+				height: s.$interview_img_size;
+			}
+			img{
+				width: s.$interview_img_size_sp;
+				height: s.$interview_img_size_sp;
+				@include s.mini_tablet_view{
+					width: s.$interview_img_size;
+					height: s.$interview_img_size;
+				}
+			}
+		}
+	}
+	&.d--fukidashi-border-thin{
+		.a--fukidashi-img-circle{
+			height: s.$interview_img_size_sp + 2px;
+			width: s.$interview_img_size_sp + 2px;
+			@include s.mini_tablet_view{
+				height: s.$interview_img_size + 2px;
+				width: s.$interview_img_size + 2px;
+			}
+		}
+	}
+	&.d--fukidashi-border-normal{
+		.a--fukidashi-img-circle{
+			height: s.$interview_img_size_sp + 4px;
+			width: s.$interview_img_size_sp + 4px;
+			@include s.mini_tablet_view{
+				height: s.$interview_img_size + 4px;
+				width: s.$interview_img_size + 4px;
+			}
+		}
+	}
+	&.d--fukidashi-border-bold{
+		.a--fukidashi-img-circle{
+			height: s.$interview_img_size_sp + 6px;
+			width: s.$interview_img_size_sp + 6px;
+			@include s.mini_tablet_view{
+				height: s.$interview_img_size + 6px;
+				width: s.$interview_img_size + 6px;
+			}
+		}
+	}
+	&.d--fukidashi-img-transparent{
+		.a--fukidashi-img-circle{
+			height: s.$interview_img_size_sp;
+			width: s.$interview_img_size_sp;
+			@include s.mini_tablet_view{
+				height: s.$interview_img_size;
+				width: s.$interview_img_size;
+			}
+		}
+	}
+	.c--fukidashi-contents{
+		width: 100%;
+		padding: 9px 22px;
+		@include s.mini_tablet_view{
+			padding: 9px 36px;
+		}
+	}
+	&.d--fukidashi-right{
+		.c--fukidashi-img-box{
+			flex-direction: row-reverse;
+			right: -6px;
+			@include s.mini_tablet_view{
+				right: -27px;
+			}
+			.a--fukidashi-icon-name{
+				text-align: right;
+				padding-right: 6px;
+				@include s.mini_tablet_view{
+					padding-right: 8px;
+				}
+			}
+		}
+		&.d--fukidashi-border-thin{
+			.a--fukidashi-img-circle{
+				left: auto;
+				right: -1px;
+				transform: translateX(0%);
+			}
+		}
+		&.d--fukidashi-border-normal{
+			.a--fukidashi-img-circle{
+				left: auto;
+				right: -2px;
+				transform: translateX(0%);
+			}
+		}
+		&.d--fukidashi-border-bold{
+			.a--fukidashi-img-circle{
+				left: auto;
+				right: -3px;
+				transform: translateX(0%);
+			}
+		}
+	}
+	&.d--fukidashi-left{
+		.c--fukidashi-img-box{
+			left: -6px;
+			@include s.mini_tablet_view{
+				left: -27px;
+			}
+			.a--fukidashi-icon-name{
+				text-align: left;
+				padding-left: 6px;
+				@include s.mini_tablet_view{
+					padding-left: 8px;
+				}
+			}
+		}
+		&.d--fukidashi-border-thin{
+			.a--fukidashi-img-circle{
+				left: -1px;
+				transform: translateX(0%);
+			}
+		}
+		&.d--fukidashi-border-normal{
+			.a--fukidashi-img-circle{
+				left: -2px;
+				transform: translateX(0%);
+			}
+		}
+		&.d--fukidashi-border-bold{
+			.a--fukidashi-img-circle{
+				left: -3px;
+				transform: translateX(0%);
+			}
+		}
+	}
+}
+
+// 吹き出しの位置
+.o--jinr-fukidashi {
+	// アイコンが右側にくる場合
+	&.d--fukidashi-right {
+		flex-direction: row-reverse;
+		.c--fukidashi-img-box {
+			margin-right: 0;
+			margin-left: 24px;
+			@include s.sp{
+				margin-left: 21px;
+			}
+		}
+	}
+	// アイコンが左側にくる場合
+	&.d--fukidashi-left {
+		.c--fukidashi-img-box {
+			margin-right: 24px;
+			@include s.sp{
+				margin-right: 21px;
+			}
+		}
+	}
+}

@@ -1,0 +1,20 @@
+.DS_Store
+*.log
+
+# Secrets / local-only files
+wp-config.php
+phpinfo.php
+
+# Runtime/generated or heavy data
+wp-content/uploads/
+wp-content/ewww/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/upgrade-temp-backup/
+wp-content/languages/
+wp-content/w3tc-config/
+
+# Temporary/backup artifacts
+wp-content/ai1wm-backups/
+wp-content/backups/
+.htaccess.bak

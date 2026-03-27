@@ -1,0 +1,131 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+#cvButton{
+    display: block;
+    width: 100%;
+    position: fixed;
+    bottom: -30px;
+    left: 0;
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    @include s.transition-slow;
+    @include s.mini_tablet_view{
+        display: none;
+    }
+    &.js--cvb-active{
+        pointer-events: all;
+        opacity: 1;
+        bottom: 0;
+    }
+}
+.o--cv-button{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: calc(100% - 30px);
+    margin: 15px auto;
+    padding: 12px 15px;
+    z-index: 1;
+    height: 65px;
+    &::after{
+        content: "\ea84";
+        font-family: "jin-icons";
+        font-size: 1.5rem;
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+.a--cv-button-shadow{
+    content: "";
+    position: absolute;
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    left: 15px;
+    top: 15px;
+    z-index: 0;
+    box-shadow:0 5px 15px 0px rgba($color: #aaa, $alpha: 0.39);
+    border-radius: 9px;
+}
+
+.a--cv-button-icon,
+.a--cv-button-image{
+    position: relative;
+    &::after{
+        content: "";
+        position: absolute;
+        right: 0;
+        width: 1px;
+        height: 100%;
+    }
+}
+.a--cv-button-image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 93px;
+    img{
+        width: inherit;
+        height: auto;
+    }
+    & + .c--cv-button-copy{
+        padding-left: 93px;
+    }
+}
+.a--cv-button-icon{
+    margin-right: 15px;
+    padding-right: 15px;
+    padding-left: 3px;
+    font-size: 3.3rem;
+    line-height: 1;
+}
+.c--cv-button-copy{
+    width: 100%;
+    padding-right: 30px;
+}
+.a--cv-button-subcopy{
+    font-size: 10px;
+    margin-bottom: 3px;
+}
+.a--cv-button-maincopy{
+    font-size: 14px;
+    letter-spacing: 0.03rem;
+    line-height: 1.25;
+}
+
+//画像利用時
+.d--image-need{
+    .o--cv-button{
+        overflow: hidden;
+    }
+}
+
+//アウトラインデザイン
+.d--spcv-outline{
+    .o--cv-button{
+        border-style: solid;
+        border-width: 1px;
+        background-color: rgba($color: #fff, $alpha: 0.75);
+        backdrop-filter: blur(9px);
+        -webkit-backdrop-filter: blur(9px);
+    }
+}
+
+//ベタ塗りデザイン
+
+.t--round-s{
+    .o--cv-button{
+        border-radius: s.$r_s;
+    }
+}
+.t--round-m,
+.t--round-l{
+    .o--cv-button{
+        border-radius: s.$r_m;
+    }
+}

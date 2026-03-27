@@ -1,0 +1,218 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+#jinrComment{
+    margin-top: clamp(24px,4vw,45px);
+    input,
+    textarea {
+        outline: none;
+    }
+    input[type="submit"]{
+        -webkit-appearance: none;
+        background: #f3f3f3;
+        border: 1px solid #f0f0f0;
+        color: #666;
+        font-family: inherit;
+        font-weight: inherit;
+        font-size: 13px;
+        text-align: center;
+        padding: 12px 60px;
+        @include s.shadow-s;
+    }
+}
+.comment-reply-title{
+    font-weight: normal;
+}
+.comment-notes{
+    display: none;
+}
+.c--comment-text,
+.c--comment-name,
+.c--comment-email{
+    width: 100%;
+}
+#commentText,
+#commentAuthor,
+#commentEmail,
+.c--comment-name,
+.c--comment-email{
+    box-sizing: border-box;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: 13px;
+}
+.c--comment-name,
+.c--comment-email{
+    margin-top: 9px;
+    @include s.mini_tablet_view{
+        margin-top: 12px;
+    }
+}
+#commentText,
+#commentAuthor,
+#commentEmail{
+    display: block;
+    padding: 12px;
+    border:1px solid #dedede;
+    width: inherit;
+    height: inherit;
+    color: #666;
+    &::placeholder{
+        color: #ccc;
+    }
+}
+#commentText{
+    display: block;
+    max-width: 100%;
+    min-height: 150px;
+    @include s.mini_tablet_view{
+        min-height: 120px;
+    }
+}
+.form-submit{
+    text-align: center;
+    @include s.sp{
+        margin-top: 2.4rem!important;
+    }
+}
+
+//コメント一覧
+#jinrCommentList{
+    margin-top: 4.8rem;
+    @include s.mini_tablet_view{
+        margin-top: 6rem;
+    }
+}
+.o--comment-item{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 9px;
+    @include s.sp{
+        position: relative;
+    }
+    .c--comment-author-image{
+        width: 45px;
+        @include s.mini_tablet_view{
+            width: clamp(60px,8vw,75px);
+        }
+        img{
+            border-radius: 50%;
+        }
+    }
+    .children{
+        width: 100%;
+        .o--comment-item.depth-2{
+            padding-left: 45px;
+            @include s.mini_tablet_view{
+                padding-left: clamp(75px,9vw,90px);
+            }
+            .c--comment-author-image{
+                @include s.mini_tablet_view{
+                    width: clamp(45px,6.6vw,60px);
+                }
+            }
+            & > .c--comment-meta{
+                .a--comment-user-name,
+                .a--comment-date{
+                    @include s.sp{
+                        left: 105px;
+                    }
+                }
+            }
+        }
+    }
+}
+.a--comment-reply{
+    width: 100%;
+    text-align: right;
+    margin-top: -3px;
+}
+.a--comment-approve{
+    font-style: italic;
+}
+.comment-edit-link,
+.comment-reply-link{
+    border-bottom-style:solid ;
+    border-bottom-width:1px ;
+    padding-bottom: 3px;
+}
+.comment-reply-link{
+    font-size: 12px;
+    @include s.mini_tablet_view{
+        font-size: 13px;
+    }
+}
+.a--comment-date{
+    color: #999;
+    letter-spacing: 0.15rem;
+    font-size: 12px;
+    font-weight: 200;
+    text-align: right;
+    @include s.sp{
+        top: 24px;
+        font-size: 10px;
+    }
+    @include s.mini_tablet_view{
+        margin-left: 12px;
+    }
+}
+.a--comment-user-name{
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    @include s.sp{
+        top: 3px;
+    }
+}
+.a--comment-user-name,
+.a--comment-date{
+    @include s.sp{
+        position: absolute;
+        left: 60px;
+    }
+}
+.c--comment-meta{
+    margin-top: -6px;
+    @include s.sp{
+        width: 100%;
+    }
+    @include s.mini_tablet_view{
+        flex: 1;
+        margin-left: 21px;
+    }
+    p{
+        font-size: 14px;
+        margin-bottom: 1rem!important;
+        margin-top: 1rem!important;
+        line-height: 1.65;
+        &:first-of-type{
+            margin-top: 18px!important;
+            @include s.mini_tablet_view{
+                margin-top: 9px!important;
+            }
+        }
+    }
+}
+
+.t--round-s{
+    .form-submit{
+        input[type="submit"]{
+            border-radius: s.$r_s;
+        }
+    }
+}
+.t--round-m{
+    .form-submit{
+        input[type="submit"]{
+            border-radius: s.$r_m;
+        }
+    }
+}
+.t--round-l{
+    .form-submit{
+        input[type="submit"]{
+            border-radius: s.$r_l;
+        }
+    }
+}

@@ -1,0 +1,131 @@
+@charset "utf-8";
+@use '../core/setting' as s;
+@use 'sass:math';
+
+.o--tab-titles {
+	display: flex;
+	flex-direction: row;
+	column-gap: 8px;
+	@include s.sp {
+		flex-wrap: wrap;
+		row-gap: 8px;
+	}
+}
+.c--tab-title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	cursor: pointer;
+	padding: 12px 16px;
+	text-align: center;
+	font-size: 1.4rem;
+	font-weight: 600;
+	line-height: 1.5;
+	letter-spacing: clamp(0.06rem, 0.21vw, 0.12rem);
+	@include s.sp {
+		font-size: 1.2rem;
+		padding: 8px 12px;
+		letter-spacing: 0.08em;
+	}
+}
+.o--tab-contents {
+	position: relative;
+}
+.c--tab-contents {
+	padding: 1px 0;
+	display: none;
+	margin-bottom: 0 !important;
+	margin-top: 0 !important;
+	p {
+		font-size: 0.95em;
+		line-height: 1.75em;
+		margin-top: 2.5rem !important;
+		margin-bottom: 2.5rem !important;
+		@include s.sp {
+			margin-top: 2.1rem !important;
+			margin-bottom: 2.1rem !important;
+		}
+	}
+	.b--jinr-box {
+		width: 100%;
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
+}
+.d--tab-design1 {
+	.c--tab-contents {
+		padding: 15px 36px;
+		border-top-width: 2px;
+		border-style: solid;
+		@include s.sp {
+			padding: 15px 30px;
+		}
+	}
+	.o--tab-titles {
+		overflow-x: scroll;
+		flex-wrap: nowrap;
+		padding-top: 3rem;
+	}
+	.c--tab-title {
+		flex-shrink: 0; /* 子要素が縮小しないようにする */
+	}
+}
+.d--tab-design2 {
+	.o--tab-titles {
+		padding-top: 3rem;
+		flex-wrap: wrap;
+		row-gap: 8px;
+	}
+	.c--tab-title {
+		flex-basis: calc(25% - 6px);
+		@include s.sp {
+			flex-basis: calc(50% - 4px);
+		}
+	}
+}
+
+.d--material-design {
+	.d--tab-design1 {
+		.c--tab-contents {
+			@include s.shadow-s;
+		}
+	}
+	.d--tab-design2 {
+		.c--tab-title {
+			will-change: transform;
+			transition: transform 0.3s;
+			box-shadow: 0 2px 6px 0px rgba(170, 170, 170, 0.15);
+			&:hover {
+				transform: scale(0.95);
+			}
+		}
+	}
+}
+.t--round-s {
+	.d--tab-design1 .c--tab-title {
+		border-top-right-radius: s.$r_s;
+		border-top-left-radius: s.$r_s;
+	}
+	.d--tab-design2 .c--tab-title {
+		border-radius: s.$r_s;
+	}
+}
+.t--round-m {
+	.d--tab-design1 .c--tab-title {
+		border-top-right-radius: s.$r_s;
+		border-top-left-radius: s.$r_s;
+	}
+	.d--tab-design2 .c--tab-title {
+		border-radius: s.$r_s;
+	}
+}
+.t--round-l {
+	.d--tab-design1 .c--tab-title {
+		border-top-right-radius: s.$r_m;
+		border-top-left-radius: s.$r_m;
+	}
+	.d--tab-design2 .c--tab-title {
+		border-radius: s.$r_m;
+	}
+}

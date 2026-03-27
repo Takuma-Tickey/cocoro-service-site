@@ -1,0 +1,215 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+.b--jinr-accordion {
+    margin: s.$base_margin auto;
+    @include s.mini_tablet_view{
+        margin: s.$double_margin auto;
+    }
+    .b--jinr-accordion-item {
+        position: relative; 
+    }
+    &.d--accordion-outline{
+        .b--jinr-accordion-item{ 
+            border-top-width: 1px;
+            border-top-style: solid;
+        }
+        .wp-block-jinr-blocks-accordionchild { 
+            &:last-child{
+                .b--jinr-accordion-item{ 
+                    border-bottom-width: 1px;
+                    border-bottom-style: solid;
+                }
+            }
+        }
+    }
+    &.d--accordion-solid{
+        .a--accordion-title{
+            border: none;
+        }
+        .a--accordion-title,
+        .a--acc-question {
+            color: #fff;
+        }
+        .a--accordion-toggle {
+            span{
+                background-color: #fff;
+            }
+        }
+        .c--accordion-contents {
+            border: none;
+        }
+        .b--jinr-accordion-item{
+            border-bottom:1px solid #fff;
+        }
+    }
+}
+
+// デフォルト
+.a--accordion-toggle {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 16px;
+    right: 15px;
+    pointer-events: none;
+    @include s.mini_tablet_view {
+        top: 21px;
+        right: 24px;
+    }
+    span {
+        display: block;
+        position: absolute;
+        border-radius: 2px;
+        @include s.transition($easing:ease-in-out);
+        &:first-of-type {
+            width: 2px;
+            height: 16px;
+            left: 8px;
+            top: 2px;
+            @include s.mini_tablet_view {
+                width: 2px;
+                height: 18px;
+                left: 8px;
+                top: 1px;
+            }
+        }
+        &:last-of-type {
+            width: 16px;
+            height: 2px;
+            top: 9px;
+            left: 1px;
+            @include s.mini_tablet_view {
+                width: 18px;
+                height: 2px;
+                top: 9px;
+                left: auto;
+            }
+        }
+    }
+    &.js-accordion-toggle {
+        span:first-of-type {
+            transform: rotate(-90deg);
+        }
+    }
+}
+.a--accordion-title {
+    padding: 15px 51px 15px 9px;
+    letter-spacing: 0.06rem;
+    font-size: 1em;
+    line-height: 1.35;
+    cursor: pointer;
+    @include s.mini_tablet_view {
+        padding: 21px 69px 21px 21px;
+        line-height: 1.35;
+    }
+    &.js-accordion-toggle {
+        &::before,
+        &::after {
+            transform: translate(-50%, -50%) rotate(-135deg);
+        }
+    }
+}
+.c--accordion-contents {
+    display: none;
+    padding: 6px 15px 15px 9px;
+    font-size: 0.95em;
+    line-height: 1.4;
+    @include s.mini_tablet_view {
+        font-size: 0.9em;
+        line-height: 1.6;
+        padding: 0px 21px 15px 21px;
+    }
+}
+
+// Q&A形式
+.a--acc-question {
+    display: none;
+}
+.d--accordion-qa {
+    .a--acc-question {
+        display: block;
+    }
+}
+.d--accordion-qa {
+    .a--acc-question{
+        position: absolute;
+        font-size: 2.1rem;
+        line-height: 1;
+        top: 15px;
+        left: 9px;
+        @include s.mini_tablet_view {
+            font-size: 2.4rem;
+            top: 18px;
+            left: 21px;
+        }
+    }
+    .a--accordion-title {
+        padding: 15px 51px 15px 39px;
+        @include s.mini_tablet_view {
+            padding: 21px 69px 21px 51px;
+        }
+    }
+    .c--accordion-contents {
+        position: relative;
+        padding: 6px 9px 15px 9px;
+        @include s.mini_tablet_view {
+            padding: 0px 18px 15px 18px;
+        }
+    }
+}
+.d--ef-none{
+    .d--accordion-qa {
+        .a--acc-question{
+            top: 14px;
+            @include s.mini_tablet_view {
+                top: 17px;
+            }
+        }
+    }
+}
+
+.d--accordion-solid{
+    &.d--accordion-qa,
+    &.d--accordion-default{
+        .c--accordion-contents {
+            padding-top: 12px;
+            padding-bottom: 24px;
+            @include s.mini_tablet_view {
+                padding-top: 15px;
+                padding-bottom: 30px;
+            }
+        }
+    }
+    @include s.sp {
+        &.d--accordion-default{
+            .a--accordion-title{
+                padding-left: 18px;
+                padding-right: 54px;
+            }
+            .c--accordion-contents {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+        }
+        &.d--accordion-qa{
+            .a--accordion-toggle{
+                right: 15px;
+            }
+            .a--acc-question{
+                left: 15px;
+            }
+            .a--accordion-title{
+                padding-left: 42px;
+                padding-right: 48px;
+            }
+            .c--accordion-contents {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+        }
+    }
+}
+
+

@@ -1,0 +1,762 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+@keyframes zoomIn {
+	0% {
+		transform: translate(-50%,-50%) scale(0.8);
+		opacity: 0;
+		visibility: hidden;
+	}
+	100% {
+		opacity: 1;
+		visibility: visible;
+		transform: translate(-50% ,-50%) scale(1);
+	}
+}
+
+@keyframes paidBgOpen {
+	0% {
+		opacity: 0;
+		visibility: hidden;
+		background-color: transparent;
+	}
+	100% {
+		opacity: 1;
+		visibility: visible;
+		background-color: rgba($color: #232323, $alpha: 0.27);
+	}
+}
+@keyframes paidBgClose {
+	0% {
+		opacity: 1;
+		visibility: visible;
+		background-color: rgba($color: #232323, $alpha: 0.27);
+	}
+	100% {
+		opacity: 0;
+		visibility: hidden;
+		background-color: transparent;
+	}
+}
+
+@keyframes slideOpen {
+	0% {
+		transform: translate(0%,-50%);
+		opacity: 0;
+		visibility: hidden;
+	}
+	100% {
+		opacity: 1;
+		visibility: visible;
+		transform: translate(-50%,-50%);
+	}
+}
+
+@keyframes slideClose {
+	0% {
+		transform: translate(-50%,-50%);
+		opacity: 1;
+		visibility: visible;
+	}
+	100% {
+		opacity: 0;
+		visibility: hidden;
+		transform: translate(-100%,-50%);
+		z-index: 100;
+	}
+}
+@keyframes check {
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+// ブロック設定
+// 商品IDは見えないようにする
+.jinr-paidpost-id{
+	display: none;
+}
+.b--paidpost-more{
+	text-align: center;
+}
+.b--paidpost-remaining {
+    font-size: 1.1rem;
+	margin-top: 16px;
+}
+.b--paidpost-foradmin {
+    line-height: 1.75;
+	text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+	margin-top: 12px;
+    color: #ff5151;
+}
+.b--paidpost-more {
+	.b--jinr-block.b--jinr-button{
+		margin-top: 2rem;
+	}
+}
+
+#postContent p.a--paidpost-already {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+#postContent p.a--paidpost-cancel{
+	text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+	.a--paidpost-btn{
+		font-size: 1.3rem;
+		display: inline-block;
+		text-decoration: underline;
+		&:hover{
+			cursor: pointer;
+		}
+	}
+}
+.b--jinr-paid-container{
+	position: relative;
+    text-align: center;
+    white-space: nowrap;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content:space-between;
+	margin-top: 60px;
+	&:before{
+		content: "";
+		width: 100%;
+		height: 1px;
+		background-size: 12px 1px;
+		background-position: left bottom;
+		background-repeat: repeat-x;
+	}
+	.b--jinr-paid-text{
+		position: absolute;
+		border: 1px solid #ccc;
+		padding: 6px 12px;
+		font-size: 1rem;
+		font-weight: bold;
+		text-align: center;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background: #fff;
+		box-shadow: 0 0 0px 15px #fff;
+	}
+}
+span.b--jinr-price{
+	margin-left: 27px;
+	position: relative;
+	display: inline-block;
+	align-items: center;
+	flex-wrap: nowrap;
+	font-size: 0.9em;
+	font-weight: 300;
+	&::before{
+		content: "";
+		display: inline-block;
+		height: 18px;
+		width: 1px;
+		position: absolute;
+		top: 50%;
+		left: -14px;
+		transform: translateY(-50%);
+		opacity: 0.75;
+	}
+}
+.t--round-s{
+	.b--jinr-paid-text{
+		border-radius: 2px;
+	}
+}
+.t--round-m{
+	.b--jinr-paid-text{
+		border-radius: 3px;
+	}
+}
+.t--round-l{
+	.b--jinr-paid-text{
+		border-radius: 4px;
+	}
+}
+#JinrPaidContents .b--jinr-button {
+    margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+#JinrPaidPopUpRegisterWrapper,
+#JinrPaidpostCancelWrapper {
+	color: #555;
+	width: 90%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin: auto;
+    transform: translate(-50%,-50%) scale(0.8);
+	background-color: #fff;
+	opacity: 0;
+	visibility: hidden;
+	border-radius: 8px;
+	will-change: opacity, transform;
+	&.a--paidpost-popup{
+		z-index: 400;
+		animation: zoomIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) 1 forwards;
+	}
+	&.a--paidpost-open{
+		z-index: 400;
+		animation: slideOpen 0.4s cubic-bezier(0.22, 1, 0.36, 1) 1 forwards;
+	}
+	&.a--paidpost-close{
+		z-index: 400;
+		animation: slideClose 0.4s cubic-bezier(0.22, 1, 0.36, 1) 1 forwards;
+	}
+	@include s.tablet{
+		width: 420px;
+	}
+}
+#JinrPaidPopUpLoginWrapper,
+#JinrPaidPopUpLostpasswordWrapper{
+	color: #555;
+	width: 90%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin: auto;
+    transform: translate(-50%,-50%);
+	transition: opacity .3s cubic-bezier(0.22, 1, 0.36, 1) , transform .3s cubic-bezier(0.22, 1, 0.36, 1);
+	transition-delay : .2s;
+	background-color: #fff;
+	z-index: 0;
+	opacity: 0;
+	visibility: hidden;
+	border-radius: 8px;
+	will-change: opacity,transform;
+	&.a--paidpost-popup{
+		z-index: 400;
+		animation: zoomIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) 1 forwards;
+	}
+	&.a--paidpost-open{
+		z-index: 400;
+		animation: slideOpen 0.4s cubic-bezier(0.22, 1, 0.36, 1) 1 forwards;
+	}
+	&.a--paidpost-close{
+		z-index: 400;
+		animation: slideClose 0.4s cubic-bezier(0.22, 1, 0.36, 1) 1 forwards;
+	}
+	@include s.tablet{
+		width: 420px;
+	}
+}
+#JinrPaidPopupRegisterClose,
+#JinrPaidPopupLoginClose,
+#JinrPaidPopupLostClose,
+#JinrPaidPopupCancelClose {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    top: 0;
+    right: 0;
+	&:before,&:after{
+		position: absolute;
+		content: "";
+		width: 20px;
+		height: 1px;
+		background-color: #a1a1a1;
+		display: inline-block;
+		border-radius: 1px;
+		top: 24px;
+		right: 16px;
+	}
+	&:before{
+		transform: rotate(45deg);
+	}
+	&:after{
+		transform: rotate(-45deg);
+	}
+	&:hover{
+		cursor: pointer;
+	}
+}
+#JinrPopupBg {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+	opacity: 0;
+	background-color: transparent;
+	will-change: opacity;
+	&.a--paidpost-popup{
+		z-index: 300;
+		animation: paidBgOpen 0.4s cubic-bezier(0.22, 1, 0.36, 1) 1 forwards;
+	}
+}
+.JinrPaidpostForm{
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+	margin-bottom: 10px;
+	overflow: hidden;
+	@include s.tablet{
+		margin-bottom: 8px;
+	}
+	input{
+		width: calc(100% + 17%);
+		min-width: calc(100% + 17%);
+		font-size: 16px;
+		transform: scale(85%);
+		transform-origin: left center;
+		border: none;
+		box-sizing: border-box;
+		padding: 12px;
+		letter-spacing: 0.1em;
+		background: #F1F1F1;
+		border-radius: 5px;
+		background-color: #F1F1F1;
+		transition: background-color .3s;
+		-webkit-appearance: none;
+		&:focus-visible{
+			outline: 0;
+		}
+		&.jinr-lack-input {
+			background-color: #ffeded;
+		}
+		&.jinr-approval-input {
+			background-color: #f1ffec;
+		}
+		&:-webkit-autofill {
+			box-shadow: 0 0 0px 999px #F1F1F1 inset;
+			&.jinr-approval-input {
+				box-shadow: 0 0 0px 999px #f1ffec inset;
+			}
+		}
+		@include s.tablet{
+			width: 100%;
+		}
+	}
+}
+.jinr-paidpost-popup-register {
+	padding: 32px 25px 24px;
+	@include s.tablet{
+		padding: 40px 40px 24px;
+	}
+	button{
+		position: relative;
+		width: 100%;
+		border: none;
+		background-color: #507EE5;
+		color: #fff;
+		padding: 14px 0;
+		font-size: 1.35rem;
+		letter-spacing: 0.1em;
+		border-radius: 4px;
+		transition: background-color .3s;
+		cursor: pointer;
+		svg {
+			position: absolute;
+			top: 15px;
+			right: 15px;
+		}
+		&.a--register-complete {
+			background-color: rgb(36, 180, 126);
+		}
+		@include s.tablet{
+			padding: 16px 0;
+			font-size: 1.5rem;
+		}
+	}
+}
+#JinrpaidLogo {
+    text-align: center;
+	font-size: 2.1rem;
+}
+#paidLogoImage {
+	width: 100px;
+    margin: 0 auto;
+}
+#JinrLostpasswordCancel {
+	display: inline-block;
+    text-decoration: underline;
+    border-radius: 5px;
+    padding: 6px 12px;
+    margin-top: 12px;
+    margin-right: 4px;
+    font-size: 1.25rem;
+    color: #939393;
+    cursor: pointer;
+}
+.jinr-paidpost-register {
+	font-size: 1.3rem;
+	margin: 12px 0 16px;
+    text-align: center;
+    letter-spacing: 0.15em;
+	@include s.tablet{
+		font-size: 1.5rem;
+		margin: 16px 0 20px;
+	}
+}
+.jinr-paidpost-policy {
+	margin-bottom: 20px;
+	font-size: 1.15rem;
+	letter-spacing: 0.07em;
+	@include s.tablet{
+		font-size: 1.2rem;
+		letter-spacing: 0.04em;
+	}
+}
+.a--paidpost-scribe-check {
+    font-weight: bold;
+    color: #ff6464;
+    text-align: center;
+    margin-bottom: 10px;
+	font-size: 1.15rem;
+	letter-spacing: 0.07em;
+	@include s.tablet{
+		font-size: 1.2rem;
+		letter-spacing: 0.04em;
+	}
+}
+.jinr-paidpost-popup-login {
+    padding: 20px 40px 24px;
+    border-top: 1px solid #f1f1f1;
+    text-align: center;
+}
+.jinr-already-member {
+    font-size: 1.3rem;
+    letter-spacing: 0.05em;
+    padding: 12px 24px;
+    display: inline-block;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+	font-size: 1.2rem;
+	padding: 10px 20px;
+
+	@include s.tablet{
+		font-size: 1.3rem;
+		padding: 12px 24px;
+	}
+}
+.a--paidpost-lost-password {
+    display: block;
+    text-decoration: underline;
+    font-size: 1.2rem;
+    letter-spacing: 0.04em;
+    margin: 16px 0 0 0;
+    text-align: center;
+}
+.a--paidpost-text {
+	display: inline-block;
+    font-size: 1.2rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+}
+.a--pass-text {
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    display: block;
+    margin-top: 4px;
+	@include s.tablet{
+		letter-spacing: 0.07em;
+	}
+}
+.JinrPaidpostFormInner {
+	position: relative;
+    width: 100%;
+	margin-bottom: 2px;
+}
+.jinr-lack-content {
+    width: 100%;
+    display: block;
+	margin: 4px 0 8px;
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #f77f7f;
+    line-height: 1;
+    letter-spacing: 0.02em;
+	@include s.tablet{
+		margin: 6px 0 0;
+	}
+}
+#JinrRegisterPass + .jinr-lack-content {
+    margin-bottom: 6px;
+}
+.jinr-pass-text {
+    display: block;
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    line-height: 1.4rem;
+}
+button#JinrLoginButton + .jinr-lack-content {
+    margin-top: 12px;
+}
+.jinr-paidpost-link{
+	text-decoration: underline;
+}
+.jinr-paidpost-popup-lostpass {
+    text-align: center;
+}
+.jinr-paidpost-lostpass-text {
+    padding: 0 0 18px;
+    font-size: 1.3rem;
+    letter-spacing: 0.01em;
+    line-height: 1.65;
+    color: #767676;
+}
+.b--paidpost-help,
+.b--paidpost-invalid {
+    display: inline-block;
+    font-size: 12px;
+    font-style: normal;
+    color: rgb(117, 117, 117);
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+}
+.b--paidpost-invalid{
+	color: #f56d6d;
+}
+.a--paidpost-bold{
+
+}
+.a--paidpost-troubletext,
+.a--paidpost-sendtext {
+    margin-top: 16px;
+    font-size: 1.3rem;
+    letter-spacing: 0.01em;
+    line-height: 1.65;
+    color: #767676;
+    text-align: left;
+	a{
+		text-decoration: underline;
+	}
+}
+.a--paidpost-sendtext-invalid{
+	color: #767676;
+}
+.a--paidpost-innertext {
+    font-weight: bold;
+    display: block;
+    padding: 16px 0 0px;
+    margin: 0 0 4px;
+    border-top: 1px solid #b2b2b2;
+}
+.a--paidpost-check {
+	width: 32px;
+	height: 32px;
+    position: absolute;
+	top: 30px;
+    right: 8px;
+    transition: transform .5s;
+    transition-timing-function: cubic-bezier(.99,-.1,.01,1.02);
+    transform: translateX(48px);
+	&.jinr-approval-svg {
+		transform: translateX(0);
+		path{
+			stroke: #fff;
+			animation: check 2s cubic-bezier(.99,-.1,.01,1.02) forwards;
+		}
+	}
+	circle{
+		fill: #7ed191;
+	}
+}
+#JinrRegisterForm{
+	.a--paidpost-check {
+		top: 4px;
+	}
+}
+.jinr-no-scroll {
+	position: fixed;
+	left: 0;
+	right: 0;
+	overflow: hidden;
+}
+
+// 購入完了ページ
+.page-template-template-thanks-page #commonHeader,
+.page-template-template-thanks-page #commonFooter,
+.page-template-template-resetting #commonHeader,
+.page-template-template-resetting #commonFooter,
+.page-template-template-thanks-page .o--informationbar{
+    display: none;
+}
+body:not(.wp-admin).page-template-template-thanks-page #wrapper {
+    background-color: #fff;
+	background-image:none;
+}
+#thanksContent {
+	color: #555;
+	position: relative;
+    display: flex;
+	flex-wrap: wrap;
+    align-items: center;
+	padding-top: 56px;
+	height: 100vh;
+	@include s.mini_tablet_view{
+		padding-top: 0;
+	}
+	// @include s.pc_view{
+		
+	// }
+}
+#thanksMessage {
+	position: relative;
+	z-index: 200;
+    width: 100%;
+}
+#thanksLogoImage {
+    margin: 0 auto 24px;
+	width: 160px;
+	@include s.tablet{
+		margin: 0 auto 32px;
+		width: 200px;
+	}
+}
+.c--thanks-title {
+    font-size: 1.6rem;
+    letter-spacing: 0.04em;
+    text-align: center;
+	margin-bottom: 24px;
+}
+.a--thanks-subtitle {
+    display: block;
+    margin-top: 4px;
+    font-size: 1.25rem;
+    letter-spacing: 0.04em;
+}
+.o--paidpost-info {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e6e6e6;
+	&:last-of-type {
+		border-bottom: 0;
+		// margin-bottom: 0;
+		// padding-bottom: 0;
+	}
+}
+.o--scribe-contents{
+	margin-top: 24px;
+    margin-bottom: 0px;
+    padding-bottom: 16px;
+	&:last-of-type{
+		margin-top: 20px;
+	}
+	.c--info-text{
+		font-size: 1.35rem;
+	}
+}
+.o--paidpost-content{
+	max-width: 400px;
+	box-shadow: 0px 0 40px -20px rgba($color: #407efd, $alpha: 0.25);
+	padding: 24px;
+	margin: 0 auto 24px;
+	border-radius: 8px;
+	@include s.tablet{
+		max-width: 480px;
+		padding: 32px;
+	}
+}
+.o--thanks-content {
+    height: 100svh;
+	@include s.mini_tablet_view{
+		height: auto;
+	}
+	@include s.tablet{
+		width: 500px;
+		margin: 0 auto;
+	}
+
+}
+.c--info-title {
+    font-size: 1.45rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+	margin-bottom: 8px;
+	@include s.tablet{
+		font-size: 1.4rem;
+		margin-bottom: 4px;
+	}
+}
+.c--info-text {
+	font-size: 1.6rem;
+	line-height: 1.6;
+    letter-spacing: 0.03em;
+    color: #707070;
+	@include s.tablet{
+		font-size: 1.65rem;
+	}
+}
+.c--info-confirm {
+    font-size: 1.35rem;
+    margin-bottom: 20px;
+}
+.c--info-register {
+    margin: 24px;
+}
+.a--info-detail {
+    font-size: 1.3rem;
+    letter-spacing: 0.04em;
+    color: #acacac;
+    margin-bottom: 4px;
+}
+.a--info-login {
+	font-size: 1.4rem;
+    letter-spacing: 0.04em;
+	@include s.tablet{
+		font-size: 1.6rem;
+	}
+}
+.a--info-attention {
+    font-size: 1.2rem;
+	line-height: 1.55;
+    letter-spacing: 0.04em;
+}
+.a--paidpost-link {
+    width: 100%;
+    display: block;
+    padding: 20px;
+    text-align: center;
+    background-color: #407efd;
+    color: #fff;
+    border-radius: 8px;
+	box-shadow: 0 2px 6px 2px rgba(170, 170, 170, 0.32);
+    font-size: 1.55rem;
+    letter-spacing: 0.1em;
+	margin-bottom: 8px;
+	@include s.mini_tablet_view{
+		max-width: 300px;
+		margin: 0 auto;
+	}
+	@include s.tablet{
+		font-size: 1.7rem;
+	}
+}
+#paidpostLink{
+	opacity: 1;
+	transition: transform .3s, opacity .3s;
+	transform: translateY(0);
+	&:hover{
+		transform: translateY(-4px);
+		opacity: .9;
+	}
+	&:after {
+		content: "\e9ed";
+		font-family: "jin-icons";
+		font-size: 1.35rem;
+		position: absolute;
+		right: 24px;
+		top: 26px;
+		animation-name: jinr-info-icon-animate;
+		animation-duration: 1.65s;
+		animation-delay: 0.6s;
+		animation-fill-mode: forwards;
+		animation-timing-function: cubic-bezier(0.17, 0.84, 0.44, 1);
+		animation-iteration-count: infinite;
+		filter: opacity(1);
+	}
+}

@@ -1,0 +1,214 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+.o--jinr-slider{
+    & + #mainContent.d--main-style-outline{
+        margin-top: 15px;
+        @include s.mini_tablet_view {
+            margin-top: 12px;
+        }
+    }
+    & + #mainContent.d--main-style-noframe{
+        margin-top: 15px;
+        @include s.mini_tablet_view {
+            margin-top: 12px;
+        }
+    }
+    & + #mainContent.d--main-style-transparent{
+        margin-top: 18px;
+        @include s.mini_tablet_view {
+            margin-top: 30px;
+        }
+    }
+	.a--slider-item {
+        padding-bottom: 36px;
+        @include s.mini_tablet_view {
+            padding-bottom: 21px;
+        }
+	}
+}
+.o--jinr-imageslider{
+    & + #mainContent{
+        margin-top: 18px;
+        @include s.mini_tablet_view {
+            margin-top: 30px;
+        }
+    }
+    & + #mainContent.d--main-style-transparent{
+        margin-top: 18px;
+        @include s.mini_tablet_view {
+            margin-top: 42px;
+        }
+    }
+}
+.o--jinr-stillimage{
+	& + #mainContent:not(.d--main-style-noframe){
+        margin-top: 18px;
+        @include s.mini_tablet_view {
+            margin-top: 30px;
+        }
+    }
+}
+.o--jinr-movie{
+	& + #mainContent:not(.d--main-style-noframe){
+        margin-top: 0px;
+        @include s.mini_tablet_view {
+            margin-top: 0px;
+        }
+    }
+}
+
+//静止画
+//動画
+.o--jinr-stillimage,
+.o--jinr-movie{
+    position: relative;
+    z-index: 200;
+    padding-left: 0!important;
+    padding-right: 0!important;
+    max-width: 100%;
+    &+.d--main-style-outline{
+        margin-top: 12px;
+        @include s.mini_tablet_view{
+            margin-top: 30px;
+        }
+    }
+    .d--stillimage-overlay-blur .a--stillimage-overlay{
+        &+.a--stillimage{
+            transform: scale(1.05);
+            @include s.sp{
+                transform: scale(1.15);
+            }
+        }
+    }
+}
+.o--jinr-stillimage{
+    @include s.sp{
+        overflow: hidden;
+    }
+}
+.c--jinr-movie{
+    max-width: 100%;
+    width: 100%;
+    display: block;
+    @include s.sp{
+        object-fit: cover;
+    }
+}
+.c--stillimage-contents,
+.c--movie-contents{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: s.$pc_view_content;
+    .b--jinr-button{
+        @include s.sp{
+            margin-top: 3.6rem;
+        }
+    }
+}
+.c--stillimage{
+    position: relative;
+    overflow: hidden;
+}
+.d--stillimage-overlay-blur.c--stillimage::before{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+}
+.a--stillimage{
+    display: block;
+    margin:0 auto;
+    height: 100vh;
+    max-height: 1200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+.a--stillimage-overlay{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+.d--stillimage-overlay-blur .a--stillimage-overlay{
+    &+.a--stillimage{
+        position: relative;
+        filter: blur(6px);
+    }
+}
+
+.a--stillimage-button,
+.a--movie-button{
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+.a--stillimage-maincopy,
+.a--movie-maincopy{
+    width: 100%;
+    font-feature-settings: "palt";
+    letter-spacing: 0.42rem;
+    line-height: 1.45;
+}
+.a--stillimage-subcopy,
+.a--movie-subcopy{
+    width: 100%;
+    letter-spacing: 0.27rem;
+    @include s.sp{
+        padding-top:15px;
+    }
+    @include s.mini_tablet_view{
+        padding-top: 30px;
+        line-height: 1.8;
+    }
+    @include s.pc_view{
+        padding-bottom: 20px;
+    }
+}
+.d--stillimage-width100{
+    width: 100%;
+}
+.d--stillimage-text-shadow-s,
+.d--movie-text-shadow-s{
+    text-shadow: 0px 2px 6px rgba(0,0,0,0.24);
+}
+.d--stillimage-text-shadow-m,
+.d--movie-text-shadow-m{
+    text-shadow: 0px 4px 9px rgba(0,0,0,0.12);
+}
+.d--stillimage-text-shadow-l,
+.d--movie-text-shadow-l{
+    text-shadow: 0px 9px 21px rgba(0,0,0,0.12);
+}
+.d--stillimage-text-border-white,
+.d--movie-text-border-white{
+    text-shadow: 
+    2px  2px 1px #ffffff,
+    -2px  2px 1px #ffffff,
+    2px -2px 1px #ffffff,
+    -2px -2px 1px #ffffff,
+    2px  0px 1px #ffffff,
+    0px  2px 1px #ffffff,
+    -2px  0px 1px #ffffff,
+    0px -2px 1px #ffffff;
+}
+
+//フォント別調整
+.d--jpf-default{
+    .a--movie-maincopy,
+    .a--stillimage-maincopy{
+        font-weight: 400;
+        @include s.mini_tablet_view{
+            font-weight: 300;
+        }
+    }
+}
+.d--zenkakugothic{
+    .a--stillimage-maincopy,
+    .a--movie-maincopy{
+        letter-spacing: 0.25rem;
+    }
+}

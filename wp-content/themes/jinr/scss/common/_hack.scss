@@ -1,0 +1,216 @@
+/* CSS Document */
+@charset "utf-8";
+
+@use "../core/setting" as s;
+
+//SafariCSSハック
+
+//404ページ
+_::-webkit-full-page-media,
+_:future,
+:root #postContent .a--notfound-icon {
+	height: 59px;
+	@include s.sp {
+		height: 45px;
+	}
+}
+_::-webkit-full-page-media,
+_:future,
+:root #postContent .a--notfound-icon input#JinrSearchSubmit {
+	height: 56px;
+	@include s.sp {
+		height: 44px;
+	}
+}
+//スクロール問題
+_::-webkit-full-page-media,
+_:future,
+:root .d--postlist-slider {
+	overflow-x: scroll;
+}
+//noto sans
+.d--notosans-thin,
+.d--notoserif{
+	#postContent,
+	.o--widget-area{
+		ol.jinr-list{
+			& > li{
+				&::after{
+					top: 12px!important;
+					@include s.mini_tablet_view {
+						top: 14px!important;
+					}
+				}
+				&::before{
+					top: 2px!important;
+					@include s.mini_tablet_view {
+						top: 4px!important;
+					}
+				}
+				& > ul.jinr-list{
+					& > li{
+						&::after{
+							top: 0.9rem!important;
+							@include s.mini_tablet_view {
+								top: 1rem!important;
+							}
+						}
+					}
+				}
+				& > ol.jinr-list{
+					& > li{
+						&::after{
+							top: 3px!important;
+							@include s.mini_tablet_view {
+								top: 5px!important;
+							}
+						}
+					}
+				}
+			}
+		}
+		ul.jinr-list{
+			& > li{
+				&::after{
+					top: 0.95rem!important;
+					@include s.mini_tablet_view {
+						top: 1.15rem!important;
+					}
+				}
+				& > ol.jinr-list{
+					& > li{
+						&::after{
+							top: 4px!important;
+							@include s.mini_tablet_view {
+								top: 5px!important;
+							}
+						}
+					}
+				}
+				& > ul.jinr-list{
+					& > li{
+						&::after{
+							top: 1.05rem!important;
+							@include s.mini_tablet_view {
+								top: 1.2rem!important;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+//zen kaku gothic
+//shippori mincho
+.d--zenkakugothic,
+.d--shipporimincho,
+.d--kiwimaru{
+	#postContent,
+	.o--widget-area{
+		ol.jinr-list{
+			& > li{
+				&::after{
+					top: 12px!important;
+					@include s.mini_tablet_view {
+						top: 14px!important;
+					}
+				}
+				&::before{
+					top: 2px!important;
+					@include s.mini_tablet_view {
+						top: 4px!important;
+					}
+				}
+				& > ul.jinr-list{
+					& > li{
+						&::after{
+							top: 0.9rem!important;
+							@include s.mini_tablet_view {
+								top: 1rem!important;
+							}
+						}
+					}
+				}
+				& > ol.jinr-list{
+					& > li{
+						&::after{
+							top: 3px!important;
+							@include s.mini_tablet_view {
+								top: 5px!important;
+							}
+						}
+					}
+				}
+			}
+		}
+		ul.jinr-list{
+			& > li{
+				&::after{
+					top: 0.95rem!important;
+					@include s.mini_tablet_view {
+						top: 1.1rem!important;
+					}
+				}
+				& > ol.jinr-list{
+					& > li{
+						&::after{
+							top: 3px!important;
+							@include s.mini_tablet_view {
+								top: 4px!important;
+							}
+						}
+					}
+				}
+				& > ul.jinr-list{
+					& > li{
+						&::after{
+							top: 1.05rem!important;
+							@include s.mini_tablet_view {
+								top: 1.2rem!important;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//andoroid
+body.android{
+	#wrapper.d--jpf-default,
+	.d--jpf-default .editor-styles-wrapper,
+	.d--jpf-default .edit-post-visual-editor {
+		font-family: "Hiragino Sans","Hiragino Kaku Gothic ProN","メイリオ","Meiryo",sans-serif, "Noto Sans Emoji","Noto Sans", "Noto Sans CJK JP";
+		font-weight: 400;
+		.d--bold,
+		strong {
+			font-weight: bold;
+		}
+		.d--bold-sp {
+			@include s.sp {
+				font-weight: bold;
+			}
+		}
+		.d--bold-pc {
+			@include s.mini_tablet_view {
+				font-weight: bold;
+			}
+		}
+	}
+	#hamburgerMenu.d--hamburger-follow-on .o--hamburger-menu-inner{
+		@include s.sp {
+			height: 60%;
+		}
+	}
+	#hamburgerMenu .d--menu-follow-sns .o--ham-follow-sns{
+		@include s.sp {
+			bottom: 66px;
+		}
+	}
+}
+//rtoc
+#rtoc_return{
+	z-index: 200!important;
+}

@@ -1,0 +1,288 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+#commonFooter.d--footer-style1{
+	margin: 0;
+	&.t--round{
+		border-radius: 0;
+	}
+}
+#commonFooter{
+	&.js--cvb-display{
+		@include s.sp{
+			padding-bottom: 80px;
+		}
+    }
+}
+
+#breadCrumb {
+	margin: 0 auto;
+	width: 100%;
+	font-size: 1.1rem;
+	padding-top: 15px;
+	@include s.tablet{
+		padding-top: 21px;
+		font-size: 1.2rem;
+	}
+}
+#breadCrumbInner {
+	padding-left: 2px;
+	@include s.mini_tablet_view{
+		padding-bottom: 21px;
+	}
+	@include s.sp{
+		height: 30px;
+		overflow-x: scroll;
+		white-space: nowrap;
+	}
+}
+.c--breadcrumb-item {
+    display: inline-block;
+	letter-spacing: 0.06rem;
+	@include s.mini_tablet_view {
+		letter-spacing: 0.12rem;
+	}
+}
+.a--breadcrumb-parts{
+	opacity: 0.7;
+	display: inline-block;
+	transform: scale(0.66);
+	margin: 0 6px;
+	@include s.mini_tablet_view {
+		margin: 0 9px;
+	}
+}
+
+
+#commonFooterInner{
+	margin: 0 auto;
+}
+#footerInfo {
+	font-size: clamp(1.1rem, 1.2vw, 1.2rem);
+	padding:15px 0;
+	@include s.mini_tablet_view{
+		padding:21px 0;
+	}
+	@include s.tablet {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	#commonFooterSiteMenu{
+		margin: 0 auto;
+		@include s.tablet {
+			margin: 0;
+			margin-right: auto;
+			padding: 0;
+			max-width: 60%;
+		}
+	}
+	#copyright{
+		font-size: 1.2rem;
+		letter-spacing: 0.06rem;
+		text-align: center;
+		@include s.mini_tablet {
+			margin-top: 30px;
+		}
+		@include s.tablet {
+			text-align: left;
+			margin-top: 0;
+		}
+		.jin-icons {
+			font-size: 1rem;
+		}
+	}
+	#commonFooterSiteMenu + #copyright{
+		@include s.sp {
+			margin-top: 18px;
+		}
+	}
+}
+section + #footerInfo {
+	border-top-style:solid;
+	border-top-width: 1px;
+}
+#footerProfileInner {
+	@include s.tablet {
+		display: flex;
+		justify-content: center;
+	}
+}
+#commonFooterProfile {
+	@include s.pc_view {
+		margin: 0 auto;
+		max-width: s.$tablet;
+	}
+}
+#footerProfileImage {
+	width: 100px;
+	height: 100px;
+	margin: 0 auto 5px auto;
+	@include s.tablet {
+		margin: 0;
+		flex-shrink: 0;
+		width: 120px;
+		height: 120px;
+	}
+	@include s.pc_view {
+		width: 150px;
+		height: 150px;
+	}
+}
+#footerProfileTitle {
+	display: block;
+	font-size: 2.4rem;
+	color: #fff;
+	text-align: center;
+	margin-bottom: 30px;
+}
+#footerProfileInner,
+#commonFooterWidget,
+#commonFooterSiteMenu {
+	margin: 0 auto;
+	color: #fff;
+}
+#commonFooterWidget{
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+#footerProfileInfo {
+	padding: 0 20px;
+	flex-shrink: 1;
+	@include s.tablet {
+		padding: 3px 0;
+		margin-left: 20px;
+	}
+}
+#footerProfileNameBox {
+	margin-bottom: 20px;
+	text-align: center;
+	@include s.tablet {
+		display: flex;
+		align-items: center;
+		margin-bottom: 15px;
+		text-align: left;
+	}
+}
+#footerProfileName {
+	display: block;
+	font-size: 2rem;
+	margin-bottom: 8px;
+	@include s.tablet {
+		font-size: 2.4rem;
+		margin-right: 20px;
+		margin-bottom: 0;
+	}
+}
+#footerProfileDesc {
+	margin-bottom: 10px;
+	font-size: 1.4rem;
+}
+#footerProfileJob {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	@include s.tablet {
+		justify-content: flex-start;
+	}
+}
+.a--footer-profile-job-item {
+	display: block;
+	font-size: 0.9rem;
+	padding: 3px 8px;
+	background: rgba(255, 255, 255, 0.17);
+	border-radius: 3px;
+	margin: 2px 5px 2px 0px;
+	@include s.tablet {
+		font-size: 1rem;
+		padding: 6px 10px;
+		border-radius: 4px;
+	}
+}
+#footerProfileSns {
+	justify-content: center;
+	.sns-item-link {
+		font-size: 1.4em;
+		@include s.tablet {
+		font-size: 1.8em;
+		}
+	}
+}
+
+
+.c--footer-item {
+	font-size: 1.2rem;
+	margin: 0 5px;
+	padding: 5px;
+	@include s.tablet {
+		font-size: 1.4rem;
+	}
+}
+.a--footer-item-link {
+	color: #fff;
+}
+
+
+// **
+// フッターデザイン設定
+// **
+
+#footerMenuList{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	letter-spacing: 0.12rem;
+	@include s.tablet{
+		justify-content: flex-start;
+	}
+	.menu-item{
+		i{
+			&::before{
+				display: inline-block;
+				padding-right:6px;
+			}
+		}
+	}
+	.menu-item:not(:first-child){
+		padding:0 12px;
+		border-left-style: solid;
+		border-left-width: 1px;
+		@include s.tablet{
+			padding:0 18px;
+		}
+	}
+	.menu-item:first-child{
+		padding-right:12px;
+		@include s.tablet{
+			padding-right:18px;
+		}
+	}
+	.menu-item:last-child{
+		padding-right:0px;
+	}
+}
+
+
+//LPテンプレート設定時
+.page-template-template-lp{
+	#commonFooter{
+		margin-top: 0;
+		&.d--footer-style1,
+		&.d--footer-style2{
+			padding-bottom: 0;
+		}
+		#copyright {
+			padding: 18px 0;
+		}
+	}
+}
+.category{
+	#postFooter{
+		margin-bottom: 30px;
+		@include s.mini_tablet_view{
+			margin-bottom: 60px;
+		}
+	}
+}

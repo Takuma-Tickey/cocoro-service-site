@@ -1,0 +1,133 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+//全ウィジェットエリア共通
+.o--widget-area{
+    position: relative;
+    z-index: 100;
+    margin: 0 auto;
+    .b--jinr-fullwidth{
+        margin: 0 calc(50% - 50vw);
+        .d--fullwidth-max{
+            @include s.contents-padding($pcview_pad:30px,$pc_pad:0);
+            @media (min-width: s.$pc_view_content) {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+            @media (min-width: 1240px) {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+}
+#mainSideBar{
+    .b--jinr-fullwidth{
+        margin: 0 ;
+    }
+}
+.o--jinr-mainvisual{
+    & + #jinr-posttop-widget-area{
+        margin-top: 21px;
+    }
+}
+
+//サイドPR
+#sidePR{
+    display: none;
+    @media (min-width: s.$pc) {
+        position:fixed;
+        top: 15px;
+        right: clamp(30px,30vw,calc((100% - s.$pc) / 2));
+        z-index: 300;
+        width: 240px;
+        opacity: 0;
+        @include s.transition-slow;
+        &.js--sidepr-active{
+            opacity: 1;
+        }
+    }
+    .b--jinr-block{
+        background: #fff;
+        &:first-child{
+            margin-top: 0;
+        }
+    }
+    .wp-block-image{
+        margin-top: 0;
+        margin-bottom: 1.65rem;
+    }
+}
+
+//フッターウィジェットはfooter.scssに記載
+
+
+//ウィジェット共通パラメーター
+.o--widget-area{
+    .wp-block-latest-posts__list,
+    .wp-block-latest-comments,
+    .wp-block-archives-list,
+    .wp-block-categories-list,
+    .wp-block-page-list,
+    .wp-block-rss,
+    .widget_nav_menu,
+    .jinr-widget-area.widget_meta,
+    .wp-block-calendar{
+        font-size: 1.35rem;
+        line-height: 1.5;
+        letter-spacing: 0.12rem;
+    }
+}
+#jinr-posttop-widget-area,
+#jinr-postbottom-widget-area,
+#jinr-relatedpost-bottom-widget-area,
+#jinr-posttop-widget-area,
+#commonFooterWidget,
+#sideBarWidget,
+#sideBarTracking,
+#hamburgerWidget{
+    .jinr-widget-area{
+        margin-top:15px;
+        margin-bottom: 15px;
+        &:first-child{
+            margin-top: 0;
+        }
+        &:last-child{
+            margin-bottom: 0;
+        }
+        h2.jinr-heading{
+            border-bottom-style: solid;
+            border-bottom-width:1px;
+            padding-bottom: 6px;
+            padding-left: 3px;
+            font-size: 1.8rem;
+        }
+        h2.jinr-heading,
+        h3.jinr-heading,
+        h4.jinr-heading{
+            font-weight: 500;
+            margin-top: 45px;
+            margin-bottom: 18px;
+        }
+        &:first-child{
+            .wp-block-group{
+                .wp-block-group__inner-container{
+                    h2,
+                    h3,
+                    h4{
+                        &:first-child{
+                            margin-top: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+//各ウィジェット
+.o--widget-area{
+    @include s.widget;
+}
+@include s.widget_by_design;
+@include s.widget_r;

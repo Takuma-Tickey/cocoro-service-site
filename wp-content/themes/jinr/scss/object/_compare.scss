@@ -1,0 +1,353 @@
+@charset "utf-8";
+@use '../core/setting' as s;
+@use 'sass:math';
+
+// 専用アイコン
+.b--jinr-compare {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: stretch;
+	margin: 6rem auto;
+	padding-top: 2.7rem;
+	.block-editor-inner-blocks {
+		width: 100%;
+	}
+	.block-editor-block-list__layout {
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: stretch;
+	}
+	.o--compare-child {
+		position: relative;
+		border-width: 1px;
+		border-style: solid;
+		background-color: #ffffff;
+		.c--compare-label {
+			max-width: calc(100% + 2px);
+			position: absolute;
+			top: -30px;
+			left: -1px;
+			padding: 8px 15px;
+			.a--compare-label {
+				line-height: 1;
+				font-size: 1.35rem;
+				letter-spacing: 0.1rem;
+			}
+			.rich-text [data-rich-text-placeholder]:after {
+				opacity: 0.42 !important;
+			}
+		}
+		.c--compare-content {
+			padding: 24px 16px;
+			border-bottom-width: 1px;
+			border-bottom-style: solid;
+			.a--compare-itemname {
+				font-size: 1.6rem;
+				line-height: 1.7;
+				letter-spacing: 0.04em;
+				margin-top: 16px;
+			}
+			.a--compare-subtext {
+				font-size: 1.2rem;
+				font-weight: 700;
+				letter-spacing: 0.07em;
+			}
+			.a--compare-maintext {
+				font-size: 1.5rem;
+				letter-spacing: 0.05em;
+				line-height: 1.7;
+				.jin-ifont-star {
+					color: #ffc44b;
+					&:before {
+						display: none;
+					}
+				}
+			}
+			.a--compare-link {
+				display: block;
+				position: relative;
+				width: 100%;
+				height: 0;
+				padding-top: 56.25%;
+				.a--compare-image {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					object-fit: contain;
+				}
+			}
+			.jin-ifont-evaluation {
+				letter-spacing: 3px;
+				color: #fcb900;
+			}
+			&.c--compare-button {
+				padding: 0;
+			}
+		}
+		.b--jinr-block.b--jinr-button {
+			.o--button-inner {
+				span {
+					@include s.sp {
+						letter-spacing: 0.05em;
+					}
+				}
+			}
+		}
+	}
+	// 2社だった場合は全幅に
+	&.b--compare-count2 {
+		.o--compare-child {
+			flex-basis: 50%;
+			&:first-of-type {
+				margin-right: 12px;
+			}
+			@include s.sp {
+				&:first-of-type {
+					margin-right: 8px;
+				}
+				.c--compare-content {
+					padding: 12px 10px;
+				}
+				.c--compare-label {
+					top: -23px;
+					padding: 6px 13px;
+					.a--compare-label {
+						font-size: 1.1rem;
+					}
+				}
+				.a--compare-itemname {
+					font-size: 1.3rem;
+					line-height: 1.5;
+					margin-top: 12px;
+				}
+				.a--compare-subtext {
+					font-size: 1.15rem;
+				}
+				.a--compare-text {
+					font-size: 1.05rem;
+					line-height: 1.5;
+				}
+			}
+		}
+	}
+	&.b--compare-count3 {
+		.o--compare-child {
+			flex-basis: 238px;
+			flex-shrink: 0;
+			&:not(:last-of-type) {
+				margin-right: 12px;
+			}
+		}
+		@include s.sp {
+			white-space: nowrap;
+			overflow: scroll;
+		}
+		@include s.mini_tablet_view {
+			overflow: scroll;
+		}
+	}
+	// 4社以上はスクロールさせる
+	@for $i from 4 through 50 {
+		&.b--compare-count#{$i} {
+			white-space: nowrap;
+			overflow: scroll;
+			.o--compare-child {
+				flex-basis: 230px;
+				flex-shrink: 0;
+				white-space: normal;
+				&:not(:last-of-type) {
+					margin-right: 10px;
+				}
+			}
+		}
+	}
+	// テキストや余白間隔などの調整
+	@for $i from 3 through 50 {
+		&.b--compare-count#{$i} {
+			.o--compare-child {
+				.c--compare-content {
+					padding: 16px;
+					.a--compare-itemname {
+						font-size: 1.4rem;
+						margin-top: 20px;
+					}
+
+					.a--compare-text {
+						font-size: 1.35rem;
+						line-height: 1.7;
+						white-space: normal;
+					}
+				}
+				.c--compare-label {
+					top: -24px;
+					padding: 7px 12px 6px;
+					.a--compare-label {
+						font-size: 1.1rem;
+					}
+				}
+			}
+		}
+	}
+	// 中央よせと左よせ
+	&.d--compare-layout-center {
+		.c--compare-content {
+			text-align: center;
+		}
+	}
+	&.d--compare-button-hidden {
+		.o--compare-child {
+			.b--jinr-button {
+				display: none;
+			}
+		}
+	}
+}
+
+// 記事幅が680pxだった場合
+.d--article-width-680 {
+	.b--jinr-compare {
+		&.b--compare-count3 {
+			.o--compare-child {
+				flex-basis: 218px;
+				flex-shrink: 0;
+				&:not(:last-of-type) {
+					margin-right: 12px;
+				}
+			}
+		}
+		&.b--compare-count4,
+		&.b--compare-count5,
+		&.b--compare-count6,
+		&.b--compare-count7,
+		&.b--compare-count8,
+		&.b--compare-count9,
+		&.b--compare-count10 {
+			white-space: nowrap;
+			overflow: scroll;
+			.o--compare-child {
+				flex-basis: 280px;
+				flex-shrink: 0;
+			}
+		}
+	}
+}
+// フルワイドブロック内にあって、設定が100%の時
+.d--fullwidth-100 {
+	.b--jinr-compare {
+		width: 100%;
+		max-width: 1120px;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+.d--fullwidth-max {
+	.b--jinr-compare {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+// 記事幅680pxでフルワイドブロック内にあって、設定が100%の時
+.d--article-width-680,
+.d--article-width-740 {
+	.d--fullwidth-100 {
+		.b--jinr-compare {
+			&.b--compare-count2,
+			&.b--compare-count3 {
+				@include s.pc_view {
+					justify-content: center;
+				}
+			}
+			&.b--compare-count2,
+			&.b--compare-count3,
+			&.b--compare-count4 {
+				.o--compare-child {
+					flex-basis: 272px;
+				}
+			}
+			// b--compare-count5以上はflex-basisを260pxにする
+			// また、数字は増え続けるので、それに対応するために@forを使う
+			@for $i from 5 through 50 {
+				&.b--compare-count#{$i} {
+					.o--compare-child {
+						flex-basis: 260px;
+					}
+				}
+			}
+		}
+	}
+}
+
+// カスタムテンプレートを使うときのCSS
+.page-template-template-full-width-php {
+	.b--jinr-compare {
+		&.b--compare-count2,
+		&.b--compare-count3 {
+			@include s.pc_view {
+				justify-content: center;
+			}
+		}
+		&.b--compare-count2,
+		&.b--compare-count3,
+		&.b--compare-count4 {
+			.o--compare-child {
+				flex-basis: 272px;
+			}
+		}
+		@for $i from 5 through 50 {
+			&.b--compare-count#{$i} {
+				.o--compare-child {
+					flex-basis: 260px;
+				}
+			}
+		}
+	}
+}
+
+// カスタマイザーの角の丸みの反映
+.t--round-s {
+	.b--jinr-compare .o--compare-child {
+		border-top-right-radius: 2px;
+		border-bottom-right-radius: 2px;
+		border-bottom-left-radius: 2px;
+	}
+	.c--compare-label {
+		border-top-right-radius: 2px;
+		border-top-left-radius: 2px;
+	}
+}
+.t--round-m {
+	.b--jinr-compare .o--compare-child {
+		border-top-right-radius: 4px;
+		border-bottom-right-radius: 4px;
+		border-bottom-left-radius: 4px;
+	}
+	.c--compare-label {
+		border-top-right-radius: 4px;
+		border-top-left-radius: 4px;
+	}
+}
+.t--round-l {
+	.b--jinr-compare .o--compare-child {
+		border-top-right-radius: 6px;
+		border-bottom-right-radius: 6px;
+		border-bottom-left-radius: 6px;
+	}
+	.c--compare-label {
+		border-top-right-radius: 6px;
+		border-top-left-radius: 6px;
+	}
+}
+
+// 各フォントへの対応
+.d--notosans-thin,
+.d--mpr-thin {
+	.b--jinr-compare {
+		.c--compare-label {
+			.a--compare-label {
+				font-weight: 400;
+			}
+		}
+	}
+}

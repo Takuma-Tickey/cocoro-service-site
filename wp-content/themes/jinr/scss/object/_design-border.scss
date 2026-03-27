@@ -1,0 +1,111 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+.jinr-sen {
+	height: 7px;
+	display: flex;
+	flex-wrap: nowrap;
+	.d--sen-style1,
+	.d--sen-style2,
+	.d--sen-style3,
+	.d--sen-style4 {
+		position: relative;
+		margin: 0 auto;
+	}
+	.d--sen-style5,
+	.d--sen-style6,
+	.d--sen-style7,
+	.d--sen-style8 {
+		position: relative;
+		width: 100%;
+	}
+	.d--sen-style1 {
+		width: 84px;
+		.a--sen-parts1 {
+			position: absolute;
+			display: block;
+			width: 100%;
+			height: 14px;
+			top: 50%;
+			left: 50%;
+			transform: translateY(-50%) translateX(-50%);
+			background-size: 14px 14px;
+		}
+	}
+	.d--sen-style2 {
+		width: 165px;
+		.a--sen-parts1 {
+			position: absolute;
+			display: block;
+			width: 42px;
+			height: 14px;
+			top: 50%;
+			left: 15px;
+			transform: translateY(-50%);
+			background-size: 14px 14px;
+		}
+		.a--sen-parts2 {
+			position: absolute;
+			display: block;
+			width: 42px;
+			height: 14px;
+			top: 50%;
+			right: 15px;
+			transform: translateY(-50%);
+			background-size: 14px 14px;
+		}
+		.a--sen-parts3 {
+			position: absolute;
+			display: block;
+			width: 35px;
+			top: 50%;
+			left: 50%;
+			transform: translateY(-50%) translateX(-50%);
+		}
+	}
+	.d--sen-style3 {
+		width: 120px;
+		.a--sen-parts1 {
+			position: absolute;
+			display: block;
+			width: 100%;
+			top: 50%;
+			left: 50%;
+			transform: translateY(-50%) translateX(-50%);
+		}
+	}
+	.d--sen-style4 {
+		width: 165px;
+		.a--sen-parts1 {
+			position: absolute;
+			display: block;
+			width: 128px;
+			height: 32px;
+			top: 50%;
+			left: 50%;
+			transform: translateY(-50%) translateX(-50%);
+			background-size: 32px 32px;
+		}
+		.a--sen-parts2 {
+			position: absolute;
+			display: block;
+			width: 140px;
+			top: 50%;
+			left: calc(50% + 1px);
+			transform: translateY(-50%) translateX(-50%);
+		}
+	}
+	.d--sen-style5,
+	.d--sen-style6,
+	.d--sen-style7 {
+		.a--sen-parts1 {
+			position: absolute;
+			display: block;
+			width: 100%;
+			top: 50%;
+			left: 50%;
+			transform: translateY(-50%) translateX(-50%);
+		}
+	}
+}

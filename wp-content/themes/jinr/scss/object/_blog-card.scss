@@ -1,0 +1,194 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+// 基本のCSS
+.b--jinr-blogcard {
+	position: relative;
+	background-color: #fff;
+	margin: s.$base_margin auto;
+    @include s.mini_tablet_view{
+        margin: s.$double_margin auto;
+    }
+	@include s.mini_tablet{
+		width: calc(100% - #{s.$double_margin} * 1.5);
+	}
+	@include s.tablet{
+		width: calc(100% - #{s.$double_margin} * 2);
+	}
+	.a--blogcard-title{
+		letter-spacing: 0.06rem;
+	}
+	.c--blogcard-image {
+		overflow: hidden;
+		flex-shrink: 0;
+		img{
+			object-fit: cover;
+		}
+	}
+	&::before{
+		content: "\e904";
+		position:absolute;
+		font-family: "jin-icons";
+		font-size: 1.5rem;
+		right: clamp(18px,2.4vw,24px);
+		z-index: 200;
+		@include s.sp{
+			display: none;
+		}
+	}
+	&.d--blogcard-style1{
+		margin-top: (s.$double_margin * 1.35);
+		.c--blogcard-image {
+			width: 112px;
+			height: 63px;
+			@include s.mini_tablet_view{
+				width: 128px;
+				height: 72px;
+			}
+		}
+		.o--blogcard-link{
+			position: relative;
+			z-index: 100;
+			display: flex;
+			padding: 15px 10px 10px 10px;
+			border-style: solid;
+			border-width: 1px;
+			@include s.shadow-s;
+				align-items: center;
+			@include s.mini_tablet_view{
+				padding: 19px 18px 18px 18px;
+			}
+		}
+		.a--blogcard-title{
+			position: relative;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			margin-top: -2px;
+			line-height: 1.45;
+			-webkit-line-clamp: 4;
+			max-height: 5.7em;
+			padding-left: 12px;
+			font-size: 1.15rem;
+			@include s.mini_tablet_view{
+				max-height: 6.3em;
+				line-height: 1.5;
+				padding-left: 18px;
+				padding-right: clamp(45px,6vw,57px);
+				font-size: clamp(1.25rem,1.5vw,1.35rem);
+			}
+		}
+		.a--blogcard-label {
+			position: absolute;
+			z-index: 200;
+			left: 6px;
+			line-height: 1;
+			top: -11px;
+			font-size: 1.05rem;
+			padding: 7px;
+			letter-spacing: 0.15rem;
+			font-weight: 550;
+			@include s.mini_tablet_view{
+				font-weight: 500;
+				font-size: 1.15rem;
+				top: -12px;
+				left: 13px;
+			}
+		}
+		.a--blogcard-more{
+			position: absolute;
+			text-align: right;
+			z-index: 0;
+			font-size: 1.1rem;
+			right: 18px;
+			bottom: 8px;
+			letter-spacing: 0.03rem;
+			@include s.mini_tablet_view{
+				font-size: 1.2rem;
+				right: 25px;
+				bottom: 12px;
+				letter-spacing: 0.1rem;
+			}
+		}
+		&::before{
+			top: 39px;
+		}
+	}
+	&.d--blogcard-style2{
+		.c--blogcard-image {
+			width: 120px;
+			height: 68px;
+			@include s.mini_tablet_view{
+				width: 128px;
+				height: 72px;
+			}
+		}
+		.o--blogcard-link{
+			position: relative;
+			z-index: 100;
+			display: flex;
+			align-items: center;
+			overflow: hidden;
+			@include s.shadow-s;
+		}
+		.a--blogcard-title{
+			position: relative;
+			display: -webkit-box;
+			-webkit-line-clamp: 3;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			padding: 0px 12px;
+			font-size: 1.15rem;
+			line-height: 1.45;
+			max-height: calc(1.6em * 3);
+			@include s.mini_tablet_view{
+				font-size: clamp(1.15rem,1.3vw,1.25rem);
+				padding-left: clamp(15px,1.5vw,18px);
+				padding-right: clamp(54px,7.2vw,70px);
+				line-height: 1.5;
+				max-height: calc(1.6em * 4.2);
+			}
+		}
+		.a--blogcard-more{
+			position: absolute;
+			text-align: center;
+			font-size: 1.1rem;
+			z-index: 0;
+			width: 80px;
+			right: 6px;
+			bottom: 3px;
+			letter-spacing: 0.06rem;
+			@include s.mini_tablet_view{
+				right: 9px;
+				bottom: 16px;
+				letter-spacing: 0.09rem;
+			}
+		}
+		&::before{
+			top: 27px;
+		}
+	}
+}
+
+.t--round-s{
+	.d--blogcard-style1{
+        .c--blogcard-image{
+            border-radius:2px;
+        }
+    }
+}
+.t--round-m{
+	.d--blogcard-style1{
+        .c--blogcard-image{
+            border-radius:3px;
+        }
+    }
+}
+.t--round-l{
+	.d--blogcard-style1{
+        .c--blogcard-image{
+            border-radius:5px;
+        }
+    }
+}

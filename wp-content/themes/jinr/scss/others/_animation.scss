@@ -1,0 +1,919 @@
+/* CSS Document */
+@charset "utf-8";
+@use "../core/setting" as s;
+
+@keyframes fadeDelay{
+    30%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes fade{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes fadeSlideUp{
+    0%{
+        opacity: 0;
+        transform: translateY(21px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+@keyframes fadeSlideUp12{
+    0%{
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+@keyframes fadeSlideUp12Delay{
+    15%{
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+@keyframes fadeSlideRight{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(12px);
+    }
+}
+@keyframes expand{
+    30%{
+        transform: scale(1.05);
+    }
+    66%{
+        transform: scale(0.99);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+@keyframes push{
+    30%{
+        transform: scale(0.955);
+    }
+    66%{
+        transform: scale(1.035);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+@keyframes slideRight{
+    0%{
+        transform: translateX(0px);
+    }
+    25%{
+        transform: translateX(4px);
+    }
+    50%{
+        transform: translateX(0px);
+    }
+    75%{
+        transform: translateX(4px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+@keyframes drawArrow{
+    15%{
+        opacity: 0;
+        transform: translateY(9px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+@keyframes drawArrowAfter
+{
+    0%{
+        opacity: 0;
+        height: 0;
+    }
+    100%{
+        height: 15px;
+        opacity: 1;
+    }
+}
+@keyframes drawArrowBefore{
+    0%{
+        width: 0;
+        height: 1px;
+        opacity: 0;
+        visibility: hidden;
+    }
+    // 75%{
+    //     width: 12px;
+    //     bottom: -1px;
+    // }
+    100%{
+        opacity: 1;
+        visibility: visible;
+        width: 100%;
+    }
+}
+@keyframes dynamic{
+    0%{
+        width: 0;
+    }
+    50%{
+        width: 100%;
+    }
+    100%{
+        width: 0;
+        right: 0;
+        left: auto;
+    }
+}
+@keyframes dynamic-parent{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.d--animation-general-on{
+    #mainContent,
+    .o--jinr-mainvisual{
+        opacity: 0;
+        animation: fadeDelay 0.9s ease;
+        animation-fill-mode: forwards;
+    }
+    #jinrPostThumb{
+        opacity: 0;
+        animation: fadeDelay 1.5s ease;
+        animation-fill-mode: forwards;
+    }
+}
+
+.js--scr-animation{
+    transition: opacity 0.9s, transform 0.9s;
+}
+
+//ボタンホバー
+@include s.mini_tablet_view{
+    //塗りボタン
+    .d--button-solid-hover-default{
+        & > span:hover{
+            filter:opacity(0.7);
+        }
+    }
+    .d--button-solid-hover-up{
+        & > span:hover{
+            transform: translateY(-7px);
+        }
+    }
+    .d--button-solid-hover-down{
+        & > span:hover{
+            transform: translateY(3px);
+        }
+    }
+    .d--button-solid-hover-push{
+        & >  span:hover{
+            transform: scale(.95);
+        }
+    }
+    .d--button-solid-hover-expand{
+        & > span:hover{
+            transform: scale(1.05);
+        }
+    }
+    .d--button-solid-hover-outlineleft{
+        a{
+            position: relative;
+			overflow:hidden;
+            &::before{
+                content:"";
+                position: absolute;
+                top:0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background:#fff !important;
+                z-index: -1;
+                transform: scale(0,1);
+                transform-origin: right top;
+                transition: transform .39s cubic-bezier(0.8, 0, 0.36, 1) 0s;
+            }
+            &:hover{
+                &::before{
+                    transform: scale(1,1);
+					transform-origin:left top;
+                }
+            }
+        }
+    }
+    .d--button-solid-hover-outlinecenter{
+        a{
+            position: relative;
+			overflow:hidden;
+            &::before{
+                content:"";
+                position: absolute;
+                top:0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background:#fff !important;
+                z-index: -1;
+                transform: scale(0,1);
+                transition: transform .3s ease-out;
+                transform-origin: top;
+            }
+            &:hover{
+                &::before{
+                    transform: scale(1,1);
+                }
+            }
+        }
+    }
+    //アウトラインボタン
+    .d--button-outline-hover-up{
+        & > span:hover{
+            transform: translateY(-7px);
+        }
+    }
+    .d--button-outline-hover-down{
+        & > span:hover{
+            transform: translateY(3px);
+        }
+    }
+    .d--button-outline-hover-push{
+        & > span:hover{
+            transform: scale(.95);
+        }
+    }
+    .d--button-outline-hover-push{
+        & > span:hover{
+            transform: scale(.95);
+        }
+    }
+    .d--button-outline-hover-expand{
+        & > span:hover{
+            transform: scale(1.05);
+        }
+    }
+    .d--button-outline-hover-fillleft{
+        a{
+            position: relative;
+			overflow:hidden;
+            &::before{
+                content:"";
+                position: absolute;
+                top:0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                transform: scale(0,1);
+                transition: transform .39s cubic-bezier(0.8, 0, 0.36, 1) 0s;
+                transform-origin: right top;
+            }
+            &:hover{
+                color:#fff !important;
+                &::before{
+                    transform-origin:left top;
+					transform: scale(1,1);
+                }
+            }
+        }
+    }
+    .d--button-outline-hover-fillcenter{
+        a{
+            position: relative;
+            overflow:hidden;
+            z-index:2;
+            &::before,
+            &::after{
+                content:"";
+                position: absolute;
+                z-index: -1;
+                display: block;
+                width: 50%;
+                height: 100%;
+                top:0;
+                background: #fff;
+                transition: all .3s ease-out;
+            }
+            &::before{
+                right: 0;
+            }
+            &::after{
+                left: 0;
+            }
+            &:hover{
+                color:#fff!important;
+            }
+        }
+    }
+    //アローボタン
+    .d--button-arrow-hover-right{
+        & > span{
+            transition: transform 0.45s!important;
+            &:hover{
+                transform: translateX(9px);
+            }
+        }
+    }
+}
+//ボタンアニメーション
+.js--scr-animation{
+    .d--button-solid-animation-fade,
+    .d--button-outline-animation-fade,
+    .d--button-arrow-animation-fade{
+        a{
+            opacity: 0;
+        }
+        &.is-animated {
+            a{
+                animation: fade 0.96s ease;
+                animation-fill-mode: forwards;
+            }
+        }
+    }
+    .d--button-solid-animation-fadeup,
+    .d--button-outline-animation-fadeup{
+        a{
+            opacity: 0;
+        }
+        &.is-animated {
+            a{
+                animation: fadeSlideUp12 0.96s ease;
+                animation-fill-mode: forwards;
+            }
+        }
+    }
+    .d--button-solid-animation-expand,
+    .d--button-outline-animation-expand{
+        &.is-animated {
+            a{
+                animation: expand 0.96s ease;
+            }
+        }
+    }
+    .d--button-solid-animation-push,
+    .d--button-outline-animation-push{
+        &.is-animated {
+            a{
+                animation: push 0.96s ease-out;
+            }
+        }
+    }
+    .d--button-arrow-animation-fadetoright{
+        a{
+            opacity: 0;
+        }
+        &.is-animated {
+            a{
+                animation: fadeSlideRight 0.96s ease;
+                animation-fill-mode: forwards;
+            }
+        }
+    }
+    .d--button-arrow-animation-slidetoright{
+        &.is-animated {
+            a{
+                animation: slideRight 1.05s ease-in-out;
+            }
+        }
+    }
+    .d--button-arrow-animation-drawarrow{
+        a{
+            opacity: 0;
+            &::after{
+                opacity: 0;
+            }
+            &::before{
+                content: "";
+                position: absolute;
+                bottom: -1px;
+                right: 0;
+                width: 100%;
+                height: 12px;
+                z-index: 100;
+            }
+        }
+        &.is-animated {
+            a{
+                animation: drawArrow 0.6s ease;
+                animation-fill-mode: forwards;
+                border-bottom: none;
+                &::after{
+                    border-right: none;
+                    height: 0;
+                    width: 1px;
+                    opacity: 0;
+                    right: 0;
+                    bottom: 0;
+                    transform: rotate(-45deg);
+                    transform-origin:right bottom;
+                    animation: drawArrowAfter 0.36s linear;
+                    animation-fill-mode: forwards;
+                    animation-delay: 1.01s;
+                }
+                &::before{
+                    height: 1px;
+                    right: auto;
+                    left: 0;
+                    opacity: 0;
+                    visibility: hidden;
+                    animation: drawArrowBefore .43s linear;
+                    animation-fill-mode: forwards;
+                    animation-delay: 0.66s;
+                }
+            }
+        }
+    }
+}
+
+//グローバルメニューのホバー
+@include s.mini_tablet_view{
+    .d--glonavi-hover-borderup{
+        #globalMenuList{
+            & > li:not(.d--button){
+                & > a::after {
+                    position: absolute;
+                    content: '';
+                    bottom: -8px;
+                    height: 1px;
+                    opacity: 0;
+                    visibility: hidden;
+                    @include s.transition-slow;
+                }
+                & > a:hover::after {
+                    bottom: -4px;
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+        .d--header-menu-style1{
+            #globalMenuList{
+                & > li:not(.d--button){
+                    & > a::after {
+                        left: 0;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .d--header-menu-style2{
+            #globalMenuList{
+                & > li:not(.d--button){
+                    & > a::after {
+                        left: 50%;
+                        width: 90%;
+                        transform: translateX(-50%);
+                    }
+                }
+            }
+        }
+    }
+    .d--glonavi-hover-borderwax{
+        #globalMenuList{
+            & > li:not(.d--button){
+                & > a::after {
+                    position: absolute;
+                    bottom: -4px;
+                    content: '';
+                    height: 1px;
+                    transform: scale(0, 1);
+                    transform-origin: left top;
+                    @include s.transition;
+                }
+                & > a:hover::after {
+                    transform: scale(1, 1);
+                }
+            }
+        }
+        .d--header-menu-style1{
+            #globalMenuList{
+                & > li:not(.d--button){
+                    & > a::after {
+                        left: 0;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .d--header-menu-style2{
+            #globalMenuList{
+                & > li:not(.d--button){
+                    & > a::after {
+                        left: 5%;
+                        width: 90%;
+                    }
+                }
+            }
+        }
+    }
+    .d--glonavi-hover-borderflow{
+        #globalMenuList{
+            & > li:not(.d--button){
+                & >a::after {
+                    position: absolute;
+                    bottom: -4px;
+                    content: '';
+                    height: 1px;
+                    transform: scale(0, 1);
+                    transform-origin: right top;
+                    transition: transform .3s;
+                }
+                & > a:hover::after {
+                    transform-origin: left top;
+                    transform: scale(1, 1);
+                }
+            }
+        }
+        .d--header-menu-style1{
+            #globalMenuList{
+                & > li:not(.d--button){
+                    & > a::after {
+                        left: 0px;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .d--header-menu-style2{
+            #globalMenuList{
+                & > li:not(.d--button){
+                    & > a::after {
+                        left: 5%;
+                        width: 90%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//記事リスト
+.js--scr-animation{
+    &.d--postlist-animation-fade{
+        opacity: 0;
+        &.is-animated {
+            animation: fadeSlideUp 0.96s ease;
+            animation-fill-mode: forwards;
+        }
+    }
+    &.d--postlist-animation-fadebyone{
+        .o--postlist-item{
+            opacity: 0;
+        }
+        &.is-animated {
+            .o--postlist-item{
+                animation: fade 0.96s ease;
+                animation-fill-mode: forwards;
+            }
+            @for $num from 1 through 12 {
+                .o--postlist-item:nth-child(#{$num}) {
+                    animation-delay: $num * 0.15s;
+                }
+            }
+        }
+    }
+}
+@include s.mini_tablet_view{
+    .d--postlist-hover-up{
+        .c--post-link{
+            &:hover{
+                transform: translateY(-6px);
+            }
+        }
+        &.d--postlist-newstext{
+            .c--post-link{
+                &:hover{
+                    transform: translateY(-3px);
+                }
+            }
+        }
+    }
+    .d--postlist-hover-zoom{
+        .c--post-link{
+            &:hover{
+                .c--post-image img{
+                    transform: scale(1.06);
+                }
+            }
+        }
+    }
+    .d--postlist-hover-fade{
+        .c--post-link{
+            &:hover{
+                filter: opacity(0.75);
+            }
+        }
+    }
+    .d--postlist-hover-hovercolor{
+        .c--post-link{
+            .a--post-title{
+                @include s.transition;
+            }
+        }
+    }
+}
+//リッチメニュー
+.js--scr-animation{
+    &.d--richmenu-animation-fade{
+        opacity: 0;
+        &.is-animated {
+            animation: fadeSlideUp 0.96s ease;
+            animation-fill-mode: forwards;
+        }
+    }
+    &.d--richmenu-animation-fadebyone{
+        .o--richmenu-item{
+            opacity: 0;
+        }
+        &.is-animated {
+            .o--richmenu-item{
+                animation: fadeSlideUp12 0.96s ease;
+                animation-fill-mode: forwards;
+            }
+            @for $num from 1 through 24 {
+                .o--richmenu-item:nth-child(#{$num}) {
+                    animation-delay: $num * 0.21s;
+                }
+            }
+            &.d--richmenu-column4{
+                @for $num from 1 through 24 {
+                    .o--richmenu-item:nth-child(#{$num}) {
+                        animation-delay: $num * 0.18s;
+                    }
+                }
+            }
+            &.d--richmenu-column6{
+                @for $num from 1 through 24 {
+                    .o--richmenu-item:nth-child(#{$num}) {
+                        animation-delay: $num * 0.12s;
+                    }
+                }
+            }
+        }
+    }
+}
+@include s.mini_tablet_view{
+    .d--richmenu-hover-up{
+        .o--richmenu-item-inner{
+            &:hover{
+                transform: translateY(-6px);
+            }
+        }
+    }
+    .d--richmenu-hover-zoom{
+        .o--richmenu-item-inner{
+            &:hover{
+                .a--richmenu-image img{
+                    transform: scale(1.06);
+                }
+            }
+        }
+    }
+    .d--richmenu-hover-fade{
+        .o--richmenu-item-inner{
+            &:hover{
+                filter: opacity(0.81);
+            }
+        }
+    }
+}
+//カラム
+.d--column-animation-fade{
+    .wp-block-columns{
+        &.js--scr-animation{
+            opacity: 0;
+            &.is-animated {
+                animation: fadeSlideUp 0.96s ease;
+                animation-fill-mode: forwards;
+            }
+        }
+    }
+}
+.d--column-animation-fadebyone{
+    .wp-block-columns{
+        &.js--scr-animation{
+            .wp-block-column{
+                opacity: 0;
+            }
+            &.is-animated {
+                .wp-block-column{
+                    animation: fade 0.45s linear;
+                    animation-fill-mode: forwards;
+                }
+                @for $num from 1 through 6 {
+                    .wp-block-column:nth-child(#{$num}) {
+                        animation-delay: $num * 0.3s;
+                    }
+                }
+            }
+        }
+    }
+}
+.d--column-animation-fadeslidebyone{
+    .wp-block-columns{
+        &.js--scr-animation{
+            .wp-block-column{
+                opacity: 0;
+            }
+            &.is-animated {
+                .wp-block-column{
+                    animation: fadeSlideUp 0.9s ease;
+                    animation-fill-mode: forwards;
+                }
+                @for $num from 1 through 6 {
+                    .wp-block-column:nth-child(#{$num}) {
+                        animation-delay: $num * 0.3s;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+//デザイン見出し
+.d--designtitle-animation-fade{
+    .b--jinr-h2rich{
+        &.js--scr-animation{
+            opacity: 0;
+            &.is-animated {
+                animation: fadeSlideUp12 0.6s ease-in-out;
+                animation-fill-mode: forwards;
+            }
+        }
+    }
+}
+.d--designtitle-animation-dynamic{
+    .b--jinr-h2rich{
+        &.js--scr-animation{
+            display: inline-flex;
+            position: relative;
+            opacity: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            &::before{
+                content: "";
+                position: absolute;
+                top: 0%;
+                left: 0%;
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
+            &.is-animated {
+                animation: dynamic-parent 0.45s ease-in-out;
+                animation-fill-mode: forwards;
+                animation-delay: 0.21s;
+                &::before{
+                    animation: dynamic 0.75s ease-in-out;
+                    animation-fill-mode: forwards;
+                }
+            }
+        }
+    }
+}
+//ブログカード
+@include s.mini_tablet_view{
+    .d--blogcard-hover-up{
+        @include s.transition-slow;
+        &:hover{
+            transform: translateY(-6px);
+        }
+    }
+}
+
+//カラムブロック内では他のアニメーションを停止
+.wp-block-columns{
+    &.js--scr-animation{
+        //記事リスト
+        .js--scr-animation{
+            &.d--postlist-animation-fade{
+                opacity: 1;
+                &.is-animated {
+                    animation:none;
+                }
+            }
+            &.d--postlist-animation-fadebyone{
+                .o--postlist-item{
+                    opacity: 1;
+                }
+                &.is-animated {
+                    .o--postlist-item{
+                        animation: none;
+                    }
+                }
+            }
+        }
+        //リッチメニュー
+        .js--scr-animation{
+            &.d--richmenu-animation-fade{
+                opacity: 1;
+                &.is-animated {
+                    animation: none;
+                }
+            }
+            &.d--richmenu-animation-fadebyone{
+                .o--richmenu-item{
+                    opacity: 1;
+                }
+                &.is-animated {
+                    .o--richmenu-item{
+                        animation: none;
+                    }
+                }
+            }
+        }
+        //ボタンアニメーション
+        .js--scr-animation{
+            .d--button-solid-animation-fade,
+            .d--button-outline-animation-fade,
+            .d--button-arrow-animation-fade,
+            .d--button-solid-animation-fadeup,
+            .d--button-outline-animation-fadeup,
+            .d--button-arrow-animation-fadetoright,
+            .d--button-arrow-animation-slidetoright{
+                a{
+                    opacity: 1;
+                }
+                &.is-animated {
+                    a{
+                        animation: none;
+                    }
+                }
+            }
+            .d--button-solid-animation-expand,
+            .d--button-outline-animation-expand,
+            .d--button-solid-animation-push,
+            .d--button-outline-animation-push{
+                &.is-animated {
+                    a{
+                        animation: none;
+                    }
+                }
+            }
+            .d--button-arrow-animation-drawarrow{
+                a{
+                    opacity: 1;
+                    &::after{
+                        opacity: 1;
+                    }
+                    &::before{
+                        display: none;
+                    }
+                }
+                &.is-animated {
+                    a{
+                        animation: none;
+                        &::after{
+                            animation: none;
+                        }
+                        &::before{
+                            animation: none;
+                        }
+                    }
+                }
+            }
+        }
+        //デザイン見出し
+        .b--jinr-h2rich{
+            &.js--scr-animation{
+                opacity: 1;
+                &::before{
+                    width: 0;
+                    background-color: transparent;
+                }
+                &.is-animated {
+                    animation: none;
+                    &::before{
+                        animation: none;
+                    }
+                }
+            }
+        }
+    }
+}

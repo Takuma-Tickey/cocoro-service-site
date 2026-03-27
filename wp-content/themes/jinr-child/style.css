@@ -1,0 +1,14 @@
+/**
+Theme Name: JIN:R child
+Template: jinr
+Author: CROOVER Inc.
+Author URI: https://croover.co.jp
+Version: 1.00
+*/
+
+/* 
+「エディタでは見える／公開画面だけ消える」なら “フロントエンド専用の CSS” を読み込ませるのが確実──追加 CSS や共通ファイルに書くとエディタ用 iframe にも届くため、子テーマ style.css か wp_enqueue_scripts フックで “フロントだけ” に出す。
+*/
+.hidden-editor-block{
+  display:none !important;
+}
