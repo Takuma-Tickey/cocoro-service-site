@@ -87,23 +87,31 @@ jobs:
           LFTP_CMD_FILE="$(mktemp)"
           trap 'rm -f "${LFTP_CMD_FILE}"' EXIT
 
-          printf '%s\n' \
-            "set cmd:fail-exit yes" \
-            "set sftp:auto-confirm yes" \
-            "set net:max-retries 2" \
-            "set net:timeout 20" \
-            "lcd ${GITHUB_WORKSPACE}" \
-            "mkdir -p ${SFTP_REMOTE_PATH}" \
-            "mirror -R --verbose --parallel=2 --only-newer --exclude-rx '(^|/)\\.git(/|$)' --exclude-rx '(^|/)\\.github(/|$)' --exclude-rx '(^|/)\\.DS_Store$' --exclude-rx '(^|/).*\\.log$' --exclude-rx '(^|/)wp-config\\.php$' --exclude-rx '(^|/)phpinfo\\.php$' --exclude-rx '(^|/)wp-content/uploads(/|$)' --exclude-rx '(^|/)wp-content/ewww(/|$)' --exclude-rx '(^|/)wp-content/cache(/|$)' --exclude-rx '(^|/)wp-content/upgrade(/|$)' --exclude-rx '(^|/)wp-content/languages(/|$)' --exclude-rx '(^|/)wp-content/w3tc-config(/|$)' ./ ${SFTP_REMOTE_PATH}" \
-            "bye" > "${LFTP_CMD_FILE}"
-
           if [ -n "${SFTP_PRIVATE_KEY:-}" ]; then
             {
+              echo "open -u ${SFTP_USERNAME} sftp://${SFTP_HOST}:${SFTP_PORT}"
               echo "set sftp:connect-program \"ssh -a -x -i ${HOME}/.ssh/id_ed25519 -o StrictHostKeyChecking=no\""
-              cat "${LFTP_CMD_FILE}"
-            } > "${LFTP_CMD_FILE}.with_key"
-            mv "${LFTP_CMD_FILE}.with_key" "${LFTP_CMD_FILE}"
-            lftp -f "${LFTP_CMD_FILE}" -u "${SFTP_USERNAME}" "sftp://${SFTP_HOST}:${SFTP_PORT}"
+              echo "set cmd:fail-exit yes"
+              echo "set sftp:auto-confirm yes"
+              echo "set net:max-retries 2"
+              echo "set net:timeout 20"
+              echo "lcd ${GITHUB_WORKSPACE}"
+              echo "mkdir -p ${SFTP_REMOTE_PATH}"
+              echo "mirror -R --verbose --parallel=2 --only-newer --exclude-rx '(^|/)\\.git(/|$)' --exclude-rx '(^|/)\\.github(/|$)' --exclude-rx '(^|/)\\.DS_Store$' --exclude-rx '(^|/).*\\.log$' --exclude-rx '(^|/)wp-config\\.php$' --exclude-rx '(^|/)phpinfo\\.php$' --exclude-rx '(^|/)wp-content/uploads(/|$)' --exclude-rx '(^|/)wp-content/ewww(/|$)' --exclude-rx '(^|/)wp-content/cache(/|$)' --exclude-rx '(^|/)wp-content/upgrade(/|$)' --exclude-rx '(^|/)wp-content/languages(/|$)' --exclude-rx '(^|/)wp-content/w3tc-config(/|$)' ./ ${SFTP_REMOTE_PATH}"
+              echo "bye"
+            } > "${LFTP_CMD_FILE}"
           else
-            lftp -f "${LFTP_CMD_FILE}" -u "${SFTP_USERNAME}","${SFTP_PASSWORD}" "sftp://${SFTP_HOST}:${SFTP_PORT}"
+            {
+              echo "open -u ${SFTP_USERNAME},${SFTP_PASSWORD} sftp://${SFTP_HOST}:${SFTP_PORT}"
+              echo "set cmd:fail-exit yes"
+              echo "set sftp:auto-confirm yes"
+              echo "set net:max-retries 2"
+              echo "set net:timeout 20"
+              echo "lcd ${GITHUB_WORKSPACE}"
+              echo "mkdir -p ${SFTP_REMOTE_PATH}"
+              echo "mirror -R --verbose --parallel=2 --only-newer --exclude-rx '(^|/)\\.git(/|$)' --exclude-rx '(^|/)\\.github(/|$)' --exclude-rx '(^|/)\\.DS_Store$' --exclude-rx '(^|/).*\\.log$' --exclude-rx '(^|/)wp-config\\.php$' --exclude-rx '(^|/)phpinfo\\.php$' --exclude-rx '(^|/)wp-content/uploads(/|$)' --exclude-rx '(^|/)wp-content/ewww(/|$)' --exclude-rx '(^|/)wp-content/cache(/|$)' --exclude-rx '(^|/)wp-content/upgrade(/|$)' --exclude-rx '(^|/)wp-content/languages(/|$)' --exclude-rx '(^|/)wp-content/w3tc-config(/|$)' ./ ${SFTP_REMOTE_PATH}"
+              echo "bye"
+            } > "${LFTP_CMD_FILE}"
           fi
+
+          lftp -f "${LFTP_CMD_FILE}"
