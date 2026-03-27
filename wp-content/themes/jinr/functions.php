@@ -259,13 +259,15 @@ function create_block_jinr_blocks_block_init()
 	}
 	$date_format = 'Y.m.d';
 
+	$front_thumbnail = !get_the_post_thumbnail_url(get_option('page_on_front'), 'thumbnail') == "" ? get_the_post_thumbnail_url(get_option('page_on_front'), 'thumbnail') : jinr_noimage_url('thumbnail');
+
 	if (!jinr__ogp_image_url() == "") {
 		$ogp_url = jinr__ogp_image_url();
 		$ogp_id = attachment_url_to_postid($ogp_url);
 		$ogpimage_url = wp_get_attachment_image_src($ogp_id, 'thumbnail');
-		$home_thumbnail = $ogpimage_url[0];
+		$home_thumbnail = (is_array($ogpimage_url) && !empty($ogpimage_url[0])) ? $ogpimage_url[0] : $front_thumbnail;
 	} else {
-		$home_thumbnail = !get_the_post_thumbnail_url(get_option('page_on_front'), 'thumbnail') == "" ? get_the_post_thumbnail_url(get_option('page_on_front'), 'thumbnail') : jinr_noimage_url('thumbnail');
+		$home_thumbnail = $front_thumbnail;
 	}
 
 	$site_title = get_bloginfo('name');
