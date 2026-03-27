@@ -1,4 +1,5 @@
 name: Deploy to Onamae SFTP
+run-name: Deploy ${{ inputs.target }} by @${{ github.actor }} (ref=${{ inputs.ref }})
 
 on:
   workflow_dispatch:
@@ -35,10 +36,18 @@ jobs:
         with:
           ref: ${{ inputs.ref }}
 
-      - name: Install lftp
+      - name: Install deploy tools
         run: |
           sudo apt-get update
           sudo apt-get install -y rsync sshpass
+
+      - name: Capture deploy metadata
+        id: meta
+        run: |
+          set -eu
+          echo "commit_sha=$(git rev-parse HEAD)" >> "${GITHUB_OUTPUT}"
+          echo "commit_short=$(git rev-parse --short=12 HEAD)" >> "${GITHUB_OUTPUT}"
+          echo "deployed_at_utc=$(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> "${GITHUB_OUTPUT}"
 
       - name: Validate secrets
         env:
@@ -83,7 +92,7 @@ jobs:
           SFTP_PRIVATE_KEY: ${{ secrets.SFTP_PRIVATE_KEY }}
           SFTP_REMOTE_PATH: ${{ secrets.SFTP_REMOTE_PATH }}
         run: |
-          set -eu
+          set -euo pipefail
           EXCLUDES=(
             "--exclude=.git/"
             "--exclude=.github/"
@@ -102,7 +111,7 @@ jobs:
           if [ -n "${SFTP_PRIVATE_KEY:-}" ]; then
             SSH_CMD="ssh -i ${HOME}/.ssh/id_ed25519 -p ${SFTP_PORT} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
             ${SSH_CMD} "${SFTP_USERNAME}@${SFTP_HOST}" "mkdir -p '${SFTP_REMOTE_PATH}'"
-            rsync -az --omit-dir-times --no-perms --no-owner --no-group \
+            rsync -az --itemize-changes --omit-dir-times --no-perms --no-owner --no-group \
               -e "${SSH_CMD}" \
               "${EXCLUDES[@]}" \
               "${GITHUB_WORKSPACE}/" \
@@ -110,9 +119,23 @@ jobs:
           else
             SSHPASS="${SFTP_PASSWORD}" sshpass -e ssh -p "${SFTP_PORT}" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "${SFTP_USERNAME}@${SFTP_HOST}" "mkdir -p '${SFTP_REMOTE_PATH}'"
             RSYNC_RSH="sshpass -e ssh -p ${SFTP_PORT} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
-            SSHPASS="${SFTP_PASSWORD}" rsync -az --omit-dir-times --no-perms --no-owner --no-group \
+            SSHPASS="${SFTP_PASSWORD}" rsync -az --itemize-changes --omit-dir-times --no-perms --no-owner --no-group \
               -e "${RSYNC_RSH}" \
               "${EXCLUDES[@]}" \
               "${GITHUB_WORKSPACE}/" \
               "${SFTP_USERNAME}@${SFTP_HOST}:${SFTP_REMOTE_PATH}/"
           fi
+
+      - name: Write deployment summary
+        if: always()
+        run: |
+          {
+            echo "## Deployment Summary"
+            echo "- Target: \`${{ inputs.target }}\`"
+            echo "- Requested ref: \`${{ inputs.ref }}\`"
+            echo "- Deployed commit: \`${{ steps.meta.outputs.commit_short }}\`"
+            echo "- Actor: \`${{ github.actor }}\`"
+            echo "- Deployed at: \`${{ steps.meta.outputs.deployed_at_utc }}\`"
+            echo "- Commit URL: ${{ github.server_url }}/${{ github.repository }}/commit/${{ steps.meta.outputs.commit_sha }}"
+            echo "- Run URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } >> "${GITHUB_STEP_SUMMARY}"
