@@ -39,6 +39,43 @@
 4. GitHub へ Push
 5. 本番へ反映
 
+## GitHub Actions で無料デプロイ（手動実行）
+
+このリポジトリには、GitHub Actions の手動実行で
+`staging` / `production` へ SFTP デプロイする設定を追加しています。
+
+ワークフロー:
+
+- `.github/workflows/deploy-onamae.yml`
+
+### 初回設定（GitHub画面）
+
+1. GitHub リポジトリの `Settings` → `Environments` を開く
+2. `staging` と `production` を作成
+3. それぞれの Environment に以下の Secrets を登録
+
+- `SFTP_HOST` 例: `www65.onamae.ne.jp`
+- `SFTP_PORT` 例: `8022`
+- `SFTP_USERNAME` 例: `r0259205`
+- `SFTP_PASSWORD` 例: （SFTPパスワード）
+- `SFTP_REMOTE_PATH`
+  - staging: `/home/r0259205/public_html/cocoro.faag.co.jp.testrs.jp`
+  - production: `/home/r0259205/public_html/cocoro.faag.co.jp`
+
+### 実行手順
+
+1. GitHub の `Actions` タブを開く
+2. `Deploy to Onamae SFTP` を選択
+3. `Run workflow` をクリック
+4. `target` で `staging` または `production` を選択
+5. `ref` は通常 `main` のままで実行
+
+### 注意
+
+- このデプロイは「上書き反映」です（サーバー上の不要ファイル削除はしません）
+- `wp-config.php` と `uploads` など重い/機密ディレクトリは除外しています
+- Contact Form 7 のフォーム設定など DB 保存データは別管理です
+
 ## テスト環境への反映
 
 基本方針:

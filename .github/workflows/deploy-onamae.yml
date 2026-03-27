@@ -1,0 +1,94 @@
+name: Deploy to Onamae SFTP
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "Deploy target"
+        required: true
+        type: choice
+        options:
+          - staging
+          - production
+      ref:
+        description: "Git ref (branch/tag/commit)"
+        required: true
+        default: "main"
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-${{ inputs.target }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy (${{ inputs.target }})
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.target }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+
+      - name: Install lftp
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lftp
+
+      - name: Validate secrets
+        env:
+          SFTP_HOST: ${{ secrets.SFTP_HOST }}
+          SFTP_PORT: ${{ secrets.SFTP_PORT }}
+          SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
+          SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+          SFTP_REMOTE_PATH: ${{ secrets.SFTP_REMOTE_PATH }}
+        run: |
+          set -eu
+          : "${SFTP_HOST:?SFTP_HOST is required}"
+          : "${SFTP_PORT:?SFTP_PORT is required}"
+          : "${SFTP_USERNAME:?SFTP_USERNAME is required}"
+          : "${SFTP_PASSWORD:?SFTP_PASSWORD is required}"
+          : "${SFTP_REMOTE_PATH:?SFTP_REMOTE_PATH is required}"
+          echo "Target remote path: ${SFTP_REMOTE_PATH}"
+
+      - name: Deploy files via SFTP
+        env:
+          SFTP_HOST: ${{ secrets.SFTP_HOST }}
+          SFTP_PORT: ${{ secrets.SFTP_PORT }}
+          SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
+          SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+          SFTP_REMOTE_PATH: ${{ secrets.SFTP_REMOTE_PATH }}
+        run: |
+          set -eu
+          lftp -u "${SFTP_USERNAME}","${SFTP_PASSWORD}" "sftp://${SFTP_HOST}:${SFTP_PORT}" <<EOF
+          set cmd:fail-exit yes
+          set sftp:auto-confirm yes
+          set net:max-retries 2
+          set net:timeout 20
+          lcd ${GITHUB_WORKSPACE}
+          mkdir -p ${SFTP_REMOTE_PATH}
+          mirror -R \
+            --verbose \
+            --parallel=2 \
+            --only-newer \
+            --exclude-rx '(^|/)\\.git(/|$)' \
+            --exclude-rx '(^|/)\\.github(/|$)' \
+            --exclude-rx '(^|/)\\.DS_Store$' \
+            --exclude-rx '(^|/).*\\.log$' \
+            --exclude-rx '(^|/)wp-config\\.php$' \
+            --exclude-rx '(^|/)phpinfo\\.php$' \
+            --exclude-rx '(^|/)wp-content/uploads(/|$)' \
+            --exclude-rx '(^|/)wp-content/ewww(/|$)' \
+            --exclude-rx '(^|/)wp-content/cache(/|$)' \
+            --exclude-rx '(^|/)wp-content/upgrade(/|$)' \
+            --exclude-rx '(^|/)wp-content/languages(/|$)' \
+            --exclude-rx '(^|/)wp-content/w3tc-config(/|$)' \
+            ./ ${SFTP_REMOTE_PATH}
+          bye
+          EOF
+
