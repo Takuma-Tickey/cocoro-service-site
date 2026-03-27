@@ -192,8 +192,13 @@ function add_target_blank_to_external_links($content) {
 }
 add_filter('the_content', 'add_target_blank_to_external_links');
 
-// ① Slack Incoming Webhook URL（ここに貼る）
-define('COCORO_SLACK_WEBHOOK_URL', 'https://hooks.slack.com/services/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');
+// Slack Incoming Webhook URL は wp-config.php など Git 管理外で定義する
+if ( ! defined( 'COCORO_SLACK_WEBHOOK_URL' ) ) {
+	$slack_webhook = getenv( 'COCORO_SLACK_WEBHOOK_URL' );
+	if ( is_string( $slack_webhook ) && $slack_webhook !== '' ) {
+		define( 'COCORO_SLACK_WEBHOOK_URL', $slack_webhook );
+	}
+}
 
 /*公開時にSlack通知（初回publishのみ）*/
 add_action('transition_post_status', function($new_status, $old_status, $post) {
@@ -206,6 +211,9 @@ add_action('transition_post_status', function($new_status, $old_status, $post) {
 
   // リビジョンは除外
   if (wp_is_post_revision($post->ID)) return;
+
+  // Webhook未設定なら通知しない
+  if (!defined('COCORO_SLACK_WEBHOOK_URL') || COCORO_SLACK_WEBHOOK_URL === '') return;
 
   // 二重送信防止（念のため）
   if (get_post_meta($post->ID, '_slack_notified_on_publish', true)) return;
