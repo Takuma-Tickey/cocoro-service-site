@@ -62,6 +62,11 @@
   - staging: `/home/r0259205/public_html/cocoro.faag.co.jp.testrs.jp`
   - production: `/home/r0259205/public_html/cocoro.faag.co.jp`
 
+鍵認証で運用する場合:
+
+- `SFTP_PRIVATE_KEY` に秘密鍵の中身（`-----BEGIN ...` から `-----END ...` まで）を登録
+- この場合 `SFTP_PASSWORD` は空でも動作します
+
 ### 実行手順
 
 1. GitHub の `Actions` タブを開く
