@@ -6,7 +6,7 @@
 ## サイト情報
 
 - 本番: `https://cocoro.faag.co.jp`
-- テスト: `http://cocoro.faag.co.jp.testrs.jp` （必要に応じて `https` も利用）
+- テスト: `http://cocoro.faag.co.jp.testrs.jp`
 - サーバーパス（本番）: `/home/r0259205/public_html/cocoro.faag.co.jp`
 - サーバーパス（テスト）: `/home/r0259205/public_html/cocoro.faag.co.jp.testrs.jp`
 
@@ -16,10 +16,21 @@
 - 親テーマ: `wp-content/themes/jinr`
 - 子テーマ: `wp-content/themes/jinr-child`
 
+## 運用方針（決定版）
+
+今後の標準フローは以下です。
+
+1. 修正を `main` にコミット・push
+2. コマンドで GitHub Actions の `staging` デプロイを実行
+3. テスト環境で確認
+4. 問題なければコマンドで GitHub Actions の `production` デプロイを実行
+
+この運用により、GitHub Actions 上に「誰が・いつ・どのコミットを・どこへ反映したか」が残ります。
+
 ## Git 管理ルール
 
 このリポジトリは Private 前提です。  
-機密情報と重い生成物は `.gitignore` で除外しています。
+機密情報と重い生成物は `.gitignore` で除外します。
 
 主な除外対象:
 
@@ -31,77 +42,95 @@
 - `wp-content/languages/`
 - `wp-content/w3tc-config/`
 
-## 日常運用フロー（推奨）
-
-1. ローカルで修正
-2. テスト環境へ反映して確認
-3. 問題なければ Git にコミット
-4. GitHub へ Push
-5. 本番へ反映
-
-## GitHub Actions で無料デプロイ（手動実行）
-
-このリポジトリには、GitHub Actions の手動実行で
-`staging` / `production` へ SFTP デプロイする設定を追加しています。
+## GitHub Actions デプロイ設定
 
 ワークフロー:
 
 - `.github/workflows/deploy-onamae.yml`
 
-### 初回設定（GitHub画面）
+### Environment Secrets（GitHub画面）
 
-1. GitHub リポジトリの `Settings` → `Environments` を開く
-2. `staging` と `production` を作成
-3. それぞれの Environment に以下の Secrets を登録
+`Settings` → `Environments` の `staging` / `production` に以下を登録します。
 
 - `SFTP_HOST` 例: `www65.onamae.ne.jp`
 - `SFTP_PORT` 例: `8022`
 - `SFTP_USERNAME` 例: `r0259205`
-- `SFTP_PASSWORD` 例: （SFTPパスワード）
 - `SFTP_REMOTE_PATH`
   - staging: `/home/r0259205/public_html/cocoro.faag.co.jp.testrs.jp`
   - production: `/home/r0259205/public_html/cocoro.faag.co.jp`
 
-鍵認証で運用する場合:
+認証方式:
 
-- `SFTP_PRIVATE_KEY` に秘密鍵の中身（`-----BEGIN ...` から `-----END ...` まで）を登録
-- この場合 `SFTP_PASSWORD` は空でも動作します
+- 鍵認証を推奨: `SFTP_PRIVATE_KEY` を登録
+- パスワード認証を使う場合: `SFTP_PASSWORD` を登録
+- どちらか片方があれば動作
 
-### 実行手順
+## デプロイ実行（コマンド）
 
-1. GitHub の `Actions` タブを開く
-2. `Deploy to Onamae SFTP` を選択
-3. `Run workflow` をクリック
-4. `target` で `staging` または `production` を選択
-5. `ref` は通常 `main` のままで実行
+### 事前確認
 
-### 注意
+```bash
+gh auth status -h github.com
+```
 
-- このデプロイは「上書き反映」です（サーバー上の不要ファイル削除はしません）
+ログイン切れの場合:
+
+```bash
+gh auth login -h github.com --git-protocol https --web --skip-ssh-key
+```
+
+### staging デプロイ
+
+```bash
+gh workflow run deploy-onamae.yml --ref main -f target=staging -f ref=main
+```
+
+### production デプロイ
+
+```bash
+gh workflow run deploy-onamae.yml --ref main -f target=production -f ref=main
+```
+
+### 実行状況の確認
+
+```bash
+gh run list --workflow deploy-onamae.yml --limit 5
+gh run view <RUN_ID>
+gh run watch <RUN_ID> --exit-status
+```
+
+## 監査ログ（Actions側）
+
+`deploy-onamae.yml` は以下を記録します。
+
+- 実行名: `target / actor / ref`
+- 実コミットSHA
+- 実行者（GitHubユーザー）
+- 実行時刻（UTC）
+- Commit URL / Run URL
+- `rsync --itemize-changes` による反映差分ログ
+
+## 重要な注意点
+
+- デプロイは「上書き反映」です（サーバー上の不要ファイル削除はしません）
 - `wp-config.php` と `uploads` など重い/機密ディレクトリは除外しています
-- Contact Form 7 のフォーム設定など DB 保存データは別管理です
+- Contact Form 7 設定など DB 保存データは Git で管理されません
 
-## テスト環境への反映
+### URL リダイレクト事故の再発防止
 
-基本方針:
+本番とテストで DB 設定が干渉しないよう、サーバー側 `wp-config.php` で環境ごとに固定します。
 
-- 先にテスト環境 (`cocoro.faag.co.jp.testrs.jp`) に反映
-- 本番とテストで `wp-config.php` は分けて運用
-
-反映時の注意:
-
-- `wp-config.php` は上書きしない
-- `uploads` は容量が大きいため、必要時のみ同期
-- 反映後にキャッシュプラグインをクリア
+- 本番: `WP_HOME` / `WP_SITEURL` = `https://cocoro.faag.co.jp`
+- テスト: `WP_HOME` / `WP_SITEURL` = `http://cocoro.faag.co.jp.testrs.jp`
 
 ## ログイン周りの注意
 
-`SiteGuard` 利用時はログイン URL が `wp-login.php` から変更されることがあります。  
+`SiteGuard` 利用時はログイン URL が `wp-login.php` から変更される場合があります。  
 ログインできない場合は以下を確認します。
 
 1. `wp-content/plugins/siteguard` を一時リネームして切り分け
 2. `.htaccess` の `SITEGUARD_RENAME_LOGIN` 設定を確認
-3. テスト環境で本番へリダイレクトされる場合は `WP_HOME` / `WP_SITEURL` をテストドメインに設定
+3. `WP_HOME` / `WP_SITEURL` が環境に合っているか確認
 
 ## 初回・再セットアップ
 
@@ -115,7 +144,7 @@ git status
 ```bash
 git add .
 git commit -m "fix: お問い合わせフォーム文言を修正"
-git push
+git push origin main
 ```
 
 ## バックアップ方針
