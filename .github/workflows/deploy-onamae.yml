@@ -103,7 +103,7 @@ jobs:
               cat "${LFTP_CMD_FILE}"
             } > "${LFTP_CMD_FILE}.with_key"
             mv "${LFTP_CMD_FILE}.with_key" "${LFTP_CMD_FILE}"
-            lftp -u "${SFTP_USERNAME}" "sftp://${SFTP_HOST}:${SFTP_PORT}" -f "${LFTP_CMD_FILE}"
+            lftp -f "${LFTP_CMD_FILE}" -u "${SFTP_USERNAME}" "sftp://${SFTP_HOST}:${SFTP_PORT}"
           else
-            lftp -u "${SFTP_USERNAME}","${SFTP_PASSWORD}" "sftp://${SFTP_HOST}:${SFTP_PORT}" -f "${LFTP_CMD_FILE}"
+            lftp -f "${LFTP_CMD_FILE}" -u "${SFTP_USERNAME}","${SFTP_PASSWORD}" "sftp://${SFTP_HOST}:${SFTP_PORT}"
           fi
