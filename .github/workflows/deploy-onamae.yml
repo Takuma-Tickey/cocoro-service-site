@@ -61,11 +61,14 @@ jobs:
           echo "Target remote path: ${SFTP_REMOTE_PATH}"
 
       - name: Prepare SSH key (optional)
-        if: ${{ secrets.SFTP_PRIVATE_KEY != '' }}
         env:
           SFTP_PRIVATE_KEY: ${{ secrets.SFTP_PRIVATE_KEY }}
         run: |
           set -eu
+          if [ -z "${SFTP_PRIVATE_KEY:-}" ]; then
+            echo "SFTP_PRIVATE_KEY is empty. Skip key setup."
+            exit 0
+          fi
           mkdir -p "${HOME}/.ssh"
           chmod 700 "${HOME}/.ssh"
           echo "${SFTP_PRIVATE_KEY}" | tr -d '\r' > "${HOME}/.ssh/id_ed25519"
